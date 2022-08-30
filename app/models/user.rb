@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :appointments
   has_many :clinical_histories
   has_many :pets
+
+  has_one_attached :photo
 end
