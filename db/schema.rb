@@ -10,9 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_145400) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_185706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.date "date"
+    t.bigint "user_id", null: false
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_appointments_on_pet_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "clinical_histories", force: :cascade do |t|
+    t.date "date"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_clinical_histories_on_pet_id"
+    t.index ["user_id"], name: "index_clinical_histories_on_user_id"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.bigint "species_type_id", null: false
+    t.date "birthday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["species_type_id"], name: "index_pets_on_species_type_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "species_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "studies", force: :cascade do |t|
+    t.bigint "clinical_history_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["clinical_history_id"], name: "index_studies_on_clinical_history_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +68,40 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_145400) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type_of_user"
+    t.string "name"
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "doctors"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vaccinations", force: :cascade do |t|
+    t.bigint "vaccine_id", null: false
+    t.bigint "clinical_history_id", null: false
+    t.date "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clinical_history_id"], name: "index_vaccinations_on_clinical_history_id"
+    t.index ["vaccine_id"], name: "index_vaccinations_on_vaccine_id"
+  end
+
+  create_table "vaccines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "appointments", "pets"
+  add_foreign_key "appointments", "users"
+  add_foreign_key "clinical_histories", "pets"
+  add_foreign_key "clinical_histories", "users"
+  add_foreign_key "pets", "species_types"
+  add_foreign_key "pets", "users"
+  add_foreign_key "studies", "clinical_histories"
+  add_foreign_key "vaccinations", "clinical_histories"
+  add_foreign_key "vaccinations", "vaccines"
 end
