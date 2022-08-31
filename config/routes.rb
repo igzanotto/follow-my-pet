@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :vaccinations, except: [:show, :destroy]
   end
 
-  resources :appointments, except: [:new, :create]
+  resources :appointments, except: [:new, :create, :show]
   get 'my_appointments', to: 'appointments#my_appointments', as: 'my_appointments'
-  get 'my_pattients', to: 'appointments#my_pattients', as: 'my_pattients'
+  get 'my_patients', to: 'appointments#my_patients', as: 'my_patients'
 
   resources :veterinaries, only: [:show, :index]
 

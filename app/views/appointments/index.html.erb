@@ -1,0 +1,5 @@
+<% @appointments.each do |appointment| %>
+  <% if current_user.pet_id == appointment.pet_id %>
+    <p><%= appointment.date %><%= appointment.user.name %><%= appointment.pet.name %></p>
+  <% end %>
+<% end %>
