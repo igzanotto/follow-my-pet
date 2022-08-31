@@ -1,19 +1,27 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:edit, :update, :destroy]
+  before_action :set_pet, only: [:index]
 
   def new
     @appointment = Appointment.new
   end
 
   def create
-    @appointment = Appointment.new(params[:id])
-    # necesito el id del pet y el id del vet
+    @appointment = Appointment.new(appointment_params, user_id: params[:id_vet], pet_id: params[:id_pet])
 
+    if @appointment.save
+      redirect_to appointments_path
+    else
+      render 'veterinaries/show', status: :unprocessable_entity
+    end
+    # @appointment.pet = Pet.find(params[:pet_id]
+    # @appointment.user = User.find(params[:id])
   end
 
   # Turnos de una mascota.
   def index
-    @appointments = Appointment.all
+    # @pet = Pet.find(params[:id])
+    @appointments = @pet.appointments
   end
 
   def edit
@@ -40,12 +48,19 @@ class AppointmentsController < ApplicationController
   end
 
   def my_patients
-    @user = current_user.id
-    @appointments = Appointment.where(user_id: @user)
-    @appointments.each do |appointment|
-      @pet = appointment.pet.name
-    end
+    # user(vet) ---> appointments ---> pet
+    @user = current_user
+    # @appointments = Appointment.where(user_id: @user)
+    # @appointments.each do |appointment|
+    #   @pet = appointment.pet.name
+    # end
 
+    @pets = Pet.all
+    # @pets.each do |pet|
+    #   pet.appointments.each do |appointment|
+    #     appointment.user.name
+    #   end
+    # end
   end
 
   private
@@ -58,4 +73,10 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
   end
 
+  def set_pet
+    @pet = Pet.find(params[:id])
+  end
+
 end
+
+# pet.appointments.each do |appointment| { appointment.pet.name }

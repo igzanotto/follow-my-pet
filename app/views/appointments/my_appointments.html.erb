@@ -1,0 +1,10 @@
+<% @appointments.each do |appointment| %>
+  <div class="card w-75">
+    <div class="card-body">
+      <p class="card-text"><%= appointment.date %></p>
+      <p class="card-text"><%= appointment.user.name %></p>
+      <a href="#" class="btn btn-primary">Button</a>
+    </div>
+  </div>
+<% end %>
+<% console %>

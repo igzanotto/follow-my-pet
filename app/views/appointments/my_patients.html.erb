@@ -1,0 +1,7 @@
+<% @pets.each do |pet| %>
+  <% pet.appointments.each do |appointment| %>
+    <% if appointment.user.name == @user.name %>
+      <p><%= pet.name %></p>
+    <% end %>
+  <% end %>
+<% end %>
