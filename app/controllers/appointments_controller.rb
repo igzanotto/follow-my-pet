@@ -1,10 +1,14 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:edit, :update]
+  before_action :set_appointment, only: [:edit, :update, :destroy]
 
   def new
+    @appointment = Appointment.new
   end
 
   def create
+    @appointment = Appointment.new(params[:id])
+    # necesito el id del pet y el id del vet
+
   end
 
   # Turnos de una mascota.
@@ -31,11 +35,17 @@ class AppointmentsController < ApplicationController
 
   # Turnos del día del Vet.
   def my_appointments
-    @appointments = Appointment.all
+    @user = current_user.id
+    @appointments = Appointment.where(user_id: @user)
   end
 
   def my_patients
-    @pets = Pet.where()
+    @user = current_user.id
+    @appointments = Appointment.where(user_id: @user)
+    @appointments.each do |appointment|
+      @pet = appointment.pet.name
+    end
+
   end
 
   private
