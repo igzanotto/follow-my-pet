@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :pets do
     resources :veterinaries, only: [:show, :index]
   end
+  resources :pets do
+    resources :appointments, only: [:index]
+  end
 
   resources :appointments, except: [:show]
   get 'my_appointments', to: 'appointments#my_appointments', as: 'my_appointments'

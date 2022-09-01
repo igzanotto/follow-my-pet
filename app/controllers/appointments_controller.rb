@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    # los valores de user_id y pet_id los traigo del new que estan en la vista /vet/show
     @appointment = Appointment.new(appointment_params, user_id: params[:id_vet], pet_id: params[:id_pet])
 
     if @appointment.save
@@ -14,14 +15,21 @@ class AppointmentsController < ApplicationController
     else
       render 'veterinaries/show', status: :unprocessable_entity
     end
-    # @appointment.pet = Pet.find(params[:pet_id]
-    # @appointment.user = User.find(params[:id])
   end
 
   # Turnos de una mascota.
   def index
     # @pet = Pet.find(params[:id])
-    @appointments = @pet.appointments
+    @next_appointments = @pet.appointments.where('date >= ?', Date.today)
+  end
+
+  # Turnos del día del Vet.
+  def my_appointments
+    @user = current_user.id
+    @appointments = Appointment.where(user_id: @user)
+    # quiero poder ver citas pasadas o no?
+    @past_appointments = @appointments.where('date < ?', Date.today)
+    @next_appointments = @appointments.where('date >= ?', Date.today)
   end
 
   def edit
@@ -41,26 +49,14 @@ class AppointmentsController < ApplicationController
     redirect_to appointments_path, status: :see_other
   end
 
-  # Turnos del día del Vet.
-  def my_appointments
-    @user = current_user.id
-    @appointments = Appointment.where(user_id: @user)
-  end
-
   def my_patients
-    # user(vet) ---> appointments ---> pet
     @user = current_user
-    # @appointments = Appointment.where(user_id: @user)
-    # @appointments.each do |appointment|
-    #   @pet = appointment.pet.name
-    # end
-
-    @pets = Pet.all
-    # @pets.each do |pet|
-    #   pet.appointments.each do |appointment|
-    #     appointment.user.name
-    #   end
-    # end
+    @appointments = Appointment.where(user_id: @user)
+    @pets_names = []
+    @appointments.each do |appointment|
+      @pets_names << appointment.pet.name
+    end
+    @pets_names.uniq!
   end
 
   private
@@ -74,7 +70,7 @@ class AppointmentsController < ApplicationController
   end
 
   def set_pet
-    @pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
   end
 
 end

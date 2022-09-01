@@ -1,5 +1,12 @@
-<% @appointments.each do |appointment| %>
-  <% if current_user.pet_id == appointment.pet_id %>
-    <p><%= appointment.date %><%= appointment.user.name %><%= appointment.pet.name %></p>
+<div class="container text-center">
+  <% @next_appointments.each do |appointment| %>
+    <div class="row justify-content-md-center">
+      <div class="p-2 col-8 bg-light border">
+        <%= appointment.date %>
+        <%= appointment.user.name %>
+        <%= appointment.pet.name %>
+        <a href="#" class="btn btn-primary">Button</a>
+      </div>
+      </div>
   <% end %>
-<% end %>
+</div>
