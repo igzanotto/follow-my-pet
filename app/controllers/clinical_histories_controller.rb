@@ -16,13 +16,17 @@ class ClinicalHistoriesController < ApplicationController
 
   def new
     @clinical_history = ClinicalHistory.new
+    @pet = Pet.find(params[:pet_id])
   end
 
     def create
       @clinical_history = ClinicalHistory.new(clinical_history_params)
+      @clinical_history.user_id = current_user.id
+      @pet = Pet.find(params[:pet_id])
+      @clinical_history.pet_id = @pet.id
       @clinical_history.save
 
-      # redirect_to pet_clinical_histories_path
+      redirect_to pet_clinical_histories_path
       # @offer.user_id = current_user.id
       # if @clinical_history.save
       # else
