@@ -3,8 +3,8 @@
 <ul>
   <li><%= link_to "Vaccinations", pet_vaccinations_path(@pet) %></li>
   <li><%= link_to "Clinical History",  pet_clinical_histories_path(@pet) %></li>
-  <li><%= link_to "Veterinaries", veterinaries_path %></li>
-  <li><%= link_to "Book an appointment", veterinaries_path %></li>
+  <li><%= link_to "Veterinaries", pet_veterinaries_path(@pet) %></li>
+  <li><%= link_to "Book an appointment", pet_veterinaries_path(@pet) %></li>
   <li><%= link_to "My appointments", appointments_path %></li>
 </ul>
 
@@ -17,16 +17,16 @@
 
   <div class="cards">
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1537204696486-967f1b7198c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80)">
-    <%= link_to "Vaccination", pet_vaccination_path, class:"btn btn-primary" %>
+    <%= link_to "Vaccination", pet_vaccination_path(@pet), class:"btn btn-primary" %>
   </div>
 
   <div class="cards">
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1537204696486-967f1b7198c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80)">
-    <%= link_to "Clinical History", pet_clinical_hitories_path, class:"btn btn-primary" %>
+    <%= link_to "Clinical History", pet_clinical_histories_path(@pet), class:"btn btn-primary" %>
   </div>
 
   <div class="cards">
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1537204696486-967f1b7198c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80)">
-    <%= link_to "Veterinary", pet_veterinaries_path, class:"btn btn-primary" %>
+    <%= link_to "Veterinary", pet_veterinaries_path(@pet), class:"btn btn-primary" %>
   </div>
 </div>
