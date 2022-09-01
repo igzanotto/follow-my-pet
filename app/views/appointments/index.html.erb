@@ -5,8 +5,6 @@
     </div>
   </div>
 
-  <%# pet_veterinary_path(@pet) %>
-
   <div class="container text-center d-grid gap-3">
     <h2><%= @pet.name %>, these are your next appointments </h2>
     <% @next_appointments.each do |appointment| %>
@@ -27,5 +25,3 @@
     <% end %>
   </div>
 </div>
-
-<%= link_to "Borrar", appointment_path(@next_appointments.first), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"ms-3 text-success" %>
