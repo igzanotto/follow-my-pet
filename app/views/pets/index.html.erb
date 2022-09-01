@@ -1,7 +1,16 @@
-<h1>My pets</h1>
+<h1>INDEX</h1>
 
-<% @pets.each do |pet| %>
-<ul>
-  <li><%= link_to pet.name, pet_path(pet) %></li>
-</ul>
-<% end %>
+  <div class="container text-center d-grid gap-3">
+    <h2>Hello! </h2>
+      <ul class="list-group">
+    <% @pets.each do |pet| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= pet.name %>
+              <%= link_to "Pet", pet_path(pet), class:"ms-3 text-success"  %>
+                <%= link_to "Delete",  pets_path(@pet),
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+        </li>
+    <% end %>
+      </ul>
+  </div>
+</div>

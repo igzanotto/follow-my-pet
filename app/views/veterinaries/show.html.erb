@@ -17,4 +17,10 @@
 
   </div>
 
+<%= simple_form_for @appointment do |a| %>
+  <%= a.button :submit, "Submit" %>
+  <%= hidden_field_tag(:id_vet, params[:id]) %>
+  <%= hidden_field_tag(:id_pet, params[:pet_id]) %>
+<% end %>
+
 </div>
