@@ -18,6 +18,14 @@ class ClinicalHistoriesController < ApplicationController
     @clinical_history.user = User.find(params[:id])
     @pet = Pet.find(params[:pet_id])
 
+    # Guardar la instancia de clinical history
+
+    if @clinical_history.save
+      redirect_to pet_clinical_histories_path(@pet)
+    else
+      render 'clinical_histories/new', status: :unprocessable_entity
+    end
+
     # Chequear si es un study o una vaccination o una consult
 
     # Opcion A: si es una consulta
@@ -50,13 +58,7 @@ class ClinicalHistoriesController < ApplicationController
       end
     end
 
-    # Guardar la instancia de clinical history
 
-    if @clinical_history.save
-      redirect_to pet_clinical_histories_path(@pet)
-    else
-      render 'clinical_histories/new', status: :unprocessable_entity
-    end
   end
 
   private

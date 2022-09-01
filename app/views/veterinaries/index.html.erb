@@ -22,7 +22,7 @@
           <%= form.text_field :speciality, class: "form-control", value: params[:speciality], data: { speciality_target: "options" } %>
         </div>
         <div class="input-group pl-3">
-          <%= form.submit "Filter", class: "btn btn-primary", data: { action: "click->speciality#filter" } %>
+          <%= form.submit "Filter", class: "btn btn-primary", data: { action: "submit->speciality#filter" } %>
         </div>
         <% end%>
       </div>
@@ -32,7 +32,7 @@
 
   <div class= "d-flex">
 
-      <% if @veterinaries != nil %>
+      <% if @vet_filtered != nil %>
 
         <div class="cards-container col-5">
           <div class="cards" data-speciality-target="cards">

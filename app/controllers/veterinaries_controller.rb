@@ -3,20 +3,27 @@ class VeterinariesController < ApplicationController
     if params[:query].present? # si la query esta presente
       if User.search_by_location(params[:query]).size.positive? # Si la query encuentra algo
         @veterinaries = User.where(type_of_user: "Veterinary")
-        @veterinaries.search_by_location(params[:query])
+        @vet_filtered = @veterinaries.search_by_location(params[:query])
+          # GEOCODING
+          @markers = @vet_filtered.geocoded.map do |vet|
+          {
+            lat: vet.latitude,
+            lng: vet.longitude
+          }
+          end
       else
         "No results found" # Si no encuentra resultados
       end
     else
-      @veterinaries = User.where(type_of_user: "Veterinary") # Si no buscamos nada que traiga todas
-    end
+      @vet_filtered = User.where(type_of_user: "Veterinary") # Si no buscamos nada que traiga todas
 
-    # GEOCODING
-    @markers = @veterinaries.geocoded.map do |vet|
-      {
-        lat: vet.latitude,
-        lng: vet.longitude
-      }
+        # GEOCODING
+        @markers = @vet_filtered.geocoded.map do |vet|
+          {
+            lat: vet.latitude,
+            lng: vet.longitude
+          }
+        end
     end
 
     # STIMULUS FOR SEARCH
