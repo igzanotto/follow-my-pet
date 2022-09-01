@@ -2,11 +2,27 @@
   justify-content: space-between;
   background: white;
 }
-
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
-
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+.dropdown-navbar {
+  padding: 0;
+}
+.dropdown-navbar ul {
+  list-style-type: none;
+  padding: 0px;
+}
+.navbar a {
+  color: gray;
+}
+.welcome-user {
+  padding: 5px;
+  background-color: #F4F4F4;
+  text-align: center;
+}
+.welcome-user p {
+  margin: 0px;
 }
