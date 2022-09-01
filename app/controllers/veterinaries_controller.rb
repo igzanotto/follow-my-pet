@@ -35,6 +35,7 @@ class VeterinariesController < ApplicationController
   end
 
   def show
+    @pet = Pet.find(params[:pet_id])
     @veterinary = User.find(params[:id])
     @appointment = Appointment.new
   end

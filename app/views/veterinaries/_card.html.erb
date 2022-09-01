@@ -23,7 +23,7 @@
                   <p>Doctors: <%= vet.doctors %></p>
                 </div>
                 <div class="reservation-actions">
-                  <%= link_to "Details", veterinary_path(vet), class:"ms-3 text-success"  %>
+                  <%= link_to "Details", pet_veterinary_path(@pet, vet), class:"ms-3 text-success"  %>
                 </div>
               </div>
             </div>

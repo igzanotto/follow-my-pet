@@ -3,8 +3,8 @@
 <ul>
   <li><%= link_to "Vaccinations", pet_vaccinations_path(@pet) %></li>
   <li><%= link_to "Clinical History",  pet_clinical_histories_path(@pet) %></li>
-  <li><%= link_to "Veterinaries", veterinaries_path %></li>
-  <li><%= link_to "Book an appointment", veterinaries_path %></li>
+  <li><%= link_to "Veterinaries", pet_veterinaries_path(@pet) %></li>
+  <li><%= link_to "Book an appointment", pet_veterinaries_path(@pet) %></li>
   <li><%= link_to "My appointments", appointments_path %></li>
 </ul>
 

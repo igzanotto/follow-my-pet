@@ -30,8 +30,10 @@
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-suitcase-rolling"></i>
                   <%= link_to "My pets", pets_path, class: "dropdown-item" %></li>
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-house"></i>
-                  <%# <%= link_to "My appointments", appointments_path, class: "dropdown-item" %></li> %>
-                  <%# <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-paw"></i> <%= link_to "Veterinaries", pet_veterinaries_path, class: "dropdown-item" %></li> %>
+
+                  <%# <%= link_to "My appointments", appointments_path, class: "dropdown-item" </li> %>
+                  <%# <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-paw"></i> <%= link_to "Veterinaries", pet_veterinaries_path(@pet), class: "dropdown-item" </li> %>
+
                 <% else %>
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-suitcase-rolling"></i>
                   <%= link_to "Search client", my_patients_path, class: "dropdown-item" %></li>

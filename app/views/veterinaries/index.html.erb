@@ -5,7 +5,7 @@
 
       <div class="form-group mt-3 mb-3 col-5 mr-1">
         <p>Search your vet</p>
-        <%= form_with url: veterinaries_path, method: :get, class: "form-control" do %>
+        <%= form_with url: pet_veterinaries_path(@pet), method: :get, class: "form-control" do %>
         <div class="input-group">
           <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Location" %>
         </div>
@@ -17,7 +17,7 @@
 
       <div class="form-group mt-3 mb-3 ml-1 col-5">
         <p>Filter your results</p>
-        <%= form_with url: veterinaries_path, method: :get, html: {class: "form-control mb-4", data: { speciality_target: "form"}} do |form| %>
+        <%= form_with url: pet_veterinaries_path(@pet), method: :get, html: {class: "form-control mb-4", data: { speciality_target: "form"}} do |form| %>
         <div class="input-group">
           <%= form.text_field :speciality, class: "form-control", value: params[:speciality], data: { speciality_target: "options" } %>
         </div>
