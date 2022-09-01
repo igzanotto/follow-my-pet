@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="container-show-header">
+    <div class="btn-appointment">
+      <%= link_to "Create a new appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="container text-center d-grid gap-3">
+    <h2><%= @pet.name %>, these are your next appointments </h2>
+    <% @next_appointments.each do |appointment| %>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= appointment.date %>
+          <%= appointment.user.name %>
+          <%= appointment.pet.name %>
+          <%# <%= link_to appointment_path(appointment), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"ms-3 text-success" do %>
+          <%= button_to appointment_path(appointment), class:"ms-3 text-success", :method => :delete do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <a href="#" class="btn btn-success">Button</a>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% @mypatients_names.each do |name| %>
+      <p><%= name %></p>
+<% end %>
+
+<%# SELECT distinct(p.name)
+FROM users u, appointments a, pets p
+WHERE u.id = 7
+AND a.user_id = u.id
+AND a.pet_id = p.id; %>
