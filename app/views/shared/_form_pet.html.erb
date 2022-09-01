@@ -1,0 +1,4 @@
+simple_form_for :credits, url: "/accounts/#{@account.id}/topup" do |f|
+  = f.collection_check_boxes :amount, [[100, 500], [500, 'a'], [1000, 'b'], [5000, 'c'], [10000, 'd']]
+= f.button :submit
+<%= simple_form_for :credits, url: "/pets/#{@" do |f| %>

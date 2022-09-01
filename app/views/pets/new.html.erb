@@ -1,0 +1,10 @@
+<h1>New</h1>
+
+
+<%= simple_form_for @pet  do |f|%>
+<%= f.input :name %>
+<%= f.input :birthday , as: :date %>
+<%= f.association :species_type, collection: SpeciesType.all %>
+<%= f.button :submit %>
+<% end %>
+
