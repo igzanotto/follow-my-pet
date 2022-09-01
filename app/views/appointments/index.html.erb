@@ -14,9 +14,9 @@
           <%= appointment.user.name %>
           <%= appointment.pet.name %>
           <%# <%= link_to appointment_path(appointment), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"ms-3 text-success" do %>
-          <%= button_to "delete", appointment_path(appointment), :method => :delete %>
+          <%= button_to appointment_path(appointment), class:"ms-3 text-success", :method => :delete do %>
             <i class="fa-solid fa-trash"></i>
-          <%# <% end %>
+          <% end %>
           <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
             <i class="fa-regular fa-pen-to-square"></i>
           <% end %>
