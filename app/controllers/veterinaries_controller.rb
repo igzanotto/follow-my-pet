@@ -11,6 +11,15 @@ class VeterinariesController < ApplicationController
       @veterinaries = User.where(type_of_user: "Veterinary") # Si no buscamos nada que traiga todas
     end
 
+    # GEOCODING
+    @markers = @veterinaries.geocoded.map do |vet|
+      {
+        lat: vet.latitude,
+        lng: vet.longitude
+      }
+    end
+
+    # STIMULUS FOR SEARCH
     respond_to do |format|
       format.html
       format.text { render partial: "veterinaries/card", locals: {veterinaries: @veterinaries}, formats: [:html] }
