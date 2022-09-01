@@ -10,9 +10,15 @@ class VeterinariesController < ApplicationController
     else
       @veterinaries = User.where(type_of_user: "Veterinary") # Si no buscamos nada que traiga todas
     end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "veterinaries/card", locals: {veterinaries: @veterinaries}, formats: [:html] }
+    end
   end
 
   def show
     @veterinary = User.find(params[:id])
+    @appointment = Appointment.new
   end
 end
