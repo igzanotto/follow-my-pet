@@ -1,6 +1,5 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:edit, :update, :destroy]
-  before_action :set_pet, only: [:index]
 
   def new
     @appointment = Appointment.new
@@ -17,13 +16,13 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  # Turnos de una mascota.
+  # Turnos de una mascota: pet_appointments_path
   def index
-    # @pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
     @next_appointments = @pet.appointments.where('date >= ?', Date.today)
   end
 
-  # Turnos del día del Vet.
+  # Turnos del día del Vet: my_appointments_path
   def my_appointments
     @user = current_user.id
     @appointments = Appointment.where(user_id: @user)
@@ -39,24 +38,32 @@ class AppointmentsController < ApplicationController
   def update
     # @appointment = Appointment.find(params[:id])
     @appointment.update(appointment_params)
-    redirect_to appointments_path
+    if current_user.type_of_user == "Veterinary"
+      redirect_to my_appointments_path
+    else
+      redirect_to pet_appointments_path
+    end
   end
 
   def destroy
     # @appointment = Appointment.find(params[:id])
     @appointment.destroy
 
-    redirect_to appointments_path, status: :see_other
+    if current_user.type_of_user == "Veterinary"
+      redirect_to my_appointments_path, status: :see_other
+    else
+      redirect_to pet_appointments_path, status: :see_other
+    end
   end
 
   def my_patients
     @user = current_user
     @appointments = Appointment.where(user_id: @user)
-    @pets_names = []
+    @mypatients_names = []
     @appointments.each do |appointment|
-      @pets_names << appointment.pet.name
+      @mypatients_names << appointment.pet.name
     end
-    @pets_names.uniq!
+    @mypatients_names.uniq!
   end
 
   private
@@ -67,10 +74,6 @@ class AppointmentsController < ApplicationController
 
   def set_appointment
     @appointment = Appointment.find(params[:id])
-  end
-
-  def set_pet
-    @pet = Pet.find(params[:pet_id])
   end
 
 end
