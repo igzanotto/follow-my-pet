@@ -9,11 +9,11 @@ class AppointmentsController < ApplicationController
     # los valores de user_id y pet_id los traigo del new que estan en la vista /vet/show
     @appointment = Appointment.new(appointment_params, user_id: params[:id_vet], pet_id: params[:id_pet])
 
-    if @appointment.save
+    # if @appointment.save
       redirect_to appointments_path
-    else
-      render 'veterinaries/show', status: :unprocessable_entity
-    end
+    # else
+    #   render 'veterinaries/show', status: :unprocessable_entity
+    # end
   end
 
   # Turnos de una mascota: pet_appointments_path

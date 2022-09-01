@@ -29,14 +29,9 @@
                 <% if current_user.type_of_user == "Pet Owner" %>
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-suitcase-rolling"></i>
                   <%= link_to "My pets", pets_path, class: "dropdown-item" %></li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-house"></i>
-
-                  <%# <%= link_to "My appointments", appointments_path, class: "dropdown-item" </li> %>
-                  <%# <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-paw"></i> <%= link_to "Veterinaries", pet_veterinaries_path(@pet), class: "dropdown-item" </li> %>
-
                 <% else %>
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-suitcase-rolling"></i>
-                  <%= link_to "Search client", my_patients_path, class: "dropdown-item" %></li>
+                  <%= link_to "My patients", my_patients_path, class: "dropdown-item" %></li>
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-house"></i> <%= link_to "My appointments", my_appointments_path, class: "dropdown-item" %></li>
                 <% end %>
                 <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-sliders"></i> <%= link_to "My account", edit_user_registration_path, class: "dropdown-item" %></li>

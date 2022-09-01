@@ -4,22 +4,19 @@
   <hr>
   <div class="container mt-3 mb-3">
     <h2>Consultations</h2>
-     <% @clinical_histories.each do |ch| %>
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <%= ch.description %> | <%= ch.date %>
-                </button>
-              </h5>
+    <div class="accordion" id="accordionExample">
+      <% @clinical_histories.each do |ch| %>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading<%= ch.id %>">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= ch.id %>" aria-expanded="true" aria-controls="collapse<%= ch.id %>">
+              <%= ch.description %> <%= ch.date %>
+            </button>
+          </h2>
+          <div id="collapse<%= ch.id %>" class="accordion-collapse collapse show" aria-labelledby="heading<%= ch.id %>" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <%= ch.description %>
             </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                <%= ch.description %>
-              </div>
-            </div>
+          </div>
         </div>
       <% end %>
   </div>

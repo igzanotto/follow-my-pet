@@ -7,6 +7,8 @@
 </ul>
 
   <div>
-    <%= link_to "Create new Vaccination", new_pet_clinical_history_path, class: "btn btn-primary" %>
-    <%= link_to "Book an appointment", veterinaries_path, class: "btn btn-primary" %>
+    <% if current_user.type_of_user == "Veterinary" %>
+      <%= link_to "Create new Vaccination", new_pet_clinical_history_path, class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %>
   </div>
