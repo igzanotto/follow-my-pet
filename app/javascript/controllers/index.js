@@ -12,9 +12,3 @@ application.register("map", MapController)
 
 import SpecialityController from "./speciality_controller"
 application.register("speciality", SpecialityController)
-
-import { Application } from '@hotwired/stimulus'
-import CheckboxSelectAll from 'stimulus-checkbox-select-all'
-
-const application = Application.start()
-application.register('checkbox-select-all', CheckboxSelectAll)
