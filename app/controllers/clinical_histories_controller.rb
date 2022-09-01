@@ -1,11 +1,14 @@
 class ClinicalHistoriesController < ApplicationController
 
   def index
-    @clinical_histories = Pet.find(params[:id]).clinical_histories
+    @clinical_histories = Pet.find(params[:pet_id]).clinical_histories
   end
 
   def new
     @clinical_history = ClinicalHistory.new
+    @vaccination = Vaccination.new
+    @study = Study.new
+
   end
 
   def create
@@ -13,6 +16,7 @@ class ClinicalHistoriesController < ApplicationController
     @clinical_history = ClinicalHistory.new(clinical_params)
     @clinical_history.pet = Pet.find(params[:pet_id])
     @clinical_history.user = User.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
 
     # Chequear si es un study o una vaccination o una consult
 
@@ -28,7 +32,7 @@ class ClinicalHistoriesController < ApplicationController
       @vaccination.clinical_history = @clinical_history
 
       if @vaccination.save
-        redirect_to clinical_histories_path # no se si esto va
+        redirect_to pet_clinical_histories_path(@pet) # no se si esto va
       else
         render 'clinical_histories/new', status: :unprocessable_entity
       end
@@ -40,7 +44,7 @@ class ClinicalHistoriesController < ApplicationController
       @study.clinical_history = @clinical_history
 
       if @study.save
-        redirect_to clinical_histories_path # no se si esto va
+        redirect_to pet_clinical_histories_path(@pet) # no se si esto va
       else
         render 'clinical_histories/new', status: :unprocessable_entity
       end
@@ -49,7 +53,7 @@ class ClinicalHistoriesController < ApplicationController
     # Guardar la instancia de clinical history
 
     if @clinical_history.save
-      redirect_to clinical_histories_path
+      redirect_to pet_clinical_histories_path(@pet)
     else
       render 'clinical_histories/new', status: :unprocessable_entity
     end

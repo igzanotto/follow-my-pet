@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Clinical History</h1>
+
+  <hr>
+  <div class="container mt-3 mb-3">
+    <h2>Consultations</h2>
+     <% @clinical_histories.each do |ch| %>
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <%= ch.description %> | <%= ch.date %>
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <%= ch.description %>
+              </div>
+            </div>
+        </div>
+      <% end %>
+  </div>
+
+  <br>
+  <hr>
+
+  <div class="container mt-3">
+    <h2>Studies</h2>
+    <% if @studies != nil %>
+
+      <% @studies.each do |s| %>
+
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <%= s.name %>
+                </button>
+              </h5>
+            </div>
+        </div>
+      <% end %>
+      <% else %>
+      <p>No studies available yet</p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "Create new", new_pet_clinical_history_path, class: "btn btn-primary" %>
+  </div>
+
+</div>
