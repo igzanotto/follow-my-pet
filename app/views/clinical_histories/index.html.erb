@@ -1,0 +1,8 @@
+<ul>
+  <% @clinical_histories.each do |clinical_history| %>
+    <li><%= clinical_history.description %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to "New Clinical History", new_pet_clinical_history_path %>
