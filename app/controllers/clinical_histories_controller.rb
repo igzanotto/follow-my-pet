@@ -5,18 +5,18 @@ class ClinicalHistoriesController < ApplicationController
   end
 
   def new
+    @pet = Pet.find(params[:pet_id])
     @clinical_history = ClinicalHistory.new
     @vaccination = Vaccination.new
     @study = Study.new
-
   end
 
   def create
     # Creando la clinical hisory
-    @clinical_history = ClinicalHistory.new(clinical_params)
-    @clinical_history.pet = Pet.find(params[:pet_id])
-    @clinical_history.user = User.find(params[:id])
     @pet = Pet.find(params[:pet_id])
+    @clinical_history = ClinicalHistory.new(clinical_params)
+    @clinical_history.pet_id = @pet.id
+    @clinical_history.user_id = current_user.id
 
     # Guardar la instancia de clinical history
 
