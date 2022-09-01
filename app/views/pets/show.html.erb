@@ -1,3 +1,13 @@
+<h1><%= @pet.name %></h1>
+
+<ul>
+  <li><%= link_to "Vaccinations", pet_vaccinations_path(@pet) %></li>
+  <li><%= link_to "Clinical History",  pet_clinical_histories_path(@pet) %></li>
+  <li><%= link_to "Veterinaries", veterinaries_path %></li>
+  <li><%= link_to "Book an appointment", veterinaries_path %></li>
+  <li><%= link_to "My appointments", appointments_path %></li>
+</ul>
+
 <h1>Aurelia pages</h1>
 
 <div class="cards">
@@ -20,5 +30,3 @@
     <%= link_to "Veterinary", pet_veterinaries_path, class:"btn btn-primary" %>
   </div>
 </div>
-
-

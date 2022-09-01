@@ -1,8 +1,5 @@
 class ClinicalHistoriesController < ApplicationController
 
-
-
-
   def index
      @clinical_histories = Pet.find(params[:pet_id]).clinical_histories
 

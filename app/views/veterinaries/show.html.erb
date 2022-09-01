@@ -1,5 +1,26 @@
+<div class="container m-5">
+  <h1>Veterinary Show</h1>
+  <div class="d-flex">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://images.unsplash.com/photo-1630438994394-3deff7a591bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= @veterinary.name %></h5>
+          <p class="card-text"><%= @veterinary.name %></p>
+          <p class="card-text"><small class="text-muted"><%= @veterinary.name %></small></p>
+          <a href="#" class= "btn btn-primary">Chat</a>
+        </div>
+      </div>
+
+      <div class="col-7" style="width: 400px; background-color: rgba(0,0,255,.1)">
+        <%= image_tag("calendar.png") %>
+      </div>
+
+  </div>
+
 <%= simple_form_for @appointment do |a| %>
   <%= a.button :submit, "Submit" %>
   <%= hidden_field_tag(:id_vet, params[:id]) %>
   <%= hidden_field_tag(:id_pet, params[:pet_id]) %>
 <% end %>
+
+</div>

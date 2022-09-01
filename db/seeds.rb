@@ -42,6 +42,7 @@ puts "Done"
 puts "Creating clinical histories"
 clinicalhistory1 = ClinicalHistory.create!(user: user1, pet: pet1, description: "Vino a vacunarse. Pesa 5kg.", date: Date.today)
 clinicalhistory2 = ClinicalHistory.create!(user: user1, pet: pet2, description: "Le duelen los oidos. Le mande a hacer una radiografia.", date: Date.today)
+clinicalhistory3 = ClinicalHistory.create!(user: user1, pet: pet2, description: "Control.", date: Date.today)
 puts "Done"
 
 puts "Creating appointments"
@@ -55,8 +56,8 @@ vaccine2 = Vaccine.create!(name: "covid")
 puts "Done"
 
 puts "Creating vaccinations"
-vaccination1 = Vaccination.create!(vaccine: vaccine1, clinical_history: clinicalhistory1, expiration_date: Date.today)
-vaccination2 = Vaccination.create!(vaccine: vaccine2, clinical_history: clinicalhistory1, expiration_date: Date.today)
+vaccination1 = Vaccination.create!(vaccine: vaccine1, clinical_history: clinicalhistory2, expiration_date: Date.today)
+vaccination2 = Vaccination.create!(vaccine: vaccine2, clinical_history: clinicalhistory2, expiration_date: Date.today)
 puts "Done"
 
 puts "Creating studies"

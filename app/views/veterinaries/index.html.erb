@@ -1,0 +1,50 @@
+<div class="container m-5" data-controller="speciality">
+  <h1>Veterinaries</h1>
+
+  <div class="d-flex">
+
+      <div class="form-group mt-3 mb-3 col-5 mr-1">
+        <p>Search your vet</p>
+        <%= form_with url: veterinaries_path, method: :get, class: "form-control" do %>
+        <div class="input-group">
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Location" %>
+        </div>
+        <div class="input-group pl-3">
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="form-group mt-3 mb-3 ml-1 col-5">
+        <p>Filter your results</p>
+        <%= form_with url: veterinaries_path, method: :get, html: {class: "form-control mb-4", data: { speciality_target: "form"}} do |form| %>
+        <div class="input-group">
+          <%= form.text_field :speciality, class: "form-control", value: params[:speciality], data: { speciality_target: "options" } %>
+        </div>
+        <div class="input-group pl-3">
+          <%= form.submit "Filter", class: "btn btn-primary", data: { action: "submit->speciality#filter" } %>
+        </div>
+        <% end%>
+      </div>
+
+  </div>
+
+
+  <div class= "d-flex">
+
+      <% if @vet_filtered != nil %>
+
+        <div class="cards-container col-5">
+          <div class="cards" data-speciality-target="cards">
+            <%= render "card" %>
+          </div>
+        </div>
+
+      <% else %>
+        <p>No results found</p>
+      <% end %>
+
+      <div class= "col-7 m-5" id="map" style="width: 100%; height: 600px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+  </div>
+</div>

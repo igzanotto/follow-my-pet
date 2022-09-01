@@ -1,0 +1,12 @@
+<h1>My Vaccinations</h1>
+
+<ul>
+  <% @vaccinations.each do |v| %>
+    <li>Date: <%= v.created_at.strftime('%Y-%m-%d') %> | Vaccine: <%= v.vaccine.name %> | Exp. Date: <%= v.expiration_date %> | Download certificate</li>
+  <% end %>
+</ul>
+
+  <div>
+    <%= link_to "Create new Vaccination", new_pet_clinical_history_path, class: "btn btn-primary" %>
+    <%= link_to "Book an appointment", veterinaries_path, class: "btn btn-primary" %>
+  </div>
