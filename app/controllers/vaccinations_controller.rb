@@ -22,9 +22,13 @@ class VaccinationsController < ApplicationController
 
     @vaccination = Vaccination.new(vaccination_params)
     @vaccination.clinical_history_id = @clinical_history.id
-    @vaccination.save
 
-    redirect_to pet_vaccinations_path(@pet)
+    if @vaccination.save
+      redirect_to pet_vaccinations_path(@pet)
+    else
+      render :new, status: :unprocessable_entity
+    end
+
   end
 
   def edit
