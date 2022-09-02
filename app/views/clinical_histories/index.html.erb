@@ -1,62 +1,100 @@
-<div class="container">
-  <h1>Clinical History</h1>
+<div class="container m-4">
 
-  <hr>
-  <div class="container mt-3 mb-3">
-    <h2>Consultations</h2>
-    <div class="accordion" id="accordionExample">
-      <% @clinical_histories.each do |ch| %>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading<%= ch.id %>">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= ch.id %>" aria-expanded="true" aria-controls="collapse<%= ch.id %>">
-              <%= ch.date %>     <%= ch.name%>
-            </button>
-          </h2>
-          <div id="collapse<%= ch.id %>" class="accordion-collapse collapse show" aria-labelledby="heading<%= ch.id %>" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <%= ch.description %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+  <div class="d-flex justify-content-between mb-3">
+      <div class="p-2"><h1>Clinical History</h1></div>
+      <div class="p-2 align-self-center h1"><i class="fa-solid fa-briefcase-medical"></i></div>
   </div>
-
-  <br>
   <hr>
 
-  <div class="container mt-3">
-    <h2>Studies</h2>
-    <% if @studies != nil %>
+  <div class="container bg-white rounded-4 mt-5 mb-4 p-3">
+      <div class="container mt-3 mb-3">
 
-      <% @studies.each do |s| %>
+        <div class="d-flex justify-content-between mb-3">
+          <div class="p-2"><h2>Consultations</h2></div>
+          <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_clinical_history_path, class: "btn btn-primary" %></div>
 
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <%= s.name %>
+        </div>
+
+
+        <div class="accordion" id="accordionExample">
+          <% @clinical_histories.each do |ch| %>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading<%= ch.id %>">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= ch.id %>" aria-expanded="true" aria-controls="collapse<%= ch.id %>">
+                  <div class="d-flex justify-content-between">
+                    <div class="m-5 mt-0 mr-0 mb-0"><%= ch.date %></div>
+                    <div class="m-5 mt-0 mr-0 mb-0"><%= ch.user.name %></div>
+                    <div class="m-5 mt-0 mr-0 mb-0"><%= ch.name %></div>
+
+                    <div class="m-4 mt-0 mr-0 mb-0 align-self-center">
+                      <%= link_to edit_pet_clinical_history_path(@pet, ch), class:"ms-3 text-success" do %>
+                        <i class="fa-solid fa-pen"></i>
+                      <% end %>
+                    </div>
+
+                  </div>
                 </button>
-              </h5>
+              </h2>
+              <div id="collapse<%= ch.id %>" class="accordion-collapse collapse show" aria-labelledby="heading<%= ch.id %>" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <%= ch.description %>
+                </div>
+              </div>
             </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+    <div class="container bg-white rounded-4 mt-4 p-3">
+      <div class="container mt-3 mb-3">
+
+        <div class="d-flex justify-content-between mb-3">
+          <div class="p-2"><h2>Studies</h2></div>
+          <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_study_path, class: "btn btn-primary" %></div>
         </div>
-      <% end %>
-      <% else %>
-      <p>No studies available yet</p>
-    <% end %>
-  </div>
 
-  <div>
-    <%= link_to "Create new", new_pet_clinical_history_path, class: "btn btn-primary" %>
-  </div>
+        <div class="accordion" id="accordionExample">
 
+          <% @studies = [] %>
+          <% @clinical_histories.each do |ch| %>
+            <% if ch.study != nil  %>
+              <% @studies << ch.study %>
+            <% end %>
+          <% end %>
+
+          <% if @studies != [] %>
+
+            <% @studies.each do |st| %>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading<%= st.id %>">
+                  <div class="accordion-button">
+                    <div class="d-flex justify-content-between">
+                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><%= st.clinical_history.date %></div>
+                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><%= st.name %></div>
+                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><%= st.clinical_history.user.name %></div>
+                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><i class="fa-solid fa-file-arrow-down h5"></i></div>
+
+                      <div class="m-4 mt-0 mr-0 mb-0 align-self-center">
+                        <%= link_to edit_pet_study_path(@pet, st), class:"ms-3 text-success" do %>
+                          <i class="fa-solid fa-pen"></i>
+                        <% end %>
+                      </div>
+
+                    </div>
+                  </div>
+                </h2>
+              </div>
+            <% end %>
+
+          <% else %>
+            <p>No studies available yet</p>
+          <% end %>
+
+      </div>
+    </div>
+  </div>
 </div>
-
-<ul>
-  <% @clinical_histories.each do |clinical_history| %>
-    <li><%= clinical_history.description %></li>
-  <% end %>
-</ul>
-
-
-<%= link_to "New Clinical History", new_pet_clinical_history_path %>

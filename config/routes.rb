@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :vaccinations, except: [:show, :destroy]
   end
   resources :pets do
+    resources :studies, except: [:show, :destroy]
+  end
+  resources :pets do
     resources :veterinaries, only: [:show, :index]
   end
 
