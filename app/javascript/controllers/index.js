@@ -12,3 +12,6 @@ application.register("map", MapController)
 
 import SpecialityController from "./speciality_controller"
 application.register("speciality", SpecialityController)
+
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)

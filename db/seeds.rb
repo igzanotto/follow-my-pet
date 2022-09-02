@@ -40,9 +40,11 @@ pet2 = Pet.create!(user: user2, name: "Nelly", species_type: species2, birthday:
 puts "Done"
 
 puts "Creating clinical histories"
-clinicalhistory1 = ClinicalHistory.create!(name: "Control", user: user1, pet: pet1, description: "Vino a vacunarse. Pesa 5kg.", date: Date.today)
-clinicalhistory2 = ClinicalHistory.create!(name: "Clinical Control", user: user1, pet: pet2, description: "Le duelen los oidos. Le mande a hacer una radiografia.", date: Date.today)
-clinicalhistory3 = ClinicalHistory.create!(name: "Control", user: user1, pet: pet2, description: "Control.", date: Date.today)
+
+clinicalhistory1 = ClinicalHistory.create!(user: user1, pet: pet1, description: "Vino a vacunarse. Pesa 5kg.", date: Date.today, name: "Vaccine Control", type_of_history: "Vaccination")
+clinicalhistory2 = ClinicalHistory.create!(user: user1, pet: pet2, description: "Le duelen los oidos. Le mande a hacer una radiografia.", date: Date.today, name: "Dolor oidos", type_of_history: "Control")
+clinicalhistory3 = ClinicalHistory.create!(user: user1, pet: pet2, description: "Tiene una erupción en la piel", date: Date.today, name: "Erupción", type_of_history: "Control")
+
 puts "Done"
 
 puts "Creating appointments"

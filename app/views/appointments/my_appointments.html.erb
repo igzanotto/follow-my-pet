@@ -1,10 +1,26 @@
-
-<% @next_appointments.each do |appointment| %>
-  <div class="card w-75">
-    <div class="card-body">
-      <p class="card-text"><%= appointment.date %></p>
-      <p class="card-text"><%= appointment.user.name %></p>
-      <a href="#" class="btn btn-primary">Button</a>
+<div class="container">
+  <div class="container-show-header">
+    <div class="btn-appointment">
+      <%= link_to "Create a new appointment", my_patients_path, class: "btn btn-primary" %>
     </div>
   </div>
-<% end %>
+
+  <div class="container text-center d-grid gap-3">
+    <h2><%= current_user.name %>, these are your next appointments </h2>
+    <% @next_appointments.each do |appointment| %>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= appointment.date %>
+          <%= appointment.pet.name %>
+          <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <a href="#" class="btn btn-success">Button</a>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</div>

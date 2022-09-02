@@ -7,13 +7,19 @@ class AppointmentsController < ApplicationController
 
   def create
     # los valores de user_id y pet_id los traigo del new que estan en la vista /vet/show
-    @appointment = Appointment.new(appointment_params, user_id: params[:id_vet], pet_id: params[:id_pet])
+    @pet = Pet.find(params[:pet_id])
+    @user = User.find(params[:user_id])
 
-    # if @appointment.save
-      redirect_to appointments_path
-    # else
-    #   render 'veterinaries/show', status: :unprocessable_entity
-    # end
+    @appointment = Appointment.new(appointment_params)
+    @appointment.pet = @pet
+    @appointment.user = @user
+
+    if @appointment.save
+      redirect_to pet_appointments_path(@pet)
+    else
+      @veterinary = @user
+      render 'veterinaries/show', status: :unprocessable_entity
+    end
   end
 
   # Turnos de una mascota: pet_appointments_path
@@ -29,6 +35,8 @@ class AppointmentsController < ApplicationController
     # quiero poder ver citas pasadas o no?
     @past_appointments = @appointments.where('date < ?', Date.today)
     @next_appointments = @appointments.where('date >= ?', Date.today)
+    # render 'appointments/index'
+
   end
 
   def edit
@@ -36,12 +44,11 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    # @appointment = Appointment.find(params[:id])
     @appointment.update(appointment_params)
     if current_user.type_of_user == "Veterinary"
       redirect_to my_appointments_path
     else
-      redirect_to pet_appointments_path
+      redirect_to pet_appointments_path(@appointment.pet.id)
     end
   end
 
@@ -52,7 +59,7 @@ class AppointmentsController < ApplicationController
     if current_user.type_of_user == "Veterinary"
       redirect_to my_appointments_path, status: :see_other
     else
-      redirect_to pet_appointments_path, status: :see_other
+      redirect_to pet_appointments_path(@appointment.pet.id), status: :see_other
     end
   end
 
