@@ -14,16 +14,16 @@ class StudiesController < ApplicationController
 
   def create
     @clinical_history = ClinicalHistory.new
+    @study = Study.new(study_params)
     @clinical_history.user_id = current_user.id
     @pet = Pet.find(params[:pet_id])
     @clinical_history.pet_id = @pet.id
-    @clinical_history.name = "Study"
-    @clinical_history.description = "Study"
+    @clinical_history.name = @study.name
+    @clinical_history.description = "Realized study: #{@study.name}"
     @clinical_history.type_of_history = "Study"
     @clinical_history.date = Date.today
     @clinical_history.save
 
-    @study = Study.new(study_params)
     @study.clinical_history_id = @clinical_history.id
     if @study.save
       redirect_to pet_clinical_histories_path

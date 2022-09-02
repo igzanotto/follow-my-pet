@@ -8,6 +8,7 @@
   <%= simple_form_for([@pet, @vaccination])  do |f|%>
   <%= f.input :expiration_date, as: :date %>
   <%= f.association :vaccine, collection: Vaccine.all %>
+    <%= f.input :photo, as: :file %>
   <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>

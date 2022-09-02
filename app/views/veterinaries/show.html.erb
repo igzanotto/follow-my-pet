@@ -1,6 +1,14 @@
-<div class="container m-5">
-  <h1>Veterinary Show</h1>
-  <div class="d-flex">
+<div class="container mt-4 ml-auto">
+
+  <div class="d-flex justify-content-between mb-1">
+      <div class="p-2"><h1><%= @veterinary.name %></h1></div>
+      <div class="p-2 align-self-center h1"><i class="fa-solid fa-briefcase-medical"></i></div>
+  </div>
+  <hr>
+
+  <div class="container d-flex">
+
+    <div class="d-flex mt-5 col-4">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://images.unsplash.com/photo-1630438994394-3deff7a591bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="Card image cap">
         <div class="card-body">
@@ -10,18 +18,17 @@
           <a href="#" class= "btn btn-primary">Chat</a>
         </div>
       </div>
+    </div>
 
-      <div class="col-7" style="width: 400px; background-color: rgba(0,0,255,.1)">
-        <%= image_tag("calendar.png") %>
-      </div>
+    <div class="container p-4 bg-white rounded-4 col-8 mt-5 align-self-center">
+      <h2>Create a new appointment</h2>
+      <%= simple_form_for @appointment do |a| %>
+        <%= hidden_field_tag(:user_id, params[:id]) %>
+        <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
+        <%= a.input :date, as: :date, html5: true %>
+        <%= a.button :submit, "Submit", class: "btn btn-primary" %>
+      <% end %>
+    </div>
 
   </div>
-
-  <%= simple_form_for @appointment do |a| %>
-    <%= hidden_field_tag(:user_id, params[:id]) %>
-    <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
-    <%= a.input :date, as: :date, html5: true %>
-    <%= a.button :submit, "Submit" %>
-  <% end %>
-
 </div>

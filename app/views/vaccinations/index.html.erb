@@ -1,41 +1,47 @@
-<div class="container m-4">
+<div class="container mt-4 ml-auto">
 
     <div class="d-flex justify-content-between mb-3">
         <div class="p-2"><h1>Vaccinations</h1></div>
         <div class="align-self-center">
-          <% if current_user.type_of_user == "Veterinary" %>
-            <%= link_to "Create new Vaccination", new_pet_vaccination_path, class: "btn btn-primary" %>
-          <% end %>
-          <%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %>
-          <%# ESTO HAY QUE BORRAR LA LINEA DE ABAJO ES SOLO PRUEBA %>
-          <%= link_to "Create new Vaccination", new_pet_vaccination_path, class: "btn btn-primary" %>
+          <div class="p-2 align-self-center h1"><i class="fa-solid fa-syringe"></i></div>
         </div>
     </div>
     <hr>
 
     <div class="container bg-white rounded-4 mt-4 p-3">
       <div class="container mt-3 mb-3">
-        <div class="accordion" id="accordionExample">
+
+        <div class="d-flex justify-content-between mb-3">
+          <div class="p-2"><h2>Vaccinations</h2></div>
+          <div class="p-2 d-flex justify-content-between">
+              <% if current_user.type_of_user == "Veterinary" %>
+              <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_vaccination_path, class: "btn btn-primary" %></div>
+              <% end %>
+              <div class="p-2"><%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %></div>
+          </div>
+        </div>
+
+        <div id="accordion">
 
           <% if @vaccinations != [] %>
 
             <% @vaccinations.each do |v| %>
 
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="heading<%= v.id %>">
-                  <div class="accordion-button">
+              <div class="card">
+                <h2 class="card-header" id="heading<%= v.id %>">
+                  <div class="btn btn-link text-decoration-none">
                     <div class="d-flex justify-content-between">
                       <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.created_at.strftime('%Y-%m-%d') %></div>
                       <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.vaccine.name.capitalize %></div>
                       <div class="m-4 mt-0 mr-0 mb-0 align-self-center">Exp. Date: <%= v.expiration_date %></div>
                       <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><i class="fa-solid fa-file-arrow-down h5"></i></div>
 
-                      <div class="m-4 mt-0 mr-0 mb-0 align-self-center">
-                        <%= link_to edit_pet_vaccination_path(@pet, v), class:"ms-3 text-success" do %>
-                          <i class="fa-solid fa-pen"></i>
-                        <% end %>
-                      </div>
-                    </div>
+                      <%# <div class="m-4 mt-0 mr-0 mb-0 align-self-center"> %>
+                        <%#= link_to edit_pet_vaccination_path(@pet, v), class:"ms-3 text-success" do %>
+                          <%# <i class="fa-solid fa-pen"></i> %>
+                        <%# end %>
+                      <%# </div>
+                    </div> %>
 
                   </div>
                 </h2>
