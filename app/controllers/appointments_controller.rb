@@ -7,13 +7,16 @@ class AppointmentsController < ApplicationController
 
   def create
     # los valores de user_id y pet_id los traigo del new que estan en la vista /vet/show
-    @appointment = Appointment.new(appointment_params, user_id: params[:id_vet], pet_id: params[:id_pet])
+    puts "Pet_id: #{params[:pet_id]}"
+    puts "Vet_id: #{params[:user_id]}"
+    puts "date: #{params[:date]}"
+    @appointment = Appointment.new(date: params[:date], user_id: params[:user_id], pet_id: params[:pet_id])
 
-    # if @appointment.save
+    if @appointment.save
       redirect_to appointments_path
     # else
     #   render 'veterinaries/show', status: :unprocessable_entity
-    # end
+    end
   end
 
   # Turnos de una mascota: pet_appointments_path
@@ -29,6 +32,8 @@ class AppointmentsController < ApplicationController
     # quiero poder ver citas pasadas o no?
     @past_appointments = @appointments.where('date < ?', Date.today)
     @next_appointments = @appointments.where('date >= ?', Date.today)
+    # render 'appointments/index'
+
   end
 
   def edit
@@ -36,12 +41,11 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    # @appointment = Appointment.find(params[:id])
     @appointment.update(appointment_params)
     if current_user.type_of_user == "Veterinary"
       redirect_to my_appointments_path
     else
-      redirect_to pet_appointments_path
+      redirect_to pet_appointments_path(@appointment.pet.id)
     end
   end
 
@@ -52,7 +56,7 @@ class AppointmentsController < ApplicationController
     if current_user.type_of_user == "Veterinary"
       redirect_to my_appointments_path, status: :see_other
     else
-      redirect_to pet_appointments_path, status: :see_other
+      redirect_to pet_appointments_path(@appointment.pet.id), status: :see_other
     end
   end
 
@@ -69,7 +73,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date)
+    params.require(:appointment).permit(:date, :pet_id, :user_id)
   end
 
   def set_appointment

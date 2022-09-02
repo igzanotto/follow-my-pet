@@ -17,11 +17,11 @@
 
   </div>
 
-<%= simple_form_for @appointment do |a| %>
-  <%= hidden_field_tag(:id_vet, params[:id]) %>
-  <%= hidden_field_tag(:id_pet, params[:pet_id]) %>
-  <%= hidden_field_tag(date: Date.today) %>
-  <%= a.button :submit, "Submit" %>
-<% end %>
+  <%= simple_form_for @appointment do |a| %>
+    <%= hidden_field_tag(:user_id, params[:id]) %>
+    <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
+    <%= a.input :date, as: :date, html5: true %>
+    <%= a.button :submit, "Submit" %>
+  <% end %>
 
 </div>

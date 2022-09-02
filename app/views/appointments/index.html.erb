@@ -11,7 +11,9 @@
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <%= appointment.date %>
-          <%= appointment.user.name %>
+          <% if current_user.type_of_user == "Pet Owner" %>
+            <%= appointment.user.name %>
+          <% end %>
           <%= appointment.pet.name %>
           <%# <%= link_to appointment_path(appointment), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"ms-3 text-success" do %>
           <%= button_to appointment_path(appointment), class:"ms-3 text-success", :method => :delete do %>
