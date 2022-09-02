@@ -1,14 +1,13 @@
 <div class="container">
 
 <div class="mt-4 mb-4">
-  <h1>Create a new Pet</h1>
+  <h1>Edit a Study</h1>
 </div>
 
 <div class="form p-4 bg-white rounded-4">
-  <%= simple_form_for @pet  do |f|%>
+  <%= simple_form_for([@pet, @study])  do |f|%>
   <%= f.input :name %>
-  <%= f.input :birthday , as: :date %>
-  <%= f.association :species_type, collection: SpeciesType.all %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>
