@@ -7,15 +7,18 @@ class AppointmentsController < ApplicationController
 
   def create
     # los valores de user_id y pet_id los traigo del new que estan en la vista /vet/show
-    puts "Pet_id: #{params[:pet_id]}"
-    puts "Vet_id: #{params[:user_id]}"
-    puts "date: #{params[:date]}"
-    @appointment = Appointment.new(date: params[:date], user_id: params[:user_id], pet_id: params[:pet_id])
+    @pet = Pet.find(params[:pet_id])
+    @user = User.find(params[:user_id])
+
+    @appointment = Appointment.new(appointment_params)
+    @appointment.pet = @pet
+    @appointment.user = @user
 
     if @appointment.save
-      redirect_to appointments_path
-    # else
-    #   render 'veterinaries/show', status: :unprocessable_entity
+      redirect_to pet_appointments_path(@pet)
+    else
+      @veterinary = @user
+      render 'veterinaries/show', status: :unprocessable_entity
     end
   end
 
@@ -73,7 +76,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date, :pet_id, :user_id)
+    params.require(:appointment).permit(:date)
   end
 
   def set_appointment
