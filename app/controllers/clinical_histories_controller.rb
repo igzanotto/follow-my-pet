@@ -2,7 +2,7 @@ class ClinicalHistoriesController < ApplicationController
 
   def index
      @clinical_histories = Pet.find(params[:pet_id]).clinical_histories
-
+     @pet = Pet.find(params[:pet_id])
     # @clinical_histories = ClinicalHistory.all
 
     # if params[:query].present? && Offer.search_by_location(params[:query]).size > 0
@@ -33,9 +33,11 @@ class ClinicalHistoriesController < ApplicationController
 
     def edit
       @clinical_history = ClinicalHistory.find(params[:id])
+      @pet = Pet.find(params[:pet_id])
     end
 
     def update
+      @pet = Pet.find(params[:pet_id])
       @clinical_history = ClinicalHistory.find(params[:id])
       @clinical_history.update(clinical_history_params) # Will raise ActiveModel::ForbiddenAttributesError
 
@@ -46,7 +48,7 @@ class ClinicalHistoriesController < ApplicationController
     private
 
   def clinical_history_params
-    params.require(:clinical_history).permit(:description)
+    params.require(:clinical_history).permit(:description, :name, :date, :type_of_history)
 
     # :description, :location, :price_per_night, photos: [])
   end
