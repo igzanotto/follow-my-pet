@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :location, :doctors, :phone])
   end
 
+  def after_sign_in_path_for(resource)
+    # stored_location_for(resource) || welcome_path
+    if current_user.type_of_user == "Pet Owner"
+      pets_path
+    else
+      my_appointments_path
+    end
+  end
 end
