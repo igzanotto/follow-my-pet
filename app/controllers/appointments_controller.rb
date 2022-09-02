@@ -66,11 +66,28 @@ class AppointmentsController < ApplicationController
   def my_patients
     @user = current_user
     @appointments = Appointment.where(user_id: @user)
-    @mypatients_names = []
+    @clinical_histories = ClinicalHistory.where(user_id: @user)
+
+    @mypatients_pets = []
     @appointments.each do |appointment|
-      @mypatients_names << appointment.pet.name
+      @mypatients_pets << appointment.pet
     end
-    @mypatients_names.uniq!
+    @clinical_histories.each do |ch|
+      @mypatients_pets << ch.pet
+    end
+
+    @mypatients_pets.uniq!
+
+
+    if params[:query].present? # si la query esta presente
+      if User.search_by_name(params[:query]).size.positive? # Si la query encuentra algo
+        @pet_owners = User.where(type_of_user: "Pet Owner")
+        @pet_owners_filtered = @pet_owners.search_by_name(params[:query])
+      else
+        "No results found" # Si no encuentra resultados
+      end
+    end
+
   end
 
   private
