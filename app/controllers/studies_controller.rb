@@ -28,7 +28,7 @@ class StudiesController < ApplicationController
     if @study.save
       redirect_to pet_clinical_histories_path
     else
-      render 'clinical_histories/new', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
