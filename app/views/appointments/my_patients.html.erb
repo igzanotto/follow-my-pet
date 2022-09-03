@@ -11,22 +11,26 @@
     <% end %>
   </div>
   <div class="cards-patients">
-    <% @mypatients_pets.each do |pet| %>
-      <div class="card" style="width: 18rem;">
-        <% if pet.photo.exists? %>
-          <%= cl_image_tag pet.photo.key, class: "card-img-top" %>
-        <% else %>
-          <img class="card-img-top" src="<%= image_path("vet.png") %>" alt="Card image cap">
-        <% end %>
-        <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
-        <div class="card-body">
-          <h5 class="card-title"><%= pet.name %></h5>
-          <p class="card-text"><strong>Pet Owner:</strong> <%= pet.user.name %></p>
-          <p class="card-text"><strong>Birthday:</strong> <%= pet.birthday %></p>
-          <p class="card-text"><strong>Species:</strong> <%= pet.species_type.name %></p>
-          <%= link_to "Details", pet_path(pet), class: "btn btn-primary" %>
+    <% if @mypatients_pets == [] %>
+      <p>No results found</p>
+    <% else %>
+      <% @mypatients_pets.each do |pet| %>
+        <div class="card" style="width: 18rem;">
+          <% if pet.photo.exists? %>
+            <%= cl_image_tag pet.photo.key, class: "card-img-top" %>
+          <% else %>
+            <img class="card-img-top" src="<%= image_path("vet.png") %>" alt="Card image cap">
+          <% end %>
+          <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
+          <div class="card-body">
+            <h5 class="card-title"><%= pet.name %></h5>
+            <p class="card-text"><strong>Pet Owner:</strong> <%= pet.user.name %></p>
+            <p class="card-text"><strong>Birthday:</strong> <%= pet.birthday %></p>
+            <p class="card-text"><strong>Species:</strong> <%= pet.species_type.name %></p>
+            <%= link_to "Details", pet_path(pet), class: "btn btn-primary" %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

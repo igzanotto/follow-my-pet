@@ -63,19 +63,19 @@ puts "Creating clinical histories"
 ch1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Vino a vacunarse. Pesa 5kg.", date: Date.today, name: "Vaccine and Control", type_of_history: "Vaccination")
 ch2 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Le duelen los oidos. Le mande a hacer una radiografia.", date: Date.today, name: "Dolor oidos", type_of_history: "Consult")
 ch3 = ClinicalHistory.create!(user: vet1, pet: pet2, description: "Lab results. Everything is ok. Normal results", date: Date.today, name: "Erupción", type_of_history: "Study")
-ch4 = ClinicalHistory.create!(user: vet2, pet: pet2, description: "Tiene una erupción en la piel", date: Date.today, name: "Erupción", type_of_history: "Consult")
+ch4 = ClinicalHistory.create!(user: vet2, pet: pet4, description: "Tiene una erupción en la piel", date: Date.today, name: "Erupción", type_of_history: "Consult")
 ch5 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Vaccines of the year", date: Date.today, name: "Vaccines", type_of_history: "Vaccination")
 
 puts "Done"
 
 puts "Creating appointments"
 app1 = Appointment.create!(user: vet1, pet: pet1, date: Date.today)
-app2 = Appointment.create!(user: vet1, pet: pet2, date: Date.today)
+app2 = Appointment.create!(user: vet1, pet: pet6, date: Date.today)
 app3 = Appointment.create!(user: vet2, pet: pet1, date: Date.tomorrow)
 app4 = Appointment.create!(user: vet1, pet: pet2, date: Date.today)
 app5 = Appointment.create!(user: vet3, pet: pet1, date: Date.tomorrow)
 app6 = Appointment.create!(user: vet2, pet: pet3, date: Date.tomorrow)
-app7 = Appointment.create!(user: vet1, pet: pet1, date: Date.today)
+app7 = Appointment.create!(user: vet1, pet: pet9, date: Date.today)
 app8 = Appointment.create!(user: vet4, pet: pet3, date: Date.today)
 app9 = Appointment.create!(user: vet3, pet: pet1, date: Date.tomorrow)
 app10 = Appointment.create!(user: vet1, pet: pet2, date: Date.today)
