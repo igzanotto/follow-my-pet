@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :appointments
-  has_many :clinical_histories
-  has_many :pets
+  has_many :appointments, dependent: :destroy
+  has_many :clinical_histories, dependent: :destroy
+  has_many :pets, dependent: :destroy
 
   has_one_attached :photo
 
