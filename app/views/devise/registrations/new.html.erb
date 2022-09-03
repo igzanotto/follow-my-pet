@@ -1,32 +1,61 @@
-<h2>Sign up</h2>
+<section class="vh-100 mb-5" style="background-color: #F4F4F4;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
 
+      <div class="col-md-8 col-lg-7 col-xl-6 justify-self-center">
+          <div class="d-flex" style= "margin: 0 auto;">
+            <img src="<%= image_path "doglogo.png" %>" class="img-fluid" alt="Phone image" style="width: 50%; height: 50%; margin: 0 auto;">
+          </div>
+          <div class="px-3 py-4 p-md-5 mx-md-4">
+          <h2 class="mb-4 text-center">FOLLOW MY PET</h4>
+          <h4 class="mb-4 text-center">For all your pets needs</h4>
+          <p class="small mb-0 text-center">Help a vet help a pet. All about your pet at hand. You can easily access your pet Clinical Histories, Vacinations and Studies. Quickly book appointments for your pet and on your local vet and check your current appointment so you dont miss anything! </p>
+        </div>
+      </div>
 
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <div class="card shadow-lg" style="border-radius: 0;">
+          <div class="card-body p-5 text-center">
 
+            <h3 class="mb-5">Sign up</h3>
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+              <%= f.error_notification %>
 
+              <div class="form-outline mb-4">
+                <%= f.input :name, hint: "Write your name", required: true, id: "typeEmailX-2", class: "form-control form-control-lg", label: false, placeholder: "Name" %>
+              </div>
 
+              <div class="form-outline mb-4">
+                <%= f.input :email, required: true, autofocus: true, id: "typeEmailX-2", class: "form-control form-control-lg", label: false, placeholder: "Email" %>
+              </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
-  <%= f.error_notification %>
+              <div class="form-outline mb-4">
+                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: false, placeholder: "Password" %>
+              </div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :type_of_user, collection: ["Pet Owner", "Veterinary"],
-                required: true %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+              <div class="form-outline mb-4">
+                <%= f.input :password_confirmation, required: true, label: false, placeholder: "Password" %>
+              </div>
+
+              <div class="form-outline mb-2 d-flex">
+                  <%= f.input :type_of_user, as: :radio_buttons, collection: ["Pet Owner", "Veterinary"], required: true, legend_tag: false %>
+              </div>
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-start mb-2 p-0">
+                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+              </div>
+
+              <%= f.button :submit, "SIGN UP", class: "h6 shadow btn btn-primary btn-lg btn-block", style: "width: 100%; font-size: 15px;" %>
+
+              <hr class="my-4">
+
+              <%= render "devise/shared/links" %>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
