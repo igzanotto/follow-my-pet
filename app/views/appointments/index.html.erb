@@ -1,29 +1,33 @@
-<div class="container">
+<div class="container container-lists">
   <div class="container-show-header">
-    <div class="btn-appointment">
+    <div>
       <%= link_to "Create a new appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %>
     </div>
   </div>
 
-  <div class="container text-center d-grid gap-3">
+  <div class="container d-grid gap-3">
     <h2><%= @pet.name %>, these are your next appointments </h2>
     <% @next_appointments.each do |appointment| %>
       <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= appointment.date %>
-          <% if current_user.type_of_user == "Pet Owner" %>
-            <%= appointment.user.name %>
-          <% end %>
-          <%= appointment.pet.name %>
+        <li class="list-group-item row no-gutter d-flex">
+          <div class="col-12 col-sm-6 col-md-8 align-items-start">
+            <%= appointment.date %>  |
+            <% if current_user.type_of_user == "Pet Owner" %>
+              <%= link_to pet_veterinary_path(@pet, appointment.user) do %>
+                <strong><%= appointment.user.name %></strong>
+              <% end %>
+            <% end %>
+          </div>
           <%# <%= link_to appointment_path(appointment), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"ms-3 text-success" do %>
           <%# <%= button_to appointment_path(appointment), class:"ms-3 text-success", :method => :delete do %>
-          <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
-            <i class="fa-regular fa-pen-to-square"></i>
-          <% end %>
-          <a href="#" class="btn btn-success">Button</a>
+          <div class="col-6 col-md-4 text-end">
+            <%= link_to appointment_path(appointment), class:"ms-3 text-success", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+            <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
+              <i class="fa-regular fa-pen-to-square"></i>
+            <% end %>
+          </div>
         </li>
       </ul>
     <% end %>
