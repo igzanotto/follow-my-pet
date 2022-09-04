@@ -23,7 +23,7 @@
                 <%= current_user.name %>
               <% end %>
             <% end %>
-            <% if @pet != nil %>
+            <% if @pet != nil && @pet.id != nil %>
               <%= link_to pet_path(@pet), class: "nav-link" do %>
                 | <i class="fa-solid fa-bone"></i>
                 <%= @pet.name %>
