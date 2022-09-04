@@ -1,9 +1,12 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:edit, :update, :destroy]
 
+  def time
+    "#{start_time.strftime('%I:%M %p')}"
+  end
+
   def new
     @appointment = Appointment.new
-    @pet = Pet.find(params[:pet_id])
   end
 
   def create
@@ -26,7 +29,7 @@ class AppointmentsController < ApplicationController
   # Turnos de una mascota: pet_appointments_path
   def index
     @pet = Pet.find(params[:pet_id])
-    @next_appointments = @pet.appointments.where('date >= ?', Date.today)
+    @next_appointments = @pet.appointments.where('start_time >= ?', Date.today)
   end
 
   # Turnos del día del Vet: my_appointments_path
@@ -34,8 +37,8 @@ class AppointmentsController < ApplicationController
     @user = current_user.id
     @appointments = Appointment.where(user_id: @user)
     # quiero poder ver citas pasadas o no?
-    @past_appointments = @appointments.where('date < ?', Date.today)
-    @next_appointments = @appointments.where('date >= ?', Date.today)
+    @past_appointments = @appointments.where('start_time < ?', Date.today)
+    @next_appointments = @appointments.where('start_time >= ?', Date.today)
     # render 'appointments/index'
 
   end
@@ -94,7 +97,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date)
+    params.require(:appointment).permit(:date, :start_time, :end_time)
   end
 
   def set_appointment

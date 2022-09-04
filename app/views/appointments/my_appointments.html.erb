@@ -10,7 +10,8 @@
     <% @next_appointments.each do |appointment| %>
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= appointment.date %>
+          <%= appointment.start_time.strftime('%d %B %Y') %>
+          <%= appointment.start_time.strftime('%I:%M %p') %>
           <%= appointment.pet.name %>
           <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
             <i class="fa-solid fa-trash"></i>

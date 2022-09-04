@@ -25,15 +25,15 @@ puts "Deleting users"
 User.destroy_all
 
 puts "Creating users"
-vet1 = User.create!(email: "vet1@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Caballito", longitude: -58.45, latitude: -34.61667)
-vet2 = User.create!(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Recoleta", longitude: 58.2326, latitude: 34.3526)
-vet3 = User.create!(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Mendoza", longitude: -68.8472, latitude: -32.8903)
-vet4 = User.create!(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Santa Fe", longitude: 60.411680, latitude: 31.020240)
+vet1 = User.create!(email: "vet1@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Caballito", longitude: -58.45, latitude: -34.61667, speciality: "Clinic, Bath, Radiology, Lab")
+vet2 = User.create!(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Recoleta", longitude: 58.2326, latitude: 34.3526, speciality: "Bath")
+vet3 = User.create!(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Mendoza", longitude: -68.8472, latitude: -32.8903, speciality: "Clinic, Surgery, Radiology, Lab")
+vet4 = User.create!(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Santa Fe", longitude: 60.411680, latitude: 31.020240, speciality: "Clinic, Radiology, Nutrition, lab")
 owner1 = User.create!(email: "sofi@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Sofi")
 puts "Done"
 owner2 = User.create!(email: "caro@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Caro")
 puts "Done"
-owner3 = User.create!(email: "clara@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clara")
+owner3 = User.create!(email: "clari@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clara")
 puts "Done"
 owner4 = User.create!(email: "lucas@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Lucas")
 puts "Done"
@@ -69,27 +69,31 @@ ch5 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Vaccines of t
 puts "Done"
 
 puts "Creating appointments"
-app1 = Appointment.create!(user: vet1, pet: pet1, date: Date.today)
-app2 = Appointment.create!(user: vet1, pet: pet2, date: Date.today)
-app3 = Appointment.create!(user: vet2, pet: pet1, date: Date.tomorrow)
-app4 = Appointment.create!(user: vet1, pet: pet2, date: Date.today)
-app5 = Appointment.create!(user: vet3, pet: pet1, date: Date.tomorrow)
-app6 = Appointment.create!(user: vet2, pet: pet3, date: Date.tomorrow)
-app7 = Appointment.create!(user: vet1, pet: pet1, date: Date.today)
-app8 = Appointment.create!(user: vet4, pet: pet3, date: Date.today)
-app9 = Appointment.create!(user: vet3, pet: pet1, date: Date.tomorrow)
-app10 = Appointment.create!(user: vet1, pet: pet2, date: Date.today)
-app11 = Appointment.create!(user: vet2, pet: pet3, date: Date.tomorrow)
-app12 = Appointment.create!(user: vet4, pet: pet2, date: Date.tomorrow)
-app13 = Appointment.create!(user: vet2, pet: pet1, date: Date.today)
-app14 = Appointment.create!(user: vet3, pet: pet2, date: Date.tomorrow)
+app1 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,25,4,5,6))
+app2 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,26,4,5,6))
+app3 = Appointment.create!(user: vet2, pet: pet1, start_time: DateTime.new(2022,9,27,4,5,6))
+app4 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,28,4,5,6))
+app5 = Appointment.create!(user: vet3, pet: pet1, start_time: DateTime.new(2022,9,22,4,5,6))
+app6 = Appointment.create!(user: vet2, pet: pet3, start_time: DateTime.new(2022,9,21,4,5,6))
+app7 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,20,4,5,6))
+app8 = Appointment.create!(user: vet4, pet: pet3, start_time: DateTime.new(2022,9,15,4,5,6))
+app9 = Appointment.create!(user: vet3, pet: pet1, start_time: DateTime.new(2022,9,16,4,5,6))
+app10 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,17,4,5,6))
+app11 = Appointment.create!(user: vet2, pet: pet3, start_time: DateTime.new(2022,9,18,4,5,6))
+app12 = Appointment.create!(user: vet4, pet: pet2, start_time: DateTime.new(2022,9,19,4,5,6))
+app13 = Appointment.create!(user: vet2, pet: pet1, start_time: DateTime.new(2022,9,10,4,5,6))
+app14 = Appointment.create!(user: vet3, pet: pet2, start_time: DateTime.new(2022,9,11,4,5,6))
 puts "Done"
 
 puts "Creating vaccines"
-vaccine1 = Vaccine.create!(name: "rabies")
-vaccine2 = Vaccine.create!(name: "covid")
-vaccine3 = Vaccine.create!(name: "viruela")
-vaccine4 = Vaccine.create!(name: "quintuple")
+vaccine1 = Vaccine.create!(name: "Rabies")
+vaccine2 = Vaccine.create!(name: "Parvovirus")
+vaccine3 = Vaccine.create!(name: "Distemper")
+vaccine4 = Vaccine.create!(name: "DHPP")
+vaccine6 = Vaccine.create!(name: "Coronavirus")
+vaccine7 = Vaccine.create!(name: "Leptospirosis")
+vaccine8 = Vaccine.create!(name: "Influenza")
+vaccine9 = Vaccine.create!(name: "Lyme disease")
 
 puts "Done"
 
