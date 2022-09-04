@@ -11,8 +11,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+          <li class="nav-item d-flex">
+            <% if current_user.type_of_user == "Pet Owner" %>
+              <%= link_to pets_path, class: "nav-link" do %>
+                <i class="fa-solid fa-person"></i>
+                <%= current_user.name %>
+              <% end %>
+            <% else %>
+              <%= link_to my_appointments_path, class: "nav-link" do %>
+                <i class="fa-solid fa-house-chimney-medical"></i>
+                <%= current_user.name %>
+              <% end %>
+            <% end %>
+            <% if @pet != nil %>
+              <%= link_to pet_path(@pet), class: "nav-link" do %>
+                | <i class="fa-solid fa-bone"></i>
+                <%= @pet.name %>
+              <% end %>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <% if current_user.photo.key != nil %>

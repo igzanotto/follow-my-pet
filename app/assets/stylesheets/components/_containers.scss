@@ -1,5 +1,34 @@
-.container-show-header {
+.container-show-header { /*esto esta en my appointments y appointments de una pet*/
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+@media (min-width: 576px) {
+  .container-lists {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-lists {
+    max-width: 680px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-lists {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-lists {
+    max-width: 850px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-lists {
+    max-width: 1000px;
+  }
 }

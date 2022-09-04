@@ -1,8 +1,71 @@
-<div class="banner-home-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('banner_image2.webp') %>);">
-  <div class="container container-home">
-    <div class="banner-home">
-      <h1> <strong>Follow my Pet</strong> </h1>
+<div class="home-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('home.jpg') %>);">
+  <div class="container">
+    <div class="home">
+      <h1> <strong>FOLLOW MY PET</strong> </h1>
       <p><span data-controller="typed-js"></span></p>
+      <div class="row justify-content-center container-btn">
+        <div class="col-4">
+          <h5>One of two columns</h5>
+          <button type="button" class="btn btn-info btn-lg">Large button</button>
+        </div>
+        <div class="col-4">
+          <h5>One of two columns</h5>
+          <button type="button" class="btn btn-info btn-lg">Large button</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="page-section">
+  <div class="container">
+      <div class="text-center">
+          <h2 class="section-heading text-uppercase">What do we do for you?</h2>
+          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+      </div>
+      <div class="row text-center">
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-info"></i>
+                  <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">Appointments</h4>
+              <p class="text-muted">Request an appointment anytime, anywhere, in just one tap.</p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-info"></i>
+                  <i class="fas fa-bell fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">Reminders</h4>
+              <p class="text-muted">We will notify you when a vaccine is about to expire or when your appointment is approaching.</p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-info"></i>
+                  <i class="fas fa-mobile fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">Medical History</h4>
+              <p class="text-muted">No more papers! Track appointments, vaccinations, lab results, prescriptions, and more. Everything on demand.</p>
+          </div>
+      </div>
+  </div>
+</section>
+<div class="py-5">
+  <div class="container">
+    <h5 class="text-muted">They trust us:</h5>
+    <div class="row align-items-center">
+        <div class="col-md-3 col-sm-6 my-3">
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("microsoft.svg")%>" alt="..." aria-label="Microsoft Logo" /></a>
+        </div>
+        <div class="col-md-3 col-sm-6 my-3">
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("facebook.svg")%>" alt="..." aria-label="Facebook Logo" /></a>
+        </div>
+        <div class="col-md-3 col-sm-6 my-3">
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("google.svg")%>" alt="..." aria-label="Google Logo" /></a>
+        </div>
+        <div class="col-md-3 col-sm-6 my-3">
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("ibm.svg")%>" alt="..." aria-label="ibm Logo" /></a>
+        </div>
     </div>
   </div>
 </div>
