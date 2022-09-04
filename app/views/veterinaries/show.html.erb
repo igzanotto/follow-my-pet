@@ -1,34 +1,141 @@
-<div class="container mt-4 ml-auto">
+<div class="container mt-1 ml-auto">
 
-  <div class="d-flex justify-content-between mb-1">
-      <div class="p-2"><h1><%= @veterinary.name %></h1></div>
-      <div class="p-2 align-self-center h1"><i class="fa-solid fa-briefcase-medical"></i></div>
-  </div>
-  <hr>
+  <section style="background-color: #F4F4F4;">
+    <div class="container py-5">
 
-  <div class="container d-flex">
-
-    <div class="d-flex mt-5 col-4">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://images.unsplash.com/photo-1630438994394-3deff7a591bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%= @veterinary.name %></h5>
-          <p class="card-text"><%= @veterinary.name %></p>
-          <p class="card-text"><small class="text-muted"><%= @veterinary.name %></small></p>
-          <a href="#" class= "btn btn-primary">Chat</a>
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 d-flex justify-content-between" style="background-color: #FFFFFF !important;">
+            <ol class="breadcrumb mb-0 align-self-center">
+              <li class="breadcrumb-item h4 m-0"><%= @veterinary.name %></li>
+            </ol>
+            <div class="align-self-center mb-0 ml-auto h4"><i class="fa-solid fa-briefcase-medical"></i></div>
+          </nav>
         </div>
       </div>
-    </div>
 
-    <div class="container p-4 bg-white rounded-4 col-8 mt-5 align-self-center">
-      <h2>Create a new appointment</h2>
-      <%= simple_form_for @appointment do |a| %>
-        <%= hidden_field_tag(:user_id, params[:id]) %>
-        <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
-        <%= a.input :date, as: :date, html5: true %>
-        <%= a.button :submit, "Submit", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
 
-  </div>
+              <% if @veterinary.photo.present? %>
+                <%= cl_image_tag @veterinary.photo.key  %>
+              <% else %>
+                <img src="https://st3.depositphotos.com/1920937/15063/v/600/depositphotos_150633440-stock-illustration-veterinary-logo-with-text-space.jpg" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+              <% end %>
+
+              <h5 class="my-3"><%= @veterinary.name %></h5>
+              <p class="text-muted mb-1">Veterinary</p>
+              <p class="text-muted mb-4"><%= @veterinary.location %></p>
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary">Follow</button>
+                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush rounded-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fas fa-globe fa-lg text-warning"></i>
+                  <p class="mb-0">https://mdbootstrap.com</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                  <p class="mb-0">@mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Vet Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @veterinary.name %></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @veterinary.email %></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @veterinary.phone %></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Doctors</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @veterinary.doctors %></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Specialities</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @veterinary.speciality %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="col-lg-8" style= "width: 100%;">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                  <div class="col-sm-9">
+                    <p class="mb-0">Book an appointment</p>
+                  </div>
+                  <%# <div class="col-sm-12 mt-3 text-muted"> %>
+                    <%#= simple_form_for @appointment do |a| %>
+                      <%#= hidden_field_tag(:user_id, params[:id]) %>
+                      <%#= hidden_field_tag(:pet_id, params[:pet_id]) %>
+                      <%#= a.input :date, as: :date, html5: true, label: "Choose the date" %>
+                      <%#= a.button :submit, "Book the appointment", class: "btn btn-primary h6 shadow mt-3" %>
+                    <%# end %>
+
+                    <!-- Principio del widget integrado de Calendly -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/clari_ursini?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:630px; "></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Final del widget integrado de Calendly -->
+
+                <%# </div> %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </div>
