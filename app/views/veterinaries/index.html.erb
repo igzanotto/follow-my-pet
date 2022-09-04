@@ -1,8 +1,8 @@
-<div class="container mt-4 ml-auto" data-controller="speciality">
+<div class="container mt-4 mb-5 ml-auto" data-controller="speciality">
 
   <div class="d-flex justify-content-between mb-3">
       <div class="p-2"><h1>Select your Vet</h1></div>
-      <div class="p-2 align-self-center h1"><i class="fa-solid fa-briefcase-medical"></i></div>
+      <div class="p-2 align-self-center h1"><i class="fa-solid fa-shield-dog"></i></div>
   </div>
   <hr>
 
@@ -19,24 +19,60 @@
     </div>
   </div>
 
-  <div class= "d-flex mt-5">
+  <div class= "d-flex mt-4">
 
       <% if @vet_filtered != nil %>
 
-        <div class="cards-container col-4">
-          <div class="cards d-flex flex-direction-column" data-speciality-target="cards">
-            <%= render "card" %>
+        <div class="cards-container col-6" style="margin-right: 5px;">
+          <div class="cards d-flex flex-column mt-0" data-speciality-target="cards">
+
+            <% @vet_filtered.each do |vet| %>
+
+              <%= link_to pet_veterinary_path(@pet, vet), style: "text-decoration: none; color: black;" do %>
+
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <% if vet.photo.present? %>
+                        <%= cl_image_tag vet.photo.key  %>
+                      <% else %>
+                        <img src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" style="width: 100%; height: 100%;" />
+                      <% end %>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= vet.name %></h5>
+                        <div>
+                        <% if vet.speciality.present? %>
+                          <p style="font-size: 12px; margin-bottom: 5px;">Specialities:<%= vet.speciality %></p>
+                        <% else %>
+                          <p style="font-size: 12px; margin-bottom: 5px;">Specialities: Undefined</p>
+                        <% end %>
+                        </div>
+                        <p class="card-text" style="font-size: 12px; margin-bottom: 5px;">Location: <%= vet.location %></p>
+                        <p class="card-text" style="font-size: 12px; margin-bottom: 5px;">Phone: <%= vet.phone %></p>
+                        <p class="card-text" style="font-size: 12px; margin-bottom: 10px;">Doctors: <%= vet.doctors %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <% end %>
+            <% end %>
           </div>
         </div>
+
+        <div class= "col-6">
+          <div id="map" style="width: 100%; height: 600px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
 
       <% else %>
         <p>No results found</p>
       <% end %>
 
-      <div class= "col-8">
-        <div id="map" style="width: 100%; height: 600px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
+
 
   </div>
 </div>

@@ -1,26 +1,27 @@
-<% @vet_filtered.each do |vet| %>
-
-  <div class="card" style="width: 18rem;">
+<div class="card" style="width: 16rem;">
     <% if vet.photo.present? %>
       <%= cl_image_tag vet.photo.key  %>
     <% else %>
-      <img src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />
+      <img src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" style="width: 100%;" />
     <% end %>
 
     <div class="card-body">
-      <h5 class="card-title"><%= vet.name %></h5>
+      <h5 class="card-title" style="font-size: 16px;"><%= vet.name %></h5>
       <div>
           <% if vet.speciality.present? %>
-            <p>Specialities: <%= vet.speciality %></p>
+            <p style="font-size: 12px; margin-bottom: 5px;">Specialities:<%= vet.speciality %></p>
           <% else %>
-            <p>Specialities: Undefined</p>
+            <p style="font-size: 12px; margin-bottom: 5px;">Specialities: Undefined</p>
           <% end %>
       </div>
-      <p class="card-text">Location: <%= vet.location %></p>
-      <p class="card-text">Phone: <%= vet.phone %></p>
-      <p class="card-text">Doctors: <%= vet.doctors %></p>
-      <%= link_to "Details", pet_veterinary_path(@pet, vet), class:"btn btn-primary"  %>
-      <%= link_to "Chat", pet_veterinary_path(@pet, vet), class:"btn btn-primary"  %>
+      <p class="card-text" style="font-size: 12px; margin-bottom: 5px;">Location: <%= vet.location %></p>
+      <p class="card-text" style="font-size: 12px; margin-bottom: 5px;">Phone: <%= vet.phone %></p>
+      <p class="card-text" style="font-size: 12px; margin-bottom: 10px;">Doctors: <%= vet.doctors %></p>
+
+      <div class="d-flex justify-content-center">
+        <%# <%= link_to "Details", pet_veterinary_path(@pet, vet), class:"btn btn-primary", style: "margin-right: 10px;" %>
+        <%= link_to "Chat", pet_veterinary_path(@pet, vet), class:"btn btn-primary"  %>
+      </div>
+
     </div>
   </div>
-<% end %>
