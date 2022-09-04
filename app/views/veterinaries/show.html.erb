@@ -113,23 +113,28 @@
           <div class="card mb-4">
             <div class="card-body">
               <div class="row">
-                  <div class="col-sm-9">
-                    <p class="mb-0">Book an appointment</p>
-                  </div>
-                  <%# <div class="col-sm-12 mt-3 text-muted"> %>
-                    <%#= simple_form_for @appointment do |a| %>
-                      <%#= hidden_field_tag(:user_id, params[:id]) %>
-                      <%#= hidden_field_tag(:pet_id, params[:pet_id]) %>
-                      <%#= a.input :date, as: :date, html5: true, label: "Choose the date" %>
-                      <%#= a.button :submit, "Book the appointment", class: "btn btn-primary h6 shadow mt-3" %>
+                <div class="col-sm-9">
+                  <p class="mb-0">Book an appointment</p>
+                </div>
+                <div class="col-sm-12 mt-3 text-muted">
+
+                  <%# if @appointments != nil %>
+                    <%= month_calendar(events: @appointments, end_attribute: :end_datetime) do |date, appointments| %>
+                      <%= date %>
+                       <% appointments.each do |appointment| %>
+                        <div class="meeting">  <-- We will add some style to the meeting class later so let's add it now -->
+                          <p><%= appointment.name %></p>
+                        </div>
+                      <% end %>
+                    <% end %>
+
+                  <%# else %>
+                    <%#= month_calendar do |date| %>
+                      <%#= date.day %>
                     <%# end %>
+                  <%# end %>
 
-                    <!-- Principio del widget integrado de Calendly -->
-                    <div class="calendly-inline-widget" data-url="https://calendly.com/clari_ursini?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:630px; "></div>
-                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                    <!-- Final del widget integrado de Calendly -->
-
-                <%# </div> %>
+                </div>
               </div>
             </div>
           </div>

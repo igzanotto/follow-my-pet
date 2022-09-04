@@ -3,6 +3,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @pet = Pet.find(params[:pet_id])
   end
 
   def create

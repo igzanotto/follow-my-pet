@@ -1,5 +1,6 @@
 class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :pet
-  validates :date, presence: true
+  validates :start_datetime, presence: true
+  validates :end_datetime, presence: true
 end
