@@ -28,11 +28,6 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <%= f.input :current_password, hint: "We need your current password to confirm your changes",
-                  required: true, input_html: { autocomplete: "current-password" }, label: false, placeholder: "Password" %>
-                </div>
-
-                <div class="form-outline mb-4">
                     <%= f.input :name, hint: "Update your name", required: false, input_html: { autocomplete: "current-password" }, label: false, placeholder: "Name" %>
                 </div>
 
@@ -53,9 +48,12 @@
                   <div class="form-outline mb-5">
                     <%= f.input :speciality, as: :select, collection: ["Clinic", "Bath", "Vaccination", "Radiology", "Lab", "Neurology", "Oncology", "Nutrition", "Cardiology", "Surgery"], input_html: { multiple: true }, label: false, hint: "Select one or more specialities", required: false, label: false %>
                   </div>
-
                 <% end %>
 
+                <div class="form-outline mb-4">
+                  <%= f.input :current_password, hint: "We need your current password to confirm your changes",
+                  required: true, input_html: { autocomplete: "current-password" }, label: false, placeholder: "Password" %>
+                </div>
 
                 <%= f.button :submit, "UPDATE", class: "h6 shadow btn btn-primary btn-lg btn-block", style: "width: 100%; font-size: 15px;" %>
 

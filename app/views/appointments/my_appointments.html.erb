@@ -1,24 +1,30 @@
-<div class="container">
+<div class="container container-lists">
   <div class="container-show-header">
-    <div class="btn-appointment">
+    <div>
       <%= link_to "Create a new appointment", my_patients_path, class: "btn btn-primary" %>
     </div>
   </div>
 
-  <div class="container text-center d-grid gap-3">
+  <div class="container d-grid gap-3">
     <h2><%= current_user.name %>, these are your next appointments </h2>
     <% @next_appointments.each do |appointment| %>
       <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= appointment.date %>
-          <%= appointment.pet.name %>
-          <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
-            <i class="fa-regular fa-pen-to-square"></i>
-          <% end %>
-          <a href="#" class="btn btn-success">Button</a>
+        <li class="list-group-item row no-gutter d-flex">
+          <div class="col-12 col-sm-6 col-md-8 align-items-start">
+            <%= appointment.date %>  |
+            <%= link_to pet_path(appointment.pet) do %>
+              <strong><%= appointment.pet.name %></strong>
+            <% end %>
+            (<small>Owner: <%= appointment.pet.user.name %></small>)
+          </div>
+          <div class="col-6 col-md-4 text-end">
+            <%= link_to appointment_path(appointment), class:"ms-3 text-success", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+            <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
+              <i class="fa-regular fa-pen-to-square"></i>
+            <% end %>
+          </div>
         </li>
       </ul>
     <% end %>

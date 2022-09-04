@@ -62,7 +62,7 @@ puts "Creating clinical histories"
 
 ch1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Vino a vacunarse. Pesa 5kg.", date: Date.today, name: "Vaccine and Control", type_of_history: "Vaccination")
 ch2 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Le duelen los oidos. Le mande a hacer una radiografia.", date: Date.today, name: "Dolor oidos", type_of_history: "Consult")
-ch3 = ClinicalHistory.create!(user: vet1, pet: pet2, description: "Lab results. Everything is ok. Normal results", date: Date.today, name: "Erupción", type_of_history: "Study")
+ch3 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Lab results. Everything is ok. Normal results", date: Date.today, name: "Erupción", type_of_history: "Study")
 ch4 = ClinicalHistory.create!(user: vet2, pet: pet4, description: "Tiene una erupción en la piel", date: Date.today, name: "Erupción", type_of_history: "Consult")
 ch5 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Vaccines of the year", date: Date.today, name: "Vaccines", type_of_history: "Vaccination")
 
@@ -96,10 +96,18 @@ puts "Done"
 puts "Creating vaccinations"
 vaccination1 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1, expiration_date: Date.today)
 vaccination2 = Vaccination.create!(vaccine: vaccine2, clinical_history: ch1, expiration_date: Date.today)
+file1 = URI.open("http://www.dogobedience.co.nz/wp-content/uploads/2018/07/Bordetella.png")
+file2 = URI.open("https://www.hellodog.hk/wp-content/themes/html5blank/img/dhppi.png")
+vaccination1.photo.attach(io: file1, filename: "Bordetella.png", content_type: "image/png")
+vaccination2.photo.attach(io: file2, filename: "dhppi.png", content_type: "image/png")
 puts "Done"
 
 puts "Creating studies"
 
-study1 = Study.create!(clinical_history: ch1, name: "Radiology")
-study2 = Study.create!(clinical_history: ch1, name: "Lab results")
+study1 = Study.create!(clinical_history: ch2, name: "Radiology")
+study2 = Study.create!(clinical_history: ch3, name: "Lab results")
+file3 = URI.open("https://c8.alamy.com/zoomses/9/df223ade4a414db5ab83c4fc6c7034d3/2bx8hbx.jpg")
+file4 = URI.open("https://thumbs.dreamstime.com/z/resultado-del-an%C3%A1lisis-de-sangre-12613767.jpg")
+study1.photo.attach(io: file3, filename: "2bx8hbx.jpg", content_type: "image/jpg")
+study2.photo.attach(io: file4, filename: "resultado-del-análisis-de-sangre-12613767.jpg", content_type: "image/jpg")
 puts "Done"
