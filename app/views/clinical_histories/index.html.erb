@@ -90,11 +90,13 @@
                       <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><%= st.clinical_history.user.name %></div>
 
                       <%# DOWNLOAD FILE %>
-                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
-                        <%= link_to cl_image_path(st.photo.key, flags: :attachment) do %>
-                          <i class="fa-solid fa-file-arrow-down h5"></i>
-                        <% end %>
-                      </div>
+                      <% if st.photo.present? %>
+                        <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
+                          <%= link_to cl_image_path(st.photo.key, flags: :attachment) do %>
+                            <i class="fa-solid fa-file-arrow-down h5"></i>
+                          <% end %>
+                        </div>
+                      <% end %>
 
                       <div class="m-4 mt-0 mr-0 mb-0 align-self-center">
                         <% if current_user.type_of_user == "Veterinary" %>

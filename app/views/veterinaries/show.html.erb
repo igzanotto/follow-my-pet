@@ -30,31 +30,22 @@
               <p class="text-muted mb-1">Veterinary</p>
               <p class="text-muted mb-4"><%= @veterinary.location %></p>
               <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary">Follow</button>
+                <%# <button type="button" class="btn btn-primary">Follow</button> %>
                 <button type="button" class="btn btn-outline-primary ms-1">Message</button>
               </div>
             </div>
           </div>
           <div class="card mb-4 mb-lg-0">
-            <div class="card-body p-0">
-              <ul class="list-group list-group-flush rounded-3">
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                  <i class="fas fa-globe fa-lg text-warning"></i>
-                  <p class="mb-0">https://mdbootstrap.com</p>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                  <p class="mb-0">@mdbootstrap</p>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                  <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                  <p class="mb-0">mdbootstrap</p>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                  <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                  <p class="mb-0">mdbootstrap</p>
-                </li>
-              </ul>
+            <div class="card-body p-4">
+              <p>New appointment</p>
+              <div>
+                <%= simple_form_for @appointment do |a| %>
+                  <%= hidden_field_tag(:user_id, params[:id]) %>
+                  <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
+                  <%= a.input :start_time, as: :datetime, html5: true, hint: "Select date and time", label: false %>
+                  <%= a.button :submit, "Submit", class: "btn btn-primary" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -106,35 +97,41 @@
                   <p class="text-muted mb-0"><%= @veterinary.speciality %></p>
                 </div>
               </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Working Hours</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">From 9am to 7pm</p>
+                </div>
+              </div>
             </div>
-          </div>
+        </div>
 
         <div class="col-lg-8" style= "width: 100%;">
           <div class="card mb-4">
             <div class="card-body">
               <div class="row">
-                  <div class="col-sm-9">
-                    <p class="mb-0">Book an appointment</p>
-                  </div>
-                  <%# <div class="col-sm-12 mt-3 text-muted"> %>
-                    <%#= simple_form_for @appointment do |a| %>
-                      <%#= hidden_field_tag(:user_id, params[:id]) %>
-                      <%#= hidden_field_tag(:pet_id, params[:pet_id]) %>
-                      <%#= a.input :date, as: :date, html5: true, label: "Choose the date" %>
-                      <%#= a.button :submit, "Book the appointment", class: "btn btn-primary h6 shadow mt-3" %>
-                    <%# end %>
+                <div class="col-sm-9">
+                  <p class="mb-0">Appointments</p>
+                </div>
+                <div class="col-sm-12 mt-3 text-muted">
 
-                    <!-- Principio del widget integrado de Calendly -->
-                    <div class="calendly-inline-widget" data-url="https://calendly.com/clari_ursini?hide_landing_page_details=1&hide_gdpr_banner=1" style="min-width:320px;height:630px; "></div>
-                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                    <!-- Final del widget integrado de Calendly -->
-
-                <%# </div> %>
+                    <%= month_calendar(events: @appointments) do |date, appointments| %>
+                      <%= date %>
+                       <% appointments.each do |appointment| %>
+                        <div class="meeting">
+                          <p><%= appointment.name %></p>
+                          <small><%= appointment.time  %></small>
+                        </div>
+                      <% end %>
+                    <% end %>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>

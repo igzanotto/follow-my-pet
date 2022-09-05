@@ -9,7 +9,6 @@
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.input :date, as: :date %>
-        <%= f.input :type_of_history %>
         <%= f.input :type_of_history, as: :radio_buttons, collection: ["Consult", "Vaccination", "Study"] %>
         <%= f.submit class: "btn btn-primary" %>
       <% end %>

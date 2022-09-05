@@ -1,37 +1,51 @@
-<div class="container m-4">
+<div class="container ml-auto">
 
-  <div class="container-show-header">
-    <div class="btn-appointment">
-      <%= link_to "Create a new pet", new_pet_path, class: "btn btn-primary" %>
+  <%# <div class="container-show-header">
+    <div class="btn-appointment"> %>
+      <%#= link_to "Create a new pet", new_pet_path, class: "btn btn-primary" %>
+    <%# </div>
+  </div> %>
+
+  <div class="container text-center d-grid gap-3 mt-5">
+
+    <div class="container">
+      <h2>Hello <%= current_user.name %>!</h2>
+      <h5>These are your pets:</h5>
     </div>
-  </div>
 
-  <div class="container text-center d-grid gap-3">
-    <h2>Hello <%= current_user.name %>!</h2>
-    <h5>This are your pets:</h5>
-
-    <div class="container d-flex justify-content-center">
+    <div class="mb-4 cards mt-4">
 
       <% @pets.each do |pet| %>
-        <div class="card" style="width: 18rem; margin-left: 15px;">
-
-          <% if pet.photo.exists? %>
-            <%= cl_image_tag pet.photo.key, class: "card-img-top" %>
-          <% else %>
-            <img class="card-img-top" src="<%= image_path("vet.png") %>" alt="Card image cap">
-          <% end %>
-
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to pet.name, pet_path(pet), class:"ms-3 text-primary" %></h5>
-            <p class="card-text"><%= pet.birthday %></p>
-            <div>
-              <%= link_to "Delete",  pet_path(pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
-              <%= link_to "Edit",  edit_pet_path(pet), class: "btn btn-primary" %>
+          <div class="card rounded-4 shadow ml-auto mb-3" style="width: 18rem; justify-self: center;">
+            <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <% if pet.photo.present? %>
+                <%= cl_image_tag pet.photo.key, class: "img-fluid", style: "width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;" %>
+              <% else %>
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Card image cap" class= "img-fluid" style= "width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;" >
+              <% end %>
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </div>
+            <div class="card-body d-flex justify-content-center">
+              <%= link_to pet.name, pet_path(pet), class:"btn btn-secondary", style: "max-width: 100%" %>
             </div>
           </div>
-        </div>
       <% end %>
 
-    </div>
+      <% if current_user.type_of_user == "Pet Owner" %>
+        <div class="card rounded-4 shadow ml-auto mb-5" style="width: 18rem; justify-self: center;">
+          <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img class="card-img-top" src="<%= image_path("plussymbol.png") %>" alt="Card image cap" class= "img-fluid" style= "width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;" >
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </div>
+          <div class="card-body d-flex justify-content-center">
+            <%= link_to "New Pet", new_pet_path, class:"btn btn-secondary", style: "max-width: 100%" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
+
+
+  <%#= link_to "Delete",  pet_path(@pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+  <%#= link_to "Edit",  edit_pet_path(@pet), class: "btn btn-primary" %>

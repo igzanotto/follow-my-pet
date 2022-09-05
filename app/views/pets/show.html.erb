@@ -1,44 +1,117 @@
-<div class="container mt-4 ml-auto">
-  <% if current_user.type_of_user == "Veterinary" %>
-    <h6><strong>Pet Owner:</strong> <%= @pet.user.name %></h6>
-    <h6><strong>Phone:</strong> <%= @pet.user.phone %></h6>
-    <h6><strong>Email:</strong> <%= @pet.user.email %></h6>
-  <% end %>
-  <h1><%= @pet.name %></h1>
+<div class="container mt-4 mb-5 ml-auto">
 
-  <div class="container d-flex">
-    <div class="card" style="width: 18rem; margin-left: 15px;">
-      <img src="<%= image_path("calendar.webp") %>" class="card-img-top" alt="perri" style="width: 256px; height: 250px;">
-      <div class="card-body d-flex justify-content-center">
-        <% if current_user.type_of_user == "Pet Owner" %>
-          <p class="card-text"> <%= link_to "My Appointments", pet_appointments_path(@pet), class:"btn btn-secondary" %></p>
-        <% else %>
-          <p class="card-text"> <%= link_to "My Appointments", my_appointments_path, class:"btn btn-secondary" %></p>
+  <div class="container mb-5 mt-4">
+    <div class="card-product rounded-4" style="justify-content: space-between;">
+      <% if @pet.photo.present? %>
+        <%= cl_image_tag(@pet.photo.key) %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
+      <% end %>
+      <div class="card-product-infos">
+        <h2><%= @pet.name %></h2>
+      </div>
+      <div class="card-product-infos p-5">
+        <p>Species: <strong><%= @pet.species_type.name %></strong></p>
+        <p>Pet Owner: <strong><%= @pet.user.name %></strong></p>
+        <p>Birthday: <strong><%= @pet.birthday %></strong></p>
+        <p><strong>Phone:</strong> <%= @pet.user.phone %></p>
+        <p><strong>Email:</strong> <%= @pet.user.email %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+
+      <% if current_user.type_of_user == "Pet Owner" %>
+        <div class="col-sm-3 col-md-3 mb-4 d-flex justify-content-center">
+          <%= link_to pet_appointments_path(@pet) do %>
+            <div class="card rounded-4 shadow ml-auto" style="width: 18rem;">
+              <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="<%= image_path("calendar.webp") %>" class="img-fluid" style="width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;"/>
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+              <div class="card-body d-flex justify-content-center">
+                <%= link_to "My Appointments", pet_appointments_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: black; max-width: 100%" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if current_user.type_of_user == "Veterinary" %>
+        <div class="col-sm-3 col-md-3 mb-4 d-flex justify-content-center">
+          <%= link_to pet_appointments_path(@pet) do %>
+            <div class="card rounded-4 shadow ml-auto" style="width: 18rem;">
+              <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="<%= image_path("calendar.webp") %>" class="img-fluid" style="width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;"/>
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+              <div class="card-body d-flex justify-content-center">
+                <%= link_to "My Appointments", my_appointments_path, class:"font-weight-normal text-decoration-none", style: "color: black; max-width: 100%" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="col-sm-3 col-md-3 mb-4 d-flex justify-content-center">
+        <%= link_to pet_vaccinations_path(@pet) do %>
+          <div class="card rounded-4 shadow ml-auto" style="width: 18rem;">
+            <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="<%= image_path("maletin.webp") %>" class="img-fluid" style="width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;"/>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </div>
+            <div class="card-body d-flex justify-content-center">
+              <%= link_to "Vaccinations", pet_vaccinations_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: black; max-width: 100%" %>
+            </div>
+          </div>
         <% end %>
       </div>
-    </div>
 
-    <div class="card" style="width: 18rem; margin-left: 15px;">
-      <img src="<%= image_path("maletin.webp") %>" class="card-img-top" alt="perri" style="width: 256px; height: 250px;">
-      <div class="card-body d-flex justify-content-center">
-        <p class="card-text"> <%=  link_to "Vaccination", pet_vaccinations_path(@pet), class:"btn btn-secondary" %></p>
+      <div class="col-sm-3 col-md-3 mb-4 d-flex justify-content-center">
+        <%= link_to pet_clinical_histories_path(@pet) do %>
+          <div class="card rounded-4 shadow ml-auto" style="width: 18rem;">
+            <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="<%= image_path("phile.webp") %>" class="img-fluid" style="width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;"/>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </div>
+            <div class="card-body d-flex justify-content-center">
+              <%= link_to "Clinical History", pet_clinical_histories_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: black; max-width: 100%" %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>
 
-    <div class="card" style="width: 18rem; margin-left: 15px;">
-      <img src="<%= image_path("phile.webp") %>" class="card-img-top" alt="perri" style="width: 256px; height: 250px;">
-      <div class="card-body d-flex justify-content-center">
-        <p class="card-text"> <%= link_to "Clinical History", pet_clinical_histories_path(@pet), class:"btn btn-secondary" %></p>
-      </div>
-    </div>
-
-    <% if current_user.type_of_user == "Pet Owner" %>
-      <div class="card" style="width: 18rem; margin-left: 15px;">
-        <img src="<%= image_path("pata.png") %>" class="card-img-top" alt="perri" style="width: 256px; height: 250px;">
-        <div class="card-body d-flex justify-content-center">
-          <p class="card-text"> <%= link_to "Veterinaries", pet_veterinaries_path(@pet), class:"btn btn-secondary" %></p>
+      <% if current_user.type_of_user == "Pet Owner" %>
+        <div class="col-sm-3 col-md-3 mb-4 d-flex justify-content-center">
+          <%= link_to pet_veterinaries_path(@pet) do %>
+            <div class="card rounded-4 shadow ml-auto" style="width: 18rem;">
+              <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="<%= image_path("pata.png") %>" class="img-fluid" style="width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;"/>
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+              <div class="card-body d-flex justify-content-center">
+                <%= link_to "Veterinaries", pet_veterinaries_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: black; max-width: 100%" %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+
+    </div>
   </div>
-</div>
+
+  <% if current_user.type_of_user == "Pet Owner" %>
+    <div class="mt-5 mb-4 d-flex justify-content-center">
+        <%= link_to "Delete",  pet_path(@pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-secondary shadow rounded-5", style: "margin-right: 20px; padding-left: 30px; padding-right: 30px;" %>
+        <%= link_to "Edit",  edit_pet_path(@pet), class: "btn btn-secondary shadow rounded-5", style: "margin-right: 20px; padding-left: 40px; padding-right: 40px;" %>
+        <%= link_to "Back to my Pets", pets_path, class:"btn btn-secondary shadow rounded-5"  %>
+    </div>
+  <% end %>
+
+  <% if current_user.type_of_user == "Veterinary" %>
+    <div class="mt-5 mb-4 d-flex justify-content-center">
+        <%= link_to "Back to my Patients", my_patients_path, class:"btn btn-secondary shadow rounded-5"  %>
+    </div>
+  <% end %>
