@@ -1,9 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <div class="logo"> </div>
-    <% end %>
-
+    <div class="d-flex align-items-center">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <div class="logo"> </div>
+        <span>  Follow My Pet</span>
+      <% end %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,7 +26,7 @@
                 <%= current_user.name %>
               <% end %>
             <% end %>
-            <% if @pet != nil %>
+            <% if @pet != nil && @pet.id != nil %>
               <%= link_to pet_path(@pet), class: "nav-link" do %>
                 | <i class="fa-solid fa-bone"></i>
                 <%= @pet.name %>

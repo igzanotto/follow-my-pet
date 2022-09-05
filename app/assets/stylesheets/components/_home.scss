@@ -1,24 +1,19 @@
-.banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-}
 .home-container {
   background-size: cover;
   background-position: center;
   height: 100vh;
   display: flex;
 }
-.banner, .home-container h1 {
+.home-container h1 {
   margin: 0;
-  color: white;
+  color: whitesmoke;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 65px;
+  font-size: 60px;
   font-weight: bold;
 }
 .home-container p {
   font-size: 30px;
-  color: white;
+  color: whitesmoke;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   margin-bottom: 30px;
@@ -32,7 +27,11 @@
   text-align: start;
 }
 .container-btn {
-  margin-top: 50px;
+  margin-top: 380px;
+  color: whitesmoke;
+}
+.container-btn button {
+  color: whitesmoke;
 }
 .page-section {
   padding: 6rem 0;
@@ -56,6 +55,11 @@
 @media (min-width: 768px) {
   section {
     padding: 9rem 0;
+  }
+}
+@media (min-width: 1800px) {
+  .container {
+    max-width: 1600px;
   }
 }
 .img-fluid {
