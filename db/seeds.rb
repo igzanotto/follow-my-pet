@@ -47,12 +47,12 @@ puts "Done"
 
 puts "Creating pets"
 pet1 = Pet.create!(user: owner1, name: "Aurelia", species_type: species1, birthday: Date.tomorrow)
-pet2 = Pet.create!(user: owner1, name: "Nelly", species_type: species2, birthday: Date.today)
-pet3 = Pet.create!(user: owner1, name: "Lisa", species_type: species1, birthday: Date.tomorrow)
-pet4 = Pet.create!(user: owner2, name: "Homero", species_type: species3, birthday: Date.today)
+pet2 = Pet.create!(user: owner2, name: "Nelly", species_type: species2, birthday: Date.today)
+pet3 = Pet.create!(user: owner3, name: "Lisa", species_type: species1, birthday: Date.tomorrow)
+pet4 = Pet.create!(user: owner1, name: "Homero", species_type: species3, birthday: Date.today)
 pet5 = Pet.create!(user: owner2, name: "Pepe", species_type: species2, birthday: Date.tomorrow)
 pet6 = Pet.create!(user: owner3, name: "Lolo", species_type: species3, birthday: Date.today)
-pet7 = Pet.create!(user: owner3, name: "Matilda", species_type: species2, birthday: Date.tomorrow)
+pet7 = Pet.create!(user: owner1, name: "Matilda", species_type: species2, birthday: Date.tomorrow)
 pet8 = Pet.create!(user: owner4, name: "Kiki", species_type: species4, birthday: Date.today)
 pet9 = Pet.create!(user: owner4, name: "Nelly", species_type: species1, birthday: Date.tomorrow)
 
