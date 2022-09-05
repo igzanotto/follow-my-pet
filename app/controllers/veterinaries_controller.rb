@@ -30,7 +30,7 @@ class VeterinariesController < ApplicationController
     # STIMULUS FOR SEARCH
     respond_to do |format|
       format.html
-      format.text { render partial: "veterinaries/card", locals: {veterinaries: @veterinaries}, formats: [:html] }
+      format.text { render partial: "veterinaries/card", locals: { veterinaries: @veterinaries }, formats: [:html] }
     end
   end
 
@@ -38,5 +38,12 @@ class VeterinariesController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @veterinary = User.find(params[:id])
     @appointment = Appointment.new
+
+    # CALENDAR
+
+    start_date = params.fetch(:start_time, Date.today).to_date
+
+    # For a monthly view:
+    @appointments = Appointment.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
 end

@@ -12,7 +12,7 @@
       <div class="container mt-3 mb-3">
 
         <div class="d-flex justify-content-between mb-3">
-          <div class="p-2"><h2>Vaccinations</h2></div>
+          <div class="p-2"><h2>Details</h2></div>
           <div class="p-2 d-flex justify-content-between">
               <% if current_user.type_of_user == "Veterinary" %>
               <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_vaccination_path, class: "btn btn-primary" %></div>
@@ -36,18 +36,13 @@
                       <div class="m-4 mt-0 mr-0 mb-0 align-self-center">Exp. Date: <%= v.expiration_date %></div>
 
                       <%# DOWNLOAD FILE %>
-                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
-                        <%= link_to cl_image_path(v.photo.key, flags: :attachment) do %>
-                          <i class="fa-solid fa-file-arrow-down h5"></i>
-                        <% end %>
-                      </div>
-
-                      <%# <div class="m-4 mt-0 mr-0 mb-0 align-self-center"> %>
-                        <%#= link_to edit_pet_vaccination_path(@pet, v), class:"ms-3 text-success" do %>
-                          <%# <i class="fa-solid fa-pen"></i> %>
-                        <%# end %>
-                      <%# </div>
-                    </div> %>
+                      <% if v.photo.present? %>
+                        <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
+                          <%= link_to cl_image_path(v.photo.key, flags: :attachment) do %>
+                            <i class="fa-solid fa-file-arrow-down h5"></i>
+                          <% end %>
+                        </div>
+                      <% end %>
 
                   </div>
                 </h2>

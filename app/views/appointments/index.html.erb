@@ -10,7 +10,8 @@
     <% @next_appointments.each do |appointment| %>
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= appointment.date %>
+          <%= appointment.start_time.strftime('%d %B %Y') %>
+          <%= appointment.start_time.strftime('%I:%M %p') %>
           <% if current_user.type_of_user == "Pet Owner" %>
             <%= appointment.user.name %>
           <% end %>

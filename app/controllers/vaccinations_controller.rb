@@ -23,6 +23,10 @@ class VaccinationsController < ApplicationController
     @vaccination = Vaccination.new(vaccination_params)
     @vaccination.clinical_history_id = @clinical_history.id
 
+    @clinical_history.name = "Vaccination: #{@vaccination.vaccine.name}"
+    @clinical_history.description = "#{@vaccination.vaccine.name} vaccine | Expiration Date: #{@vaccination.expiration_date}"
+    @clinical_history.save
+
     if @vaccination.save
       redirect_to pet_vaccinations_path(@pet)
     else
