@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :appointments, except: [:show, :index]
+  resources :reviews, only: [:new, :create]
 
   get 'my_appointments', to: 'appointments#my_appointments', as: 'my_appointments'
   get 'my_patients', to: 'appointments#my_patients', as: 'my_patients'

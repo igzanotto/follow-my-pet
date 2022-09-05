@@ -16,9 +16,9 @@
 
       <div class="row">
         <div class="col-lg-4">
+
           <div class="card mb-4">
             <div class="card-body text-center">
-
               <% if @veterinary.photo.present? %>
                 <%= cl_image_tag @veterinary.photo.key  %>
               <% else %>
@@ -27,7 +27,11 @@
               <% end %>
 
               <h5 class="my-3"><%= @veterinary.name %></h5>
-              <p class="text-muted mb-1">Veterinary</p>
+              <div class="text-muted mb-1">
+                <% @average.times do %>
+                  <i class="fa-solid fa-star" style= "color: orange"></i>
+                <% end %>
+              </div>
               <p class="text-muted mb-4"><%= @veterinary.location %></p>
               <div class="d-flex justify-content-center mb-2">
                 <%# <button type="button" class="btn btn-primary">Follow</button> %>
@@ -35,6 +39,7 @@
               </div>
             </div>
           </div>
+
           <div class="card mb-4 mb-lg-0">
             <div class="card-body p-4">
               <p>New appointment</p>
@@ -48,6 +53,37 @@
               </div>
             </div>
           </div>
+
+          <div class="card mb-4 mt-4 mb-lg-0">
+            <div class="card-body p-4">
+              <div>
+                <%= simple_form_for @review do |f| %>
+                  <%= hidden_field_tag(:user_id, params[:id]) %>
+                  <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
+                  <%= f.input :content, label: "Give us feedback" %>
+                  <%= f.input :rating, collection: (1..5).to_a, label: false, input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
+                  <%= f.submit "Send your review" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-4 mt-4 mb-lg-0">
+            <div class="card-body p-4">
+              <p>Reviews</p>
+              <% @reviews.each do |review| %>
+                <div class="d-flex">
+                  <p style="margin-right: 15px;">"<%= review.content %>"</p>
+                  <div>
+                    <% review.rating.to_i.times do %>
+                      <i class="fa-solid fa-star" style= "color: orange"></i>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
         </div>
 
         <div class="col-lg-8">
