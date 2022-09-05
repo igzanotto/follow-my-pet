@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @review.user = @user
 
     if @review.save
-      redirect_to root_path
+      redirect_to pet_veterinary_path(@pet, @user)
     else
       flash[:alert] = "Something went wrong."
       render :new

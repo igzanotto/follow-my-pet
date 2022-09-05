@@ -39,6 +39,9 @@ class VeterinariesController < ApplicationController
     @veterinary = User.find(params[:id])
     @appointment = Appointment.new
     @review = Review.new
+    @reviews = Review.where(user: @veterinary).last(3)
+    @reviews_filtered = Review.where(user: @veterinary).average(:rating)
+    @average = @reviews_filtered.to_i
 
     # CALENDAR
 
