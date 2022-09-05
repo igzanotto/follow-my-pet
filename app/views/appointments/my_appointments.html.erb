@@ -22,7 +22,7 @@
             <%= link_to appointment_path(appointment), class:"ms-3 text-success", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
               <i class="fa-solid fa-trash"></i>
             <% end %>
-            <%= link_to edit_appointment_path(appointment), class:"ms-3 text-success" do %>
+            <%= link_to edit_appointment_path(appointment), data: { controller: "turbo" }, class:"ms-3 text-success" do %>
               <i class="fa-regular fa-pen-to-square"></i>
             <% end %>
           </div>
