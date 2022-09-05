@@ -5,21 +5,22 @@
 import { application } from "./application"
 
 import HelloController from "./hello_controller"
-import MapController from "./map_controller"
-import SpecialityController from "./speciality_controller"
-import TypedJsController from "./typed_js_controller"
-import NavbarController from "./navbar_controller.js"
 application.register("hello", HelloController)
+
+import MapController from "./map_controller"
 application.register("map", MapController)
 
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
 
+import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 
-
+import SpecialityController from "./speciality_controller"
 application.register("speciality", SpecialityController)
 
+import TurboController from "./turbo_controller"
+application.register("turbo", TurboController)
 
+import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
-
-
-application.register("navbar", NavbarController)
