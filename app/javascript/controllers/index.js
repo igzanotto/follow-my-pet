@@ -3,23 +3,19 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
-
+import FormSubmitController from "./form_submit_controller"
+import HelloController from "./hello_controller"
 import HelloController from "./hello_controller"
 import MapController from "./map_controller"
+import NavbarController from "./navbar_controller"
 import SpecialityController from "./speciality_controller"
+import StarRatingController from "./star_rating_controller"
 import TypedJsController from "./typed_js_controller"
-import NavbarController from "./navbar_controller.js"
+
+application.register("form-submit", FormSubmitController)
 application.register("hello", HelloController)
 application.register("map", MapController)
-
-
 application.register("navbar", NavbarController)
-
-
 application.register("speciality", SpecialityController)
-
-
+application.register("star-rating", StarRatingController)
 application.register("typed-js", TypedJsController)
-
-
-application.register("navbar", NavbarController)
