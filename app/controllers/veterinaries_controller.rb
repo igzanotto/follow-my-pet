@@ -38,6 +38,7 @@ class VeterinariesController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @veterinary = User.find(params[:id])
     @appointment = Appointment.new
+    @review = Review.new
 
     # CALENDAR
 
