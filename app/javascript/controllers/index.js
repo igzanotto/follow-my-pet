@@ -5,17 +5,20 @@
 import { application } from "./application"
 import FormSubmitController from "./form_submit_controller"
 import HelloController from "./hello_controller"
-import HelloController from "./hello_controller"
 import MapController from "./map_controller"
 import NavbarController from "./navbar_controller"
 import SpecialityController from "./speciality_controller"
 import StarRatingController from "./star_rating_controller"
 import TypedJsController from "./typed_js_controller"
+import TurboController from "./turbo_controller"
+import ModalController from "./modal_controller"
 
 application.register("form-submit", FormSubmitController)
 application.register("hello", HelloController)
 application.register("map", MapController)
+application.register("modal", ModalController)
 application.register("navbar", NavbarController)
+application.register("turbo", TurboController)
 application.register("speciality", SpecialityController)
 application.register("star-rating", StarRatingController)
 application.register("typed-js", TypedJsController)
