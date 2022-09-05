@@ -132,7 +132,29 @@
             </div>
           </div>
         </div>
+
+        <div class="col-lg-8" style= "width: 100%;">
+          <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-4">
+              <p>Rate the vet</p>
+              <div>
+                <%= simple_form_for @review do |f| %>
+                  <%= hidden_field_tag(:user_id, params[:id]) %>
+                  <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
+                  <%= f.input :content %>
+                  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+                  <%= f.submit "Send your review" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       </div>
     </div>
   </section>
 </div>
+
+<%= console %>
