@@ -1,6 +1,7 @@
 .simple-calendar {
   table {
-    min-height: 80vh;
+    min-height: 60vh;
+    max-height: 90vh;
   }
   .today {
     background-color: #FAF3DD;
@@ -9,13 +10,13 @@
 
 .meeting {
   color: white;
-  padding: 8px 24px;
+  padding: 0px 5px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: #555358;
   transition: background 0.3s ease;
 }
 
 .meeting:hover {
-  background: #1BCB7F;
+  background: #555358;
   color: white;
 }
