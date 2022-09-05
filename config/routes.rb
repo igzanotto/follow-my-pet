@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
 
+
   resources :pets do
     resources :clinical_histories, except: [:show, :destroy]
   end
@@ -31,4 +32,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end

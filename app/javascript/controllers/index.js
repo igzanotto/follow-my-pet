@@ -3,6 +3,7 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 import FormSubmitController from "./form_submit_controller"
 import HelloController from "./hello_controller"
 import MapController from "./map_controller"
@@ -13,6 +14,7 @@ import TypedJsController from "./typed_js_controller"
 import TurboController from "./turbo_controller"
 import ModalController from "./modal_controller"
 
+
 application.register("form-submit", FormSubmitController)
 application.register("hello", HelloController)
 application.register("map", MapController)
@@ -22,3 +24,4 @@ application.register("turbo", TurboController)
 application.register("speciality", SpecialityController)
 application.register("star-rating", StarRatingController)
 application.register("typed-js", TypedJsController)
+application.register("chatroom-subscription", ChatroomSubscriptionController)
