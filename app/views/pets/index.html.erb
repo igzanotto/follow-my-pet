@@ -15,7 +15,7 @@
       <% @pets.each do |pet| %>
         <div class="card" style="width: 18rem; margin-left: 15px;">
 
-          <% if pet.photo.exists? %>
+          <% if pet.photo.present? %>
             <%= cl_image_tag pet.photo.key, class: "card-img-top" %>
           <% else %>
             <img class="card-img-top" src="<%= image_path("vet.png") %>" alt="Card image cap">
