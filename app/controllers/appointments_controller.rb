@@ -68,11 +68,12 @@ class AppointmentsController < ApplicationController
   end
 
   def my_patients
+    @mypatients_pets = []
     @user = current_user
+
     @appointments = Appointment.where(user_id: @user)
     @clinical_histories = ClinicalHistory.where(user_id: @user)
 
-    @mypatients_pets = []
     @appointments.each do |appointment|
       @mypatients_pets << appointment.pet
     end
@@ -82,16 +83,17 @@ class AppointmentsController < ApplicationController
 
     @mypatients_pets.uniq!
 
+    if params[:query].present?
+      @pet_owners = User.search_by_name(params[:query])
+      @pet_owners_filtered = []
 
-    if params[:query].present? # si la query esta presente
-      if User.search_by_name(params[:query]).size.positive? # Si la query encuentra algo
-        @pet_owners = User.where(type_of_user: "Pet Owner")
-        @pet_owners_filtered = @pet_owners.search_by_name(params[:query])
-      else
-        "No results found" # Si no encuentra resultados
+      @pet_owners.each do |owner|
+        @pet_owners_filtered << @mypatients_pets.select{ |pet| pet.user_id == owner.id}
       end
+      @mypatients_pets = @pet_owners_filtered.flatten
+    else
+      return @mypatients_pets
     end
-
   end
 
   private
@@ -105,5 +107,3 @@ class AppointmentsController < ApplicationController
   end
 
 end
-
-# pet.appointments.each do |appointment| { appointment.pet.name }

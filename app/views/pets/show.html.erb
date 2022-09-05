@@ -14,6 +14,8 @@
         <p>Species: <strong><%= @pet.species_type.name %></strong></p>
         <p>Pet Owner: <strong><%= @pet.user.name %></strong></p>
         <p>Birthday: <strong><%= @pet.birthday %></strong></p>
+        <p><strong>Phone:</strong> <%= @pet.user.phone %></p>
+        <p><strong>Email:</strong> <%= @pet.user.email %></p>
       </div>
     </div>
   </div>
@@ -113,4 +115,3 @@
         <%= link_to "Back to my Patients", my_patients_path, class:"btn btn-secondary shadow rounded-5"  %>
     </div>
   <% end %>
-</div>
