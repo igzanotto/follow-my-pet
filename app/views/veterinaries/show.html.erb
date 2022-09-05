@@ -35,7 +35,11 @@
               <p class="text-muted mb-4"><%= @veterinary.location %></p>
               <div class="d-flex justify-content-center mb-2">
                 <%# <button type="button" class="btn btn-primary">Follow</button> %>
-                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+
+                  <%= link_to chatroom_path(Chatroom.first) do %>
+                    <button type="button" class="btn btn-outline-primary ms-1"></button>
+                  <% end %>
+
               </div>
             </div>
           </div>
