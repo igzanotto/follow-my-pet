@@ -1,13 +1,16 @@
-<div class="container mt-1 ml-auto">
+<div class="container ml-auto">
 
-  <section style="background-color: #F4F4F4;">
+  <section class="pt-0" style="background-color: #F4F4F4;">
     <div class="container py-5">
 
       <div class="row">
         <div class="col">
           <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 d-flex justify-content-between" style="background-color: #FFFFFF !important;">
             <ol class="breadcrumb mb-0 align-self-center">
-              <li class="breadcrumb-item h4 m-0"><%= @veterinary.name %></li>
+              <%# <li class="breadcrumb-item h4 m-0"><%= @veterinary.name </li> %>
+
+              <li class="breadcrumb-item h4 m-0", style="font-weight: bolder;"><span class="highlight-container" style= "margin-left: 10px; padding: 10px;"><span class="highlight" style= "color: white;"><%= @veterinary.name.split[0...-1].join(" ") %></span></span><%= @veterinary.name.split.last %></li>
+
             </ol>
             <div class="align-self-center mb-0 ml-auto h4"><i class="fa-solid fa-briefcase-medical"></i></div>
           </nav>
@@ -17,7 +20,7 @@
       <div class="row">
         <div class="col-lg-4">
 
-          <div class="card mb-4">
+          <div class="card mb-4" data-aos="zoom-in">
             <div class="card-body text-center">
               <% if @veterinary.photo.present? %>
                 <%= cl_image_tag @veterinary.photo.key, style: "width: 100%; height: 100%;"  %>
@@ -26,7 +29,7 @@
                 class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
               <% end %>
 
-              <h5 class="my-3"><%= @veterinary.name %></h5>
+              <h5 class="my-3" style="font-weight: bolder;"><%= @veterinary.name %></h5>
               <div class="text-muted mb-1">
                 <% @average.times do %>
                   <i class="fa-solid fa-star" style= "color: orange"></i>
@@ -34,24 +37,26 @@
               </div>
               <p class="text-muted mb-4"><%= @veterinary.location %></p>
               <div class="d-flex justify-content-center mb-2">
-                <%# <button type="button" class="btn btn-primary">Follow</button> %>
+                <%# <button type="button" class="btn btn-primary rounded-4 shadow">
+                  <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;"
+                </button> %>
 
-                <button type="button" class="btn btn-outline-primary ms-1">
-                  <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: #0D6EFD" %>
-                </button>
+                  <span class="highlight-container" style= "padding: 10px;"><span class="highlight btn-update" style= "padding: 15px;"><%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;" %></span></span>
+
               </div>
             </div>
           </div>
 
-          <div class="card mb-4 mb-lg-0">
+          <div class="card mb-4 mb-lg-0" data-aos="flip-left">
             <div class="card-body p-4">
-              <p>New appointment</p>
+              <p style="font-weight: bolder;">New appointment</p>
               <div>
                 <%= simple_form_for @appointment do |a| %>
                   <%= hidden_field_tag(:user_id, params[:id]) %>
                   <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
                   <%= a.input :start_time, as: :datetime, html5: true, hint: "Select date and time", label: false %>
-                  <%= a.button :submit, "Submit", class: "btn btn-primary" %>
+                  <span class="highlight-container" style= "padding-right: 5px;"><span class="highlight btn-update" style= "padding: 1px;">
+                  <%= a.button :submit, "Submit", style: "color: white;" %></span></span>
                 <% end %>
               </div>
             </div>
@@ -63,17 +68,19 @@
                 <%= simple_form_for @review do |f| %>
                   <%= hidden_field_tag(:user_id, params[:id]) %>
                   <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
-                  <%= f.input :content, label: "Give us feedback" %>
+                  <p style="font-weight: bolder;">Give us feedback</p>
+                  <%= f.input :content, label: false %>
                   <%= f.input :rating, collection: (1..5).to_a, label: false, input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
-                  <%= f.submit "Send your review" %>
+                  <span class="highlight-container" style= "padding-right: 5px;"><span class="highlight btn-update" style= "padding: 1px;">
+                  <%= f.button :submit, "Send your review", style: "color: white;"  %></span></span>
                 <% end %>
               </div>
             </div>
           </div>
 
           <div class="card mb-4 mt-4 mb-lg-0">
-            <div class="card-body p-4">
-              <p>Reviews</p>
+            <div class="card-body p-4" data-aos="flip-left">
+              <p style="font-weight: bolder;">Reviews</p>
               <% @reviews.each do |review| %>
                 <div class="d-flex">
                   <p style="margin-right: 15px;">"<%= review.content %>"</p>
@@ -97,7 +104,7 @@
                   <p class="mb-0">Vet Name</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><%= @veterinary.name %></p>
+                  <p class="mb-0" style="color: #4297A8; font-weight: bolder;"><%= @veterinary.name %></p>
                 </div>
               </div>
               <hr>
@@ -153,7 +160,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-9">
-                  <p class="mb-0">Appointments</p>
+                  <p class="mb-0" style="font-weight: bolder;">Appointments</p>
                 </div>
                 <div class="col-sm-12 mt-3 text-muted">
 
