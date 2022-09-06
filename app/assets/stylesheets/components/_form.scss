@@ -1,0 +1,77 @@
+.pet_name, .pet_birthday, .pet_species_type, .pet_photo, .clinical_history_name, .clinical_history_description, .clinical_history_date, .study_name, .study_photo, .vaccination_expiration_date, .vaccination_vaccine, .vaccination_photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.pet_name label {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.pet_birthday label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.pet_species_type label {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.pet_photo label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.clinical_history_name label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.clinical_history_description label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.clinical_history_date label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.clinical_history_type_of_history legend {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.clinical_history_type_of_history .form-check {
+  display: flex;
+}
+
+.clinical_history_type_of_history input {
+  margin-right: 20px;
+}
+
+.study_name label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.study_photo label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.vaccination_expiration_date label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.vaccination_vaccine label{
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.vaccination_photo label{
+  margin-left: 0;
+  margin-right: auto;
+}

@@ -1,0 +1,39 @@
+@media (max-width: 767px) {
+  section {
+    margin-top: 150px;
+    margin-bottom: 50px;
+  }
+
+  #singup-form  {
+    width: 90%;
+  }
+}
+
+@media (max-width: 991px) {
+
+  #vet-container {
+    display: none;
+ }
+
+ #singup-form  {
+  width: 80%;
+}
+
+}
+
+@media (max-width: 1199px) {
+
+ #vet-container-singup {
+    display: none;
+ }
+
+}
+
+// @media (min-width: 992px) {
+
+//   #vet {
+//     width: 50%;
+//     height: 50%;
+//     margin: 0 auto;
+//   }
+// }
