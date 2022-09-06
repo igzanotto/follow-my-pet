@@ -40,6 +40,7 @@ class VeterinariesController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @veterinary = User.find(params[:id])
     @appointment = Appointment.new
+
     @review = Review.new
     @reviews = Review.where(user: @veterinary).last(3)
     @reviews_filtered = Review.where(user: @veterinary).average(:rating)
