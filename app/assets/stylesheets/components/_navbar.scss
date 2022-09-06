@@ -1,5 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
+  background-color: white;
+  transition: 0.5s background-color ease;
+}
+.navbar-lewagon-home {
+  justify-content: space-between;
   background: white;
   background-color: transparent;
   transition: 0.5s background-color ease;
@@ -30,4 +35,14 @@
 }
 .welcome-user p {
   margin: 0px;
+}
+.navbar-brand span {
+  font-family: 'Courgette', cursive;
+  font-size: 27px;
+  color: #DED8D4;
+  margin-left: 12px;
+  margin-top: 5px;
+}
+.nav-link a {
+  color: blue;
 }

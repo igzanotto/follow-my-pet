@@ -319,3 +319,6 @@ review1 = Review.create!(content: "Could be better", rating: 3, user: vet4)
 review1 = Review.create!(content: "All right", rating: 3, user: vet4)
 
 puts "Done"
+
+
+chatroom = Chatroom.create!(name: "General")

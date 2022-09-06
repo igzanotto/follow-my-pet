@@ -1,12 +1,18 @@
-<div class="home-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('home-image-4.jpg') %>);">
+<%= render "shared/navbar_home" %>
+<div class="home-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('home-image-6.jpg') %>);">
   <div class="container">
     <div class="home text-start">
-      <h1> <strong>FOLLOW MY PET</strong> </h1>
-      <p><span data-controller="typed-js"></span></p>
+      <h1>All about your pets</h1>
+      <h1 id="title-color">in just one place</h1>
+      <span data-controller="typed-js"></span>
       <div class="row justify-content-start container-btn">
         <div class="col-4">
-          <h3>Do you wanna track your pet´s health?</h3>
+          <h3>Do you wanna track your pet's health?</h3>
           <button type="button" class="btn btn-success btn-lg mt-3">Let´s go!</button>
+        </div>
+        <div class="d-flex">
+          <p>If you are a veterinary clinic, dog grooming or study center:  </p>
+          <p><%= link_to "Start here!", new_user_registration_path, id: "link-signup" %></p>
         </div>
       </div>
     </div>
@@ -52,16 +58,16 @@
     <h5 class="text-muted">They trust us:</h5>
     <div class="row align-items-center">
         <div class="col-md-3 col-sm-6 my-3">
-            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("microsoft.svg")%>" alt="..." aria-label="Microsoft Logo" /></a>
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("purina.png")%>" alt="..." aria-label="Purina Logo" /></a>
         </div>
         <div class="col-md-3 col-sm-6 my-3">
-            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("facebook.svg")%>" alt="..." aria-label="Facebook Logo" /></a>
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("boris-vet.png")%>" alt="..." aria-label="Facebook Logo" /></a>
         </div>
         <div class="col-md-3 col-sm-6 my-3">
             <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("google.svg")%>" alt="..." aria-label="Google Logo" /></a>
         </div>
         <div class="col-md-3 col-sm-6 my-3">
-            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("ibm.svg")%>" alt="..." aria-label="ibm Logo" /></a>
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("frontline.png")%>" alt="..." aria-label="frontline Logo" /></a>
         </div>
       <hr>
     </div>
