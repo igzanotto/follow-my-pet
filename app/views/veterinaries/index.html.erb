@@ -1,57 +1,69 @@
-<div class="container mt-4 mb-5 ml-auto" data-controller="speciality">
+<div class="container vets-container mb-5 ml-auto" data-controller="speciality">
 
-  <div class="d-flex justify-content-between mb-3">
-      <div class="p-2"><h1>Select your Vet</h1></div>
-      <div class="p-2 align-self-center h1"><i class="fa-solid fa-shield-dog"></i></div>
-  </div>
-  <hr>
+  <div class="card-div-vets d-flex justify-content-between mb-2">
 
-  <div class= "d-flex">
-    <div class="container bg-white rounded-4 mt-2 mb-2 p-3">
-        <p>Search your vet</p>
-        <%= form_with url: pet_veterinaries_path(@pet), method: :get do %>
-          <div class="input-group">
-            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Location" %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
+      <div style= "width: 100%" data-aos="fade-down">
+        <div class="p-2 mb-3"><h3 class="mt-3">SEARCH YOUR <span class="highlight-container" style= "margin-left: 10px;"><span class="highlight" style= "color: white;">VETERINARY</span></span></h3></div>
+          <div class="container mb-2 form-vets" style="width: 50%; margin-left: 0; padding-left: 8px;">
+            <%= form_with url: pet_veterinaries_path(@pet), method: :get do %>
+              <div class="input-group search-vets p-0">
+                <%= text_field_tag :query, params[:query], class: "form-control bg-white shadow", placeholder: "Location" %>
+                <%= button_tag class: "btn btn-primary shadow" do %>
+                  <i class="fas fa-search" style= "color: white;"></i>
+                <% end %>
+              </div>
+              <br>
+            <% end %>
           </div>
-          <br>
-        <% end %>
-    </div>
+        </div>
+
+      <div class="p-2 align-self-center perrito h1 m-0" data-aos="fade-left">
+        <%= image_tag("perritosolo.png", size: "100x100", style: "align-self: center;") %>
+        <%# <i class="fa-solid fa-shield-dog"></i> %>
+      </div>
+
   </div>
 
-  <div class= "d-flex mt-4">
+      <hr>
+
+  <div class= "card-div-vet d-flex mt-5">
 
       <% if @vet_filtered != nil %>
 
-        <div class="cards-container col-6" style="margin-right: 5px;">
-          <div class="cards d-flex flex-column mt-0" data-speciality-target="cards">
+        <div class="cards-container cards-container-vet col-6" style="margin-right: 5px;">
+          <div class="cards cards-index-vet d-flex flex-column mt-0" data-speciality-target="cards">
 
             <% @vet_filtered.each do |vet| %>
 
               <%= link_to pet_veterinary_path(@pet, vet), style: "text-decoration: none; color: black;" do %>
 
-                <div class="card mb-3" style="max-width: 540px;">
+                <div class="card shadow rounded-4 card-vet mb-3" style="max-width: 540px;" data-aos="flip-left">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <% if vet.photo.present? %>
-                        <%= cl_image_tag vet.photo.key, style: "width: 100%; height: 100%;"  %>
+                        <%= cl_image_tag vet.photo.key, style: "width: 100%; height: 100%; border-radius: 10px 0 0 10px;" %>
                       <% else %>
-                        <img src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" style="width: 100%; height: 100%;" />
+                        <img src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" style="width: 100%; height: 100%; border-radius: 10px 0 0 10px;" />
                       <% end %>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 card-body-vets">
                       <div class="card-body">
-                        <h5 class="card-title"><%= vet.name %></h5>
+                        <h5 class="card-title" style= "color: #4297A8; font-weight: bolder; text-shadow: 1px 2px 0px #e1dfdf;"><%= vet.name.capitalize %> </h5>
                         <div>
                         <% if vet.speciality.present? %>
-                          <p style="font-size: 12px; margin-bottom: 5px;">Specialities:<%= vet.speciality %></p>
+                          <p style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Specialities: </em><%= vet.speciality %></p>
                         <% else %>
-                          <p style="font-size: 12px; margin-bottom: 5px;">Specialities: Undefined</p>
+                          <p style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Specialities: </em> Undefined</p>
                         <% end %>
                         </div>
-                        <p class="card-text" style="font-size: 12px; margin-bottom: 5px;">Location: <%= vet.location %></p>
-                        <p class="card-text" style="font-size: 12px; margin-bottom: 5px;">Phone: <%= vet.phone %></p>
-                        <p class="card-text" style="font-size: 12px; margin-bottom: 10px;">Doctors: <%= vet.doctors %></p>
+                        <p class="card-text" style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Location: </em><%= vet.location %></p>
+                        <p class="card-text" style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Phone: </em><%= vet.phone %></p>
+                        <p class="card-text" style="font-size: 12px; margin-bottom: 10px; color: #555358;"><em>Doctors: </em><%= vet.doctors %></p>
+                        <p class="card-text" style="font-size: 12px; margin-bottom: 10px; color: #555358;">
+                          <% vet.reviews.average(:rating).to_i.times do %>
+                            <i class="fa-solid fa-star" style= "color: orange"></i>
+                          <% end %></p>
+
                       </div>
                     </div>
                   </div>
@@ -63,7 +75,7 @@
           </div>
         </div>
 
-        <div class= "col-6">
+        <div class= "map col-6">
           <div id="map" style="width: 100%; height: 600px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div>

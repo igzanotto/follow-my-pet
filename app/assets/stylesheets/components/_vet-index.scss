@@ -1,0 +1,72 @@
+.card-body-vets {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  #map {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .map {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .card-div-vet {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cards-index-vet {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .cards-index-vet a {
+    margin: 0 auto;
+  }
+
+  .card-vet {
+     max-width: 100% !important;
+  }
+
+  .cards-container-vet {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .form-vets {
+    width: 80% !important;
+  }
+
+  .search-vets {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .card-vet {
+    max-width: 70% !important;
+    margin: 0 auto;
+  }
+
+  .perrito {
+    display: none;
+  }
+
+  .form-vets {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 993px) {
+  #map {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+}
