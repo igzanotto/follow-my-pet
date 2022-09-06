@@ -21,6 +21,12 @@ Pet.destroy_all
 puts "Deleting species types"
 SpeciesType.destroy_all
 
+puts "Deleting messages"
+Message.destroy_all
+
+puts "Deleting chatrooms"
+Chatroom.destroy_all
+
 puts "Deleting users"
 User.destroy_all
 
@@ -116,3 +122,6 @@ file4 = URI.open("https://thumbs.dreamstime.com/z/resultado-del-an%C3%A1lisis-de
 study1.photo.attach(io: file3, filename: "2bx8hbx.jpg", content_type: "image/jpg")
 study2.photo.attach(io: file4, filename: "resultado-del-análisis-de-sangre-12613767.jpg", content_type: "image/jpg")
 puts "Done"
+
+
+chatroom = Chatroom.create!(name: "General")
