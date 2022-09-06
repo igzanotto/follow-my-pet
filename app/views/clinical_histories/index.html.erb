@@ -54,254 +54,101 @@
 
   <hr>
 
-    <div class="container bg-white rounded-4 mt-4 p-3">
-      <div class="container mt-3 mb-3">
+  <div class="container bg-white rounded-4 mt-5 mb-4">
+    <div class="container mt-3 mb-3">
+      <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-12 col-xl-10">
 
-        <div class="d-flex justify-content-between mb-3">
-          <div class="p-2"><h2>Studies</h2></div>
-
-          <div class="p-2 d-flex justify-content-between">
-            <% if current_user.type_of_user == "Veterinary" %>
-               <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_study_path, class: "btn btn-primary" %></div>
+            <div class="card">
+              <div class="card-header p-3 d-flex align-items-center justify-content-between">
+                <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Studies</h5>
+                <% if current_user.type_of_user == "Veterinary" %>
+               <div class="p-2 align-self-center"><%= link_to "New Study", new_pet_study_path, class: "btn btn-primary" %></div>
             <% end %>
-            <div class="p-2"><%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %></div>
-          </div>
-        </div>
 
-        <div id="accordion">
-
-          <% @studies = [] %>
-          <% @clinical_histories.each do |ch| %>
-            <% if ch.study != nil  %>
-              <% @studies << ch.study %>
-            <% end %>
-          <% end %>
-
-          <% if @studies != [] %>
-
-            <% @studies.each do |st| %>
-
-              <div class="card">
-                <h2 class="card-header" id="heading<%= st.id %>">
-                  <div class="btn btn-link text-decoration-none">
-                    <div class="d-flex justify-content-between">
-                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><%= st.clinical_history.date %></div>
-                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><%= st.name %></div>
-                      <div class="m-5 mt-0 mr-0 mb-0 align-self-center"><%= st.clinical_history.user.name %></div>
-
-                      <%# DOWNLOAD FILE %>
-                      <% if st.photo.present? %>
-                        <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
-                          <%= link_to cl_image_path(st.photo.key, flags: :attachment) do %>
-                            <i class="fa-solid fa-file-arrow-down h5"></i>
-                          <% end %>
-                        </div>
-                      <% end %>
-
-                      <div class="m-4 mt-0 mr-0 mb-0 align-self-center">
-                        <% if current_user.type_of_user == "Veterinary" %>
-                          <%= link_to edit_pet_study_path(@pet, st), class:"ms-3 text-primary" do %>
-                            <i class="fa-solid fa-pen"></i>
-                          <% end %>
-                        <% end %>
-                      </div>
-
-                    </div>
-                  </div>
-                </h2>
               </div>
-            <% end %>
+              <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative">
 
-          <% else %>
-            <p>No studies available yet</p>
-          <% end %>
-
-      </div>
-    </div>
-
-    <section class="vh-100" style="background-color: #eee;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-12 col-xl-10">
-
-          <div class="card">
-            <div class="card-header p-3">
-              <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Studies</h5>
-            </div>
-            <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
-
-              <table class="table mb-0">
-                <thead>
-                  <tr>
-                    <th scope="col">Veterinary</th>
-                    <th scope="col">Study Name</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Download</th>
-                  </tr>
-                </thead>
-                <tbody>
+                <table class="table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">Veterinary</th>
+                      <th scope="col">Study Name</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Preview</th>
+                      <th scope="col">Download</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
 
 
-                <% @studies = [] %>
-                <% @clinical_histories.each do |ch| %>
-                  <% if ch.study != nil  %>
-                    <% @studies << ch.study %>
+                  <% @studies = [] %>
+                  <% @clinical_histories.each do |ch| %>
+                    <% if ch.study != nil  %>
+                      <% @studies << ch.study %>
+                    <% end %>
                   <% end %>
-                <% end %>
 
-                <% if @studies != [] %>
-                  <% @studies.each do |st| %>
+                  <% if @studies != [] %>
+                    <% @studies.each do |st| %>
 
-                    <tr class="fw-normal">
-                      <th>
-                      <% %>
-
-                        <%= cl_image_tag st.clinical_history.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
-
-
-                        <%#
-                        class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
-                        <span class="ms-2"> <%= st.clinical_history.user.name %> </span>
-                          <%# <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp"
-                            class="shadow-1-strong rounded-circle" alt="avatar 1"
-                            style="width: 55px; height: auto;">
-                          <span class="ms-2">Alice Mayer</span> %>
-
-                        </th>
+                      <tr class="fw-normal">
                         <td class="align-middle">
-                          <span> <%= st.name %> </span>
-                        </td>
-                        <td class="align-middle">
-                          <h6 class="mb-0"><span class="badge bg-danger"><%= st.clinical_history.date %></span></h6>
-                        </td>
-                        <td class="align-middle">
+                          <span class="ms-2"> <%= st.clinical_history.user.name %> </span>
+                            <%# <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp"
+                              class="shadow-1-strong rounded-circle" alt="avatar 1"
+                              style="width: 55px; height: auto;">
+                            <span class="ms-2">Alice Mayer</span> %>
+
+                          </td>
+                          <td class="align-middle">
+                            <span> <%= st.name %> </span>
+                          </td>
+                          <td class="align-middle">
+                            <span><%= st.clinical_history.date %></span>
+                          </td>
+
+                          <td class="align-middle">
                           <% if st.photo.present? %>
-                            <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
-                              <%= link_to cl_image_path(st.photo.key, flags: :attachment) do %>
-                                <i class="fa-solid fa-file-arrow-down h5"></i>
-                              <% end %>
-                            </div>
+                            <%= cl_image_tag st.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                           <% end %>
-                          <%# <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
-                              class="fas fa-check text-success me-3"></i></a>
-                          <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                              class="fas fa-trash-alt text-danger"></i></a>
-                        </td> %>
+                          </td>
+
+                          <td class="align-middle">
+                            <% if st.photo.present? %>
+                              <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
+                                <%= link_to cl_image_path(st.photo.key, flags: :attachment) do %>
+                                  <i class="fa-solid fa-file-arrow-down h5"></i>
+                                <% end %>
+                              </div>
+                            <% end %>
+                            <%# <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
+                                class="fas fa-check text-success me-3"></i></a>
+                            <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
+                                class="fas fa-trash-alt text-danger"></i></a>
+                          </td> %>
                       </tr>
-                      <% end %>
+                        <% end %>
 
-                      <% else %>
-            <p>No studies available yet</p>
-          <% end %>
+                        <% else %>
+                          <p>No studies available yet</p>
+                  <% end %>
+                  </tbody>
+                </table>
 
-        <%#            <tr class="fw-normal">
-                      <th>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp"
-                          class="shadow-1-strong rounded-circle" alt="avatar 1"
-                          style="width: 55px; height: auto;">
-                        <span class="ms-2">Kate Moss</span>
-                      </th>
-                      <td class="align-middle">Make payment to Bluedart</td>
-                      <td class="align-middle">
-                        <h6 class="mb-0"><span class="badge bg-success">Low priority</span></h6>
-                      </td>
-                      <td class="align-middle">
-                        <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
-                            class="fas fa-check text-success me-3"></i></a>
-                        <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                            class="fas fa-trash-alt text-danger"></i></a>
-                      </td>
-                    </tr>
-                    <tr class="fw-normal">
-                      <th>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                          class="shadow-1-strong rounded-circle" alt="avatar 1"
-                          style="width: 55px; height: auto;">
-                        <span class="ms-2">Danny McChain</span>
-                      </th>
-                      <td class="align-middle">Office rent</td>
-                      <td class="align-middle">
-                        <h6 class="mb-0"><span class="badge bg-warning">Middle priority</span></h6>
-                      </td>
-                      <td class="align-middle">
-                        <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
-                            class="fas fa-check text-success me-3"></i></a>
-                        <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                            class="fas fa-trash-alt text-danger"></i></a>
-                      </td>
-                    </tr>
-                    <tr class="fw-normal">
-                      <th>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp"
-                          class="shadow-1-strong rounded-circle" alt="avatar 1"
-                          style="width: 55px; height: auto;">
-                        <span class="ms-2">Alexa Chung</span>
-                      </th>
-                      <td class="align-middle">Office grocery shopping</td>
-                      <td class="align-middle">
-                        <h6 class="mb-0"><span class="badge bg-danger">High priority</span></h6>
-                      </td>
-                      <td class="align-middle">
-                        <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
-                            class="fas fa-check text-success me-3"></i></a>
-                        <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                            class="fas fa-trash-alt text-danger"></i></a>
-                      </td>
-                    </tr>
-                    <tr class="fw-normal">
-                      <th class="">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp"
-                          class="shadow-1-strong rounded-circle" alt="avatar 1"
-                          style="width: 55px; height: auto;">
-                        <span class="ms-2">Ben Smith</span>
-                      </th>
-                      <td class="align-middle">Ask for Lunch to Clients</td>
-                      <td class="align-middle">
-                        <h6 class="mb-0"><span class="badge bg-success">Low priority</span></h6>
-                      </td>
-                      <td class="align-middle">
-                        <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
-                            class="fas fa-check text-success me-3"></i></a>
-                        <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                            class="fas fa-trash-alt text-danger"></i></a>
-                      </td>
-                    </tr>
-                    <tr class="fw-normal">
-                      <th class="border-0">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp"
-                          class="shadow-1-strong rounded-circle" alt="avatar 1"
-                          style="width: 55px; height: auto;">
-                        <span class="ms-2">Annie Hall</span>
-                      </th>
-                      <td class="border-0 align-middle">Create weekly tasks plan</td>
-                      <td class="border-0 align-middle">
-                        <h6 class="mb-0"><span class="badge bg-warning">Medium priority</span></h6>
-                      </td>
-                      <td class="border-0 align-middle">
-                        <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
-                            class="fas fa-check text-success me-3"></i></a>
-                        <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                            class="fas fa-trash-alt text-warning"></i></a>
-                      </td>
-                    </tr> %>
-                </tbody>
-              </table>
-
+              </div>
             </div>
-            <div class="card-footer text-end p-3">
+          </div>
+            <%# <div class="card-footer text-end p-3">
               <button class="me-2 btn btn-link">Cancel</button>
               <button class="btn btn-primary">Add Task</button>
-            </div>
+            </div> %>
           </div>
 
         </div>
       </div>
     </div>
-  </section>
-
-
   </div>
 </div>
