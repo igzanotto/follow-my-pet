@@ -18,7 +18,13 @@
       <%= render "shared/navbar" %>
     <% end %>
     <%= render "shared/flashes" %>
-    <%= yield %>
+    <% unless current_page?(root_path) %>
+      <div class="margin-all">
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <%= turbo_frame_tag "remote_modal" %>
     <%= render "shared/footer" %>
   </body>
