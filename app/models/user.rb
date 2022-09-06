@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :clinical_histories, dependent: :destroy
   has_many :pets, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  # has_many :messages, dependent: :destroy
   # has_many :vaccinations, through: :clinical_histories, dependent: :destroy
   # has_many :studies, through: :clinical_histories, dependent: :destroy
 
