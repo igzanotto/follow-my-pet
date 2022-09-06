@@ -75,3 +75,17 @@
   margin-left: 0;
   margin-right: auto;
 }
+
+// Form Edit appointments
+.modal-title {
+  margin-left: 15px;
+}
+.btn-update {
+  font-weight: bold;
+  font-family: "Nunito", "Helvetica", "sans-serif";
+  border: none;
+  color: white;
+}
+.btn-update:hover {
+  color: $gray-fmp;
+}

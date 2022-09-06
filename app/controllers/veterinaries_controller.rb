@@ -7,10 +7,11 @@ class VeterinariesController < ApplicationController
         @vet_filtered = @veterinaries.search_by_location(params[:query])
           # GEOCODING
           @markers = @vet_filtered.geocoded.map do |vet|
-          {
-            lat: vet.latitude,
-            lng: vet.longitude
-          }
+            {
+              lat: vet.latitude,
+              lng: vet.longitude,
+              image_url: helpers.asset_url("logo-caminando.png")
+            }
           end
       else
         "No results found" # Si no encuentra resultados
@@ -22,7 +23,8 @@ class VeterinariesController < ApplicationController
         @markers = @vet_filtered.geocoded.map do |vet|
           {
             lat: vet.latitude,
-            lng: vet.longitude
+            lng: vet.longitude,
+            image_url: helpers.asset_url("paw-solid.png")
           }
         end
     end
