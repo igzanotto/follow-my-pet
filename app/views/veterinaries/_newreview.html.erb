@@ -1,0 +1,9 @@
+<%= simple_form_for @review do |f| %>
+  <%= hidden_field_tag(:user_id, params[:id]) %>
+  <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
+  <p style="font-weight: bolder;">Give us feedback</p>
+  <%= f.input :content, label: false %>
+  <%= f.input :rating, collection: (1..5).to_a, label: false, input_html: {data: { controller: "star-rating", action: "click->form-submit#submit"} }  %>
+  <span class="highlight-container" style= "padding-right: 5px;"><span class="highlight btn-update" style= "padding: 1px;">
+  <%= f.button :submit, "Send your review", style: "color: white;"  %></span></span>
+<% end %>
