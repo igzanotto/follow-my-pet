@@ -1,25 +1,38 @@
 <div class="container container-lists">
-  <div class="container-show-header">
+  <!-- <div class="container-show-header">
     <div>
       <%= link_to "Create a new appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %>
     </div>
-  </div>
+  </div> -->
 
   <div class="container d-grid gap-3">
-    <h2><%= @pet.name %>, these are your next appointments </h2>
+    <h3><span class="highlight-container"><span class="highlight"><strong><%= @pet.name %></strong></span></span> has these appointments taken: </h3>
+    <ul class="list-group">
+      <li class="list-group-item row no-gutter d-flex">
+        <div class="col-12 col-sm-6 col-md-8 align-items-center">
+          <%= link_to pet_veterinaries_path(@pet), class:"text-success" do %>
+            <i class="fa-solid fa-calendar-plus"></i>
+            <strong> Create a new appointment</strong>
+          <% end %>
+        </div>
+      </li>
+    </ul>
     <% @next_appointments.each do |appointment| %>
       <ul class="list-group">
         <li class="list-group-item row no-gutter d-flex">
-          <div class="col-12 col-sm-6 col-md-8 align-items-start">
+          <div class="col-6 col-md-4 align-items-center text-start">
             <%= appointment.start_time.strftime('%d %B %Y') %>
-            <%= appointment.start_time.strftime('%I:%M %p') %>  |
-              <% if current_user.type_of_user == "Pet Owner" %>
-                <%= link_to pet_veterinary_path(@pet, appointment.user) do %>
-                  <strong><%= appointment.user.name %></strong>
-                <% end %>
-              <% end %>
+            <%= appointment.start_time.strftime('%I:%M %p') %> |
           </div>
-          <div class="col-6 col-md-4 text-end">
+          <div class="col-6 col-md-4 align-items-center text-start">
+            <% if current_user.type_of_user == "Pet Owner" %>
+              <%= link_to pet_veterinary_path(@pet, appointment.user), class:"text-info" do %>
+                <i class="fa-solid fa-house-chimney-medical"></i>
+                <strong><%= appointment.user.name %></strong>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-6 col-md-4 align-items-center text-end">
             <%= link_to appointment_path(appointment), class:"ms-3 text-success", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
               <i class="fa-solid fa-trash"></i>
             <% end %>

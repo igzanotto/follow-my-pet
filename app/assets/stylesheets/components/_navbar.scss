@@ -2,15 +2,32 @@
   justify-content: space-between;
   background-color: white;
   transition: 0.5s background-color ease;
+  color: white;
 }
-.navbar-lewagon-home {
+.navbar-home {
   justify-content: space-between;
   background: white;
+  color: #DED8D4;
   background-color: transparent;
   transition: 0.5s background-color ease;
 }
+.navbar-home a {
+  color: #DED8D4;
+}
+.navbar-lewagon a {
+  color: $gray-fmp;
+}
 .navbar-lewagon-white {
   background-color: white;
+}
+.navbar-lewagon-white a {
+  color: $gray-fmp;
+}
+.navbar-lewagon .navbar-brand span {
+  color: $gray-fmp;
+}
+.navbar-lewagon-white .navbar-brand span {
+  color: $gray-fmp;
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -18,15 +35,24 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+.navbar-home .navbar-collapse {
+  flex-grow: 0;
+}
+.navbar-home .navbar-brand img {
+  width: 40px;
+}
 .dropdown-navbar {
   padding: 0;
+  color: $gray-fmp;
+}
+.dropdown-navbar a {
+  color: $gray-fmp;
+}
+.dropdown-navbar li {
+  color: $gray-fmp;
 }
 .dropdown-navbar ul {
   list-style-type: none;
-  padding: 0px;
-}
-.navbar a {
-  color: gray;
 }
 .welcome-user {
   padding: 5px;
@@ -39,10 +65,6 @@
 .navbar-brand span {
   font-family: 'Courgette', cursive;
   font-size: 27px;
-  color: #DED8D4;
   margin-left: 12px;
   margin-top: 5px;
-}
-.nav-link a {
-  color: blue;
 }
