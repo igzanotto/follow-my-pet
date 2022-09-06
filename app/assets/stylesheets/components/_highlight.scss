@@ -4,30 +4,16 @@
   padding: 44px;
   color: #333;
 }
-
-.container-hightlight h1 {
-  font-size: 50px;
-}
-
-.container-hightlight p {
-  font-size: 18px;
-}
-.container-hightlight p small {
-  font-size: 80%;
-  color: #666;
-}
-
 .highlight-container, .highlight {
   position: relative;
 }
-
 .highlight-container {
   display: inline-block;
 }
 .highlight-container:before {
   content: " ";
   display: block;
-  height: 100%;
+  height: 90%;
   width: 100%;
   margin-left: -3px;
   margin-right: -3px;
@@ -38,4 +24,7 @@
   left: -1px;
   border-radius: 20% 25% 20% 24%;
   padding: 10px 3px 3px 10px;
+}
+.container-hightlight h1 {
+  font-size: 50px;
 }
