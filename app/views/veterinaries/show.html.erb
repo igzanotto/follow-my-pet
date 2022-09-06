@@ -20,7 +20,7 @@
           <div class="card mb-4">
             <div class="card-body text-center">
               <% if @veterinary.photo.present? %>
-                <%= cl_image_tag @veterinary.photo.key  %>
+                <%= cl_image_tag @veterinary.photo.key, style: "width: 100%; height: 100%;"  %>
               <% else %>
                 <img src="https://st3.depositphotos.com/1920937/15063/v/600/depositphotos_150633440-stock-illustration-veterinary-logo-with-text-space.jpg" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
@@ -36,10 +36,9 @@
               <div class="d-flex justify-content-center mb-2">
                 <%# <button type="button" class="btn btn-primary">Follow</button> %>
 
-                  <%= link_to chatroom_path(Chatroom.first) do %>
-                    <button type="button" class="btn btn-outline-primary ms-1"></button>
-                  <% end %>
-
+                <button type="button" class="btn btn-outline-primary ms-1">
+                  <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: #0D6EFD" %>
+                </button>
               </div>
             </div>
           </div>

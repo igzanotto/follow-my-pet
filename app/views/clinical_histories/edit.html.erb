@@ -1,16 +1,37 @@
-<div class="container">
+<div class="container mb-3">
 
-  <div class="mt-4 mb-4">
-    <h1>Edit the Clinical History</h1>
-  </div>
+  <section class="mb-2" style="background-color: #F4F4F4;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+          <div class="card shadow-lg" style="border-radius: 0;">
+            <div class="card-body p-5 text-center">
 
-  <div class="form p-4 bg-white rounded-4">
-      <%= simple_form_for([@pet, @clinical_history]) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :date, as: :date %>
-        <%= f.input :type_of_history, as: :radio_buttons, collection: ["Consult", "Vaccination", "Study"] %>
-        <%= f.submit class: "btn btn-primary" %>
-      <% end %>
-  </div>
+              <h2 class= "mb-4">Edit Clinical History Record</h2>
+
+                <%= simple_form_for([@pet, @clinical_history]) do |f| %>
+
+                  <div class="form-outline mb-4">
+                    <%= f.input :name, label: "Title" %>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <%= f.input :description %>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <%= f.input :date, as: :date %>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <%= f.input :type_of_history, as: :radio_buttons, collection: ["Consult", "Vaccination", "Study"] %>
+                  </div>
+                  <div class="form-outline mt-4">
+                    <%= f.submit class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

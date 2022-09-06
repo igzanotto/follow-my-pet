@@ -1,15 +1,32 @@
-<div class="container">
+<div class="container mb-3">
 
-<div class="mt-4 mb-4">
-  <h1>Edit a Study</h1>
-</div>
+  <section class="mb-2" style="background-color: #F4F4F4;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+          <div class="card shadow-lg" style="border-radius: 0;">
+            <div class="card-body p-5 text-center">
 
-<div class="form p-4 bg-white rounded-4">
-  <%= simple_form_for([@pet, @study])  do |f|%>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
-</div>
+              <h2 class= "mb-4">Edit Study</h2>
 
+                <%= simple_form_for([@pet, @study])  do |f|%>
+
+                  <div class="form-outline mb-4">
+                    <%= f.input :name, label: "Title" %>
+                  </div>
+
+                  <div class="form-outline mb-5">
+                    <%= f.input :photo, as: :file %>
+                  </div>
+                  <div class="form-outline mt-4">
+                    <%= f.button :submit, class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
