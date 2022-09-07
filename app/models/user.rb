@@ -37,6 +37,8 @@ class User < ApplicationRecord
     vet.validates :phone, presence: true
     vet.validates :location, presence: true
     vet.validates :doctors, presence: true
+    vet.validates :photo, presence: true
+
   end
 
   def is_vet?
