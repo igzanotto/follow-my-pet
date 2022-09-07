@@ -29,4 +29,16 @@ class User < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  validates :type_of_user, presence: true
+
+  validate :method
+
+  def method
+    if self.type_of_user == "Veterinary"
+      unless self.phone.present?
+        self.errors.add :phone, "need a phone number Lucas"
+      end
+    end
+  end
+
 end
