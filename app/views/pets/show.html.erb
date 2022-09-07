@@ -36,17 +36,17 @@
             </div>
         <% end %>
 
-  <% if current_user.type_of_user == "Veterinary" %>
-    <div class="col-3 mb-3">
-      <%= link_to pet_appointments_path(@pet) do %>
-        <span class="fa-stack fa-4x">
-          <i class="fas fa-square fa-stack-2x text-success"></i>
-          <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="my-3 "><%= link_to "Book an Appointment", pet_veterinary_path(@pet, current_user), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
-      <% end %>
-    </div>
-  <% end %>
+        <% if current_user.type_of_user == "Veterinary" %>
+            <div class="col-3 mb-3">
+              <%= link_to pet_veterinary_path(@pet, current_user) do %>
+                      <span class="fa-stack fa-4x">
+                          <i class="fas fa-square fa-stack-2x text-success"></i>
+                          <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
+                      </span>
+                      <h4 class="my-3 "><%= link_to "Book an Appointment", pet_veterinary_path(@pet, current_user), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
+                <% end %>
+            </div>
+        <% end %>
 
   <div class="col-3 mb-3">
     <%= link_to pet_vaccinations_path(@pet) do %>

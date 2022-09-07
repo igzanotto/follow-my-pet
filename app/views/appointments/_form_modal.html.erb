@@ -1,6 +1,6 @@
 <%= turbo_frame_tag :remote_modal, target: :_top do %>
   <div class="modal fade" data-controller="modal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style= "max-width: 80%;">
       <div class="modal-content p-3">
         <div class="modal-header">
           <%= image_tag "logo-caminando.png" %>
@@ -9,11 +9,12 @@
         </div>
         <div class="modal-body mt-3">
           <div class="flat-form form-container">
-            <h5>Select a new date:</h5>
-            <div class="mt-3">
+            <h5>Select a new date and time:</h5>
+            <div class="mt-3 select-date">
               <%= simple_form_for @appointment do |r| %>
-              <%# <%= r.input :start_time, :as => :string, localize(r.object.start_time, format: "%-m/%d/%Y"), html5: true %>
-              <%= r.datetime_select :start_time, :order => [:month, :day], html5: true %>
+              <%#= r.input :start_time, as: :datetime, html5: true %>
+              <%= r.input :start_time, as: :datetime, default: Time.parse('8:00'), label:false %>
+              <%#= r.input :start_time, :as => :string, :input_html => { :value => localize(r.object.start_time) } %>
               <br>
               <span class="highlight-container p-1"><span class="highlight"><%= r.button :submit, class: "btn-update" %></span></span>
               <% end %>
@@ -23,5 +24,4 @@
       </div>
     </div>
   </div>
-
 <% end %>

@@ -33,18 +33,6 @@ Review.destroy_all
 puts "Deleting users"
 User.destroy_all
 
-puts "Creating users-veterinaries"
-vet1 = User.create!(email: "vet1@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Caballito", longitude: -58.45, latitude: -34.61667, speciality: "Clinic, Bath, Radiology, Lab")
-vet2 = User.create!(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Recoleta", longitude: 58.2326, latitude: 34.3526, speciality: "Bath")
-vet3 = User.create!(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Mendoza", longitude: -68.8472, latitude: -32.8903, speciality: "Clinic, Surgery, Radiology, Lab")
-vet4 = User.create!(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Santa Fe", longitude: 60.411680, latitude: 31.020240, speciality: "Clinic, Radiology, Nutrition, lab")
-
-vet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/borisclinic.png')), filename: 'borisclinic.png')
-vet2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sebastien.png')), filename: 'sebastien.png')
-vet3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/petlover.png')), filename: 'petlover.png')
-vet4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/scooby.png')), filename: 'scooby.png')
-
-puts "Done"
 
 puts "Creating users-pet-owners"
 sofi = URI.open("https://ca.slack-edge.com/T02NE0241-U03NNS0RVHV-f5e916a99167-512")
@@ -52,10 +40,10 @@ caro = URI.open("https://ca.slack-edge.com/T02NE0241-U03NS6EMXFY-e01b612d5e07-51
 clari = URI.open("https://ca.slack-edge.com/T02NE0241-U03PQPPGXUG-abbe6fa51dcc-512")
 lu = URI.open("https://ca.slack-edge.com/T02NE0241-U03PBS9AV17-a13d8e7e6e83-512")
 
-owner1 = User.create!(email: "sofi@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Sofi Larrea")
-owner2 = User.create!(email: "caro@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Caro Arlia")
-owner3 = User.create!(email: "clari@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clari Ursini")
-owner4 = User.create!(email: "lucas@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Lucas Cappa")
+owner1 = User.create!(email: "sofi@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Sofi Larrea", phone: "+54 9 2615 98-3680")
+owner2 = User.create!(email: "caro@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Caro Arlia", phone: "+34 691 34 58 23")
+owner3 = User.create!(email: "clari@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clari Ursini", phone: "+54 9 1149608212")
+owner4 = User.create!(email: "lucas@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Lucas Cappa", phone: "+54 9 11 6371-5073")
 
 owner1.photo.attach(io: sofi, filename: "Sofi.png", content_type: "image/png")
 owner2.photo.attach(io: caro, filename: "Caro.png", content_type: "image/png")
