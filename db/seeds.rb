@@ -52,10 +52,10 @@ caro = URI.open("https://ca.slack-edge.com/T02NE0241-U03NS6EMXFY-e01b612d5e07-51
 clari = URI.open("https://ca.slack-edge.com/T02NE0241-U03PQPPGXUG-abbe6fa51dcc-512")
 lu = URI.open("https://ca.slack-edge.com/T02NE0241-U03PBS9AV17-a13d8e7e6e83-512")
 
-owner1 = User.create!(email: "sofi@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Sofi Larrea")
-owner2 = User.create!(email: "caro@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Caro Arlia")
-owner3 = User.create!(email: "clari@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clari Ursini")
-owner4 = User.create!(email: "lucas@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Lucas Cappa")
+owner1 = User.create!(email: "sofi@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Sofi Larrea", phone: "+54 9 2615 98-3680")
+owner2 = User.create!(email: "caro@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Caro Arlia", phone: "+34 691 34 58 23")
+owner3 = User.create!(email: "clari@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clari Ursini", phone: "+54 9 1149608212")
+owner4 = User.create!(email: "lucas@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Lucas Cappa", phone: "+54 9 11 6371-5073")
 
 owner1.photo.attach(io: sofi, filename: "Sofi.png", content_type: "image/png")
 owner2.photo.attach(io: caro, filename: "Caro.png", content_type: "image/png")
@@ -71,15 +71,15 @@ species4 = SpeciesType.create!(name: "Hamster")
 puts "Done"
 
 puts "Creating pets"
-pet1 = Pet.create!(user: owner1, name: "Aurelia", species_type: species1, birthday: Date.tomorrow)
-pet2 = Pet.create!(user: owner4, name: "Ramon", species_type: species2, birthday: Date.today)
-pet3 = Pet.create!(user: owner3, name: "Lisa", species_type: species1, birthday: Date.tomorrow)
-pet4 = Pet.create!(user: owner1, name: "Homero", species_type: species3, birthday: Date.today)
-pet5 = Pet.create!(user: owner2, name: "Pepe", species_type: species2, birthday: Date.tomorrow)
-pet6 = Pet.create!(user: owner3, name: "Lolo", species_type: species3, birthday: Date.today)
-pet7 = Pet.create!(user: owner1, name: "Matilda", species_type: species2, birthday: Date.tomorrow)
-pet8 = Pet.create!(user: owner4, name: "Kiki", species_type: species4, birthday: Date.today)
-pet9 = Pet.create!(user: owner3, name: "Nelly", species_type: species1, birthday: Date.tomorrow)
+pet1 = Pet.new(user: owner1, name: "Aurelia", species_type: species1, birthday: Date.tomorrow)
+pet2 = Pet.new(user: owner4, name: "Ramon", species_type: species2, birthday: Date.today)
+pet3 = Pet.new(user: owner3, name: "Lisa", species_type: species1, birthday: Date.tomorrow)
+pet4 = Pet.new(user: owner1, name: "Homero", species_type: species3, birthday: Date.today)
+pet5 = Pet.new(user: owner2, name: "Pepe", species_type: species2, birthday: Date.tomorrow)
+pet6 = Pet.new(user: owner3, name: "Lolo", species_type: species3, birthday: Date.today)
+pet7 = Pet.new(user: owner1, name: "Matilda", species_type: species2, birthday: Date.tomorrow)
+pet8 = Pet.new(user: owner4, name: "Kiki", species_type: species4, birthday: Date.today)
+pet9 = Pet.new(user: owner3, name: "Nelly", species_type: species1, birthday: Date.tomorrow)
 
 photo1 = URI.open("https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")
 photo2 = URI.open("https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80")
@@ -100,6 +100,16 @@ pet6.photo.attach(io: photo6, filename: "Lolo.png", content_type: "image/png")
 pet7.photo.attach(io: photo7, filename: "Matilda.png", content_type: "image/png")
 pet8.photo.attach(io: photo8, filename: "Kiki.png", content_type: "image/png")
 pet9.photo.attach(io: photo9, filename: "Nelly.png", content_type: "image/png")
+
+pet1.save!
+pet2.save!
+pet3.save!
+pet4.save!
+pet5.save!
+pet6.save!
+pet7.save!
+pet8.save!
+pet9.save!
 
 puts "Done"
 
@@ -204,25 +214,25 @@ vaccine9 = Vaccine.create!(name: "Lyme disease")
 puts "Done"
 
 puts "Creating vaccinations"
-vaccination1 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet1, expiration_date: Date.new(2023,9,25))
-vaccination2 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet2, expiration_date: Date.new(2023,8,25))
-vaccination3 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet3, expiration_date: Date.new(2024,9,25))
-vaccination4 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet4, expiration_date: Date.new(2023,7,22))
-vaccination5 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet5, expiration_date: Date.new(2023,6,20))
-vaccination6 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet6, expiration_date: Date.new(2024,9,11))
-vaccination7 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet7, expiration_date: Date.new(2025,9,10))
-vaccination8 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet8, expiration_date: Date.new(2023,5,22))
-vaccination9 = Vaccination.create!(vaccine: vaccine1, clinical_history: ch1pet9, expiration_date: Date.new(2023,9,23))
+vaccination1 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet1, expiration_date: Date.new(2023,9,25))
+vaccination2 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet2, expiration_date: Date.new(2023,8,25))
+vaccination3 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet3, expiration_date: Date.new(2024,9,25))
+vaccination4 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet4, expiration_date: Date.new(2023,7,22))
+vaccination5 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet5, expiration_date: Date.new(2023,6,20))
+vaccination6 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet6, expiration_date: Date.new(2024,9,11))
+vaccination7 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet7, expiration_date: Date.new(2025,9,10))
+vaccination8 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet8, expiration_date: Date.new(2023,5,22))
+vaccination9 = Vaccination.new(vaccine: vaccine1, clinical_history: ch1pet9, expiration_date: Date.new(2023,9,23))
 
-vaccination10 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet1, expiration_date: Date.new(2023,9,25))
-vaccination11 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet2, expiration_date: Date.new(2023,8,25))
-vaccination12 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet3, expiration_date: Date.new(2024,9,25))
-vaccination13 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet4, expiration_date: Date.new(2023,7,22))
-vaccination14 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet5, expiration_date: Date.new(2023,6,20))
-vaccination15 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet6, expiration_date: Date.new(2024,9,11))
-vaccination16 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet7, expiration_date: Date.new(2025,9,10))
-vaccination17 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet8, expiration_date: Date.new(2023,5,22))
-vaccination18 = Vaccination.create!(vaccine: vaccine6, clinical_history: ch5pet9, expiration_date: Date.new(2023,9,23))
+vaccination10 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet1, expiration_date: Date.new(2023,9,25))
+vaccination11 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet2, expiration_date: Date.new(2023,8,25))
+vaccination12 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet3, expiration_date: Date.new(2024,9,25))
+vaccination13 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet4, expiration_date: Date.new(2023,7,22))
+vaccination14 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet5, expiration_date: Date.new(2023,6,20))
+vaccination15 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet6, expiration_date: Date.new(2024,9,11))
+vaccination16 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet7, expiration_date: Date.new(2025,9,10))
+vaccination17 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet8, expiration_date: Date.new(2023,5,22))
+vaccination18 = Vaccination.new(vaccine: vaccine6, clinical_history: ch5pet9, expiration_date: Date.new(2023,9,23))
 
 bordetella = URI.open("http://www.dogobedience.co.nz/wp-content/uploads/2018/07/Bordetella.png")
 parvovirus= URI.open("https://s28489.pcdn.co/wp-content/uploads/2019/02/p1b4h6r5cjefs19eq12ppqbpibo9.jpg")
@@ -248,33 +258,47 @@ vaccination16.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/image
 vaccination17.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rabies.png')), filename: 'rabies.png')
 vaccination18.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rabies.png')), filename: 'rabies.png')
 
+vaccination1.save!
+vaccination2.save!
+vaccination3.save!
+vaccination4.save!
+vaccination5.save!
+vaccination6.save!
+vaccination7.save!
+vaccination8.save!
+vaccination9.save!
+vaccination10.save!
+vaccination11.save!
+vaccination12.save!
+vaccination13.save!
+vaccination14.save!
+vaccination15.save!
+vaccination16.save!
+vaccination17.save!
+vaccination18.save!
 puts "Done"
 
 puts "Creating studies"
-
-study1 = Study.create!(clinical_history: ch2pet1, name: "Radiology")
-study2 = Study.create!(clinical_history: ch2pet2, name: "Radiology")
-study3 = Study.create!(clinical_history: ch2pet3, name: "Radiology")
-study4 = Study.create!(clinical_history: ch2pet4, name: "Radiology")
-study5 = Study.create!(clinical_history: ch2pet5, name: "Radiology")
-study6 = Study.create!(clinical_history: ch2pet6, name: "Radiology")
-study7 = Study.create!(clinical_history: ch2pet7, name: "Radiology")
-study8 = Study.create!(clinical_history: ch2pet8, name: "Radiology")
-study9 = Study.create!(clinical_history: ch2pet9, name: "Radiology")
-
-study10 = Study.create!(clinical_history: ch3pet1, name: "Lab results")
-study11 = Study.create!(clinical_history: ch3pet2, name: "Lab results")
-study12 = Study.create!(clinical_history: ch3pet3, name: "Lab results")
-study13 = Study.create!(clinical_history: ch3pet4, name: "Lab results")
-study14 = Study.create!(clinical_history: ch3pet5, name: "Lab results")
-study15 = Study.create!(clinical_history: ch3pet6, name: "Lab results")
-study16 = Study.create!(clinical_history: ch3pet7, name: "Lab results")
-study17 = Study.create!(clinical_history: ch3pet8, name: "Lab results")
-study18 = Study.create!(clinical_history: ch3pet9, name: "Lab results")
-
+study1 = Study.new(clinical_history: ch2pet1, name: "Radiology")
+study2 = Study.new(clinical_history: ch2pet2, name: "Radiology")
+study3 = Study.new(clinical_history: ch2pet3, name: "Radiology")
+study4 = Study.new(clinical_history: ch2pet4, name: "Radiology")
+study5 = Study.new(clinical_history: ch2pet5, name: "Radiology")
+study6 = Study.new(clinical_history: ch2pet6, name: "Radiology")
+study7 = Study.new(clinical_history: ch2pet7, name: "Radiology")
+study8 = Study.new(clinical_history: ch2pet8, name: "Radiology")
+study9 = Study.new(clinical_history: ch2pet9, name: "Radiology")
+study10 = Study.new(clinical_history: ch3pet1, name: "Lab results")
+study11 = Study.new(clinical_history: ch3pet2, name: "Lab results")
+study12 = Study.new(clinical_history: ch3pet3, name: "Lab results")
+study13 = Study.new(clinical_history: ch3pet4, name: "Lab results")
+study14 = Study.new(clinical_history: ch3pet5, name: "Lab results")
+study15 = Study.new(clinical_history: ch3pet6, name: "Lab results")
+study16 = Study.new(clinical_history: ch3pet7, name: "Lab results")
+study17 = Study.new(clinical_history: ch3pet8, name: "Lab results")
+study18 = Study.new(clinical_history: ch3pet9, name: "Lab results")
 radiology = URI.open("https://c8.alamy.com/zoomses/9/df223ade4a414db5ab83c4fc6c7034d3/2bx8hbx.jpg")
 lab = URI.open("https://thumbs.dreamstime.com/z/resultado-del-an%C3%A1lisis-de-sangre-12613767.jpg")
-
 study1.photo.attach(io: radiology, filename: "2bx8hbx.jpg", content_type: "image/jpg")
 study2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
 study3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
@@ -284,7 +308,6 @@ study6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jp
 study7.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
 study8.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
 study9.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
-
 study10.photo.attach(io: lab, filename: "resultado-del-análisis-de-sangre-12613767.jpg", content_type: "image/jpg")
 study11.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
 study12.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
@@ -294,6 +317,24 @@ study15.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.
 study16.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
 study17.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
 study18.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
+study1.save!
+study2.save!
+study3.save!
+study4.save!
+study5.save!
+study6.save!
+study7.save!
+study8.save!
+study9.save!
+study10.save!
+study11.save!
+study1.save!
+study13.save!
+study14.save!
+study15.save!
+study16.save!
+study17.save!
+study18.save!
 
 puts "Done"
 
@@ -319,6 +360,5 @@ review1 = Review.create!(content: "Could be better", rating: 3, user: vet4)
 review1 = Review.create!(content: "All right", rating: 3, user: vet4)
 
 puts "Done"
-
 
 chatroom = Chatroom.create!(name: "General")
