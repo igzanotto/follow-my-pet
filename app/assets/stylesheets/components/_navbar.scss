@@ -12,25 +12,32 @@
   transition: 0.5s background-color ease;
 }
 .navbar-home a {
-  color: #DED8D4;
+  color: #7f7d82;
 }
+
+.navbar-home a:hover {
+  color: $green-fmp;
+}
+
+.navbar-home a span:hover {
+  color: $green-fmp;
+}
+
 .navbar-lewagon a {
   color: $gray-fmp;
 }
 .navbar-lewagon-white {
   background-color: white;
  }
-.navbar-lewagon-white a{
-  color: black;
-}
-.navbar-lewagon-white a {
-  color: $gray-fmp;
+
+ .navbar-lewagon-white a {
+  color: #7f7d82;
 }
 .navbar-lewagon .navbar-brand span {
-  color: $gray-fmp;
+  color: #7f7d82;
 }
 .navbar-lewagon-white .navbar-brand span {
-  color: $gray-fmp;
+  color: #7f7d82;
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -99,4 +106,8 @@
   font-size: 20px;
   margin-right: 5px;
   margin-left: 8px;
+}
+
+.navbar-nav {
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
 }

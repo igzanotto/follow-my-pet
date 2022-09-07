@@ -19,7 +19,11 @@ class AppointmentsController < ApplicationController
     @appointment.user = @user
 
     if @appointment.save
-      redirect_to pet_appointments_path(@pet)
+      if current_user.type_of_user == "Veterinary"
+        redirect_to my_appointments_path
+      else
+        redirect_to pet_appointments_path(@pet)
+      end
     else
       flash[:alert] = "Something went wrong."
       # CALENDAR

@@ -89,3 +89,24 @@
 .btn-update:hover {
   color: $gray-fmp;
 }
+
+// MODAL
+@media (max-width: 768px) {
+
+  .select-date .d-flex{
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .select-date .d-flex select{
+    margin-bottom: 3px;
+  }
+
+  // #appointment_start_time_5i {
+  //   display: none;
+  // }
+
+  // #appointment_start_time_4i #text {
+  //   display: none;
+  // }
+}
