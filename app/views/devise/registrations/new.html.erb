@@ -1,62 +1,64 @@
-<section style="background-color: #F4F4F4">
-  <div class="container" style="margin-top: 30px;">
-    <div class="row d-flex justify-content-center align-items-center" id="login">
+<div class="container ml-auto">
+  <section class="pt-0" style="background-color: #F4F4F4; padding-bottom: 80px;">
+    <div class="container" style="margin-top: 30px;">
+      <div class="row d-flex justify-content-center align-items-center" id="login">
 
-      <div class="col-md-5 col-lg-5 col-xl-6 justify-self-center" id="vet-container-singup">
-          <div class="d-flex" style= "margin: 0 auto;">
-            <img src="<%= image_path "doctorveterinary.png" %>" class="img-fluid" alt="Phone image" id="vet" style="width: 50%; height: 50%; margin: 0 auto;">
+        <div class="col-md-5 col-lg-5 col-xl-6 justify-self-center" id="vet-container-singup">
+            <div class="d-flex" style= "margin: 0 auto;">
+              <img src="<%= image_path "doctorveterinary.png" %>" class="img-fluid" alt="Phone image" id="vet" style="width: 50%; height: 50%; margin: 0 auto;">
+            </div>
+            <%# style="width: 50%; height: 50%; margin: 0 auto;" %>
+            <div class="px-3 py-4 p-md-5 mx-md-4">
+              <h2 class="mb-4 text-center" style="font-family: 'Sriracha', cursive; font-size: 45px; color: #4297A8;">Follow my Pet</h2>
+              <h4 class="mb-4 text-center">For all your pets needs</h4>
+              <p class="small mb-0 text-center">Help a vet help a pet. All about your pet at hand. You can easily access your pet Clinical Histories, Vacinations and Studies. Quickly book appointments for your pet and on your local vet and check your current appointment so you dont miss anything! </p>
           </div>
-          <%# style="width: 50%; height: 50%; margin: 0 auto;" %>
-          <div class="px-3 py-4 p-md-5 mx-md-4">
-            <h2 class="mb-4 text-center" style="font-family: 'Courgette', cursive; font-size: 45px; color: #64646C;">Follow my Pet</h4>
-            <h4 class="mb-4 text-center">For all your pets needs</h4>
-            <p class="small mb-0 text-center">Help a vet help a pet. All about your pet at hand. You can easily access your pet Clinical Histories, Vacinations and Studies. Quickly book appointments for your pet and on your local vet and check your current appointment so you dont miss anything! </p>
         </div>
-      </div>
 
-      <div class="col-md-7 col-lg-7 col-xl-5 offset-xl-1" style="margin: 0 auto;" id="singup-form">
-        <div class="card shadow-lg" style="border-radius: 0;">
-          <div class="card-body p-5 text-center">
+        <div class="col-md-7 col-lg-7 col-xl-5 offset-xl-1" style="margin: 0 auto;" id="singup-form">
+          <div class="card shadow-lg" style="border-radius: 0;">
+            <div class="card-body p-5 text-center">
 
-            <h3 class="mb-5">Sign up</h3>
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
-              <%= f.error_notification %>
+              <h3 class="mb-5">Sign up</h3>
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+                <%= f.error_notification %>
 
-              <div class="form-outline mb-4">
-                <%= f.input :name, hint: "Write your name", required: true, id: "typeEmailX-2", class: "form-control form-control-lg", label: false, placeholder: "Name" %>
-              </div>
+                <div class="form-outline mb-4">
+                  <%= f.input :name, hint: "Write your name", required: true, id: "typeEmailX-2", class: "form-control form-control-lg", label: false, placeholder: "Name" %>
+                </div>
 
-              <div class="form-outline mb-4">
-                <%= f.input :email, required: true, autofocus: true, id: "typeEmailX-2", class: "form-control form-control-lg", label: false, placeholder: "Email" %>
-              </div>
+                <div class="form-outline mb-4">
+                  <%= f.input :email, required: true, autofocus: true, id: "typeEmailX-2", class: "form-control form-control-lg", label: false, placeholder: "Email" %>
+                </div>
 
-              <div class="form-outline mb-4">
-                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: false, placeholder: "Password" %>
-              </div>
+                <div class="form-outline mb-4">
+                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: false, placeholder: "Password" %>
+                </div>
 
-              <div class="form-outline mb-4">
-                <%= f.input :password_confirmation, required: true, label: false, placeholder: "Password" %>
-              </div>
+                <div class="form-outline mb-4">
+                  <%= f.input :password_confirmation, required: true, label: false, placeholder: "Password" %>
+                </div>
 
-              <div class="form-outline mb-2 d-flex">
-                  <%= f.input :type_of_user, as: :radio_buttons, collection: ["Pet Owner", "Veterinary"], required: true, legend_tag: false %>
-              </div>
+                <div class="form-outline mb-2 d-flex">
+                    <%= f.input :type_of_user, as: :radio_buttons, collection: ["Pet Owner", "Veterinary"], required: true, legend_tag: false %>
+                </div>
 
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-start mb-2 p-0">
-                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-              </div>
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-start mb-2 p-0">
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                </div>
 
-              <%= f.button :submit, "SIGN UP", class: "h6 shadow btn btn-primary btn-lg btn-block", style: "width: 100%; font-size: 15px;" %>
+                <%= f.button :submit, "SIGN UP", class: "h6 shadow btn btn-primary btn-lg btn-block", style: "width: 100%; font-size: 15px; color: white;" %>
 
-              <hr class="my-4">
+                <hr class="my-4">
 
-              <%= render "devise/shared/links" %>
+                <%= render "devise/shared/links" %>
 
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
