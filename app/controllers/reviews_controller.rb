@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
       redirect_to pet_veterinary_path(@pet, @user)
     else
       flash[:alert] = "Something went wrong."
-      render :new
+      # render :new, :unprocessable_entity
     end
   end
 

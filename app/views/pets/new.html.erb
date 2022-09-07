@@ -1,10 +1,10 @@
 <div class="container">
 
-  <section class="mb-5" style="background-color: #F4F4F4;">
-    <div class="container py-5 h-100">
+  <section class="p-5 mb-5" style="background-color: #F4F4F4;">
+    <div class="container">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-10 col-lg-8 col-xl-8">
-          <div class="card shadow-lg" style="border-radius: 0;">
+          <div class="card shadow-lg" style="border-radius: 0;" data-aos="flip-left">
             <div class="card-body p-5 text-center">
 
               <h2 class= "mb-4">Create a new pet </h2>
@@ -25,7 +25,7 @@
                     <%= f.input :photo, as: :file %>
                   </div>
                   <div class="form-outline mt-4">
-                    <%= f.button :submit, class: "btn btn-primary" %>
+                      <span class="highlight-container"><span class="highlight"><%= f.button :submit, class: "btn-update p-2" %></span></span>
                   </div>
                 <% end %>
             </div>

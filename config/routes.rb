@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-
-
   resources :pets do
     resources :clinical_histories, except: [:show, :destroy]
   end
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
 
   get 'my_appointments', to: 'appointments#my_appointments', as: 'my_appointments'
   get 'my_patients', to: 'appointments#my_patients', as: 'my_patients'
+  get 'vet_profile', to: 'veterinaries#vet_profile', as: 'vet_profile'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

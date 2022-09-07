@@ -1,24 +1,34 @@
 <div class="container container-lists">
-  <div class="container-show-header">
+  <!-- <div class="container-show-header">
     <div>
       <%= link_to "Create a new appointment", my_patients_path, class: "btn btn-primary" %>
     </div>
-  </div>
+  </div> -->
 
   <div class="container d-grid gap-3">
-    <h2><%= current_user.name %>, these are your next appointments </h2>
+    <h4><span class="highlight-container p-2"><span class="highlight" style= "color:white;"><%= current_user.name %></span></span>, these are your next appointments </h4>
+    <ul class="list-group">
+      <li class="list-group-item row no-gutter d-flex">
+        <div class="col-12 align-items-center">
+          <%= link_to my_patients_path, class:"text-success" do %>
+            <i class="fa-solid fa-calendar-plus"></i>
+            <strong> Create a new appointment</strong>
+          <% end %>
+        </div>
+      </li>
+    </ul>
     <% @next_appointments.each do |appointment| %>
       <ul class="list-group">
         <li class="list-group-item row no-gutter d-flex">
-          <div class="col-12 col-sm-6 col-md-8 align-items-start">
+          <div class="col-9 col-lg-10 align-items-start">
             <%= appointment.start_time.strftime('%d %B %Y') %>
             <%= appointment.start_time.strftime('%I:%M %p') %>  |
             <%= link_to pet_path(appointment.pet) do %>
               <strong><%= appointment.pet.name %></strong>
             <% end %>
-            (<small>Owner: <%= appointment.pet.user.name %></small>)
+            (<small><%= appointment.pet.user.name %> <i class="fa-solid fa-person"></i></small>)
           </div>
-          <div class="col-6 col-md-4 text-end">
+          <div class="col-3 col-lg-2 text-end">
             <%= link_to appointment_path(appointment), class:"ms-3 text-success", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
               <i class="fa-solid fa-trash"></i>
             <% end %>

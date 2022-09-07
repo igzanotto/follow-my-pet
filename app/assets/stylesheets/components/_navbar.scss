@@ -2,18 +2,35 @@
   justify-content: space-between;
   background-color: white;
   transition: 0.5s background-color ease;
+  color: white;
 }
 .navbar-home {
   justify-content: space-between;
   background: white;
+  color: #DED8D4;
   background-color: transparent;
   transition: 0.5s background-color ease;
+}
+.navbar-home a {
+  color: #DED8D4;
+}
+.navbar-lewagon a {
+  color: $gray-fmp;
 }
 .navbar-lewagon-white {
   background-color: white;
  }
 .navbar-lewagon-white a{
   color: black;
+}
+.navbar-lewagon-white a {
+  color: $gray-fmp;
+}
+.navbar-lewagon .navbar-brand span {
+  color: $gray-fmp;
+}
+.navbar-lewagon-white .navbar-brand span {
+  color: $gray-fmp;
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -23,21 +40,22 @@
 }
 .navbar-home .navbar-collapse {
   flex-grow: 0;
-  color: white;
-
 }
 .navbar-home .navbar-brand img {
   width: 40px;
 }
 .dropdown-navbar {
   padding: 0;
+  color: $gray-fmp;
+}
+.dropdown-navbar a {
+  color: $gray-fmp;
+}
+.dropdown-navbar li {
+  color: $gray-fmp;
 }
 .dropdown-navbar ul {
   list-style-type: none;
-  padding: 0px;
-}
-.navbar a {
-  color: white;
 }
 .welcome-user {
   padding: 5px;
@@ -48,12 +66,37 @@
   margin: 0px;
 }
 .navbar-brand span {
-  font-family: 'Courgette', cursive;
+  // font-family: 'Knewave', cursive;
+  // font-family: 'Courgette', cursive;
+  font-family: 'Sriracha', cursive;
   font-size: 27px;
-  color: #DED8D4;
-  margin-left: 12px;
+  margin-left: 17px;
   margin-top: 5px;
 }
-.nav-link a {
-  color: blue;
+
+.navbar-brand:hover {
+  color: #555358;
+}
+
+.navbar-brand span:hover {
+  color: #555358;
+}
+
+.nav-user:hover a{
+  color: #555358;
+}
+
+.nav-link:hover{
+  color: #555358;
+}
+
+.nav-user{
+  font-size: 17px;
+  margin-right: 4px;
+}
+
+.nav-user i{
+  font-size: 20px;
+  margin-right: 5px;
+  margin-left: 8px;
 }

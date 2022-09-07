@@ -1,0 +1,7 @@
+<%= simple_form_for @appointment do |a| %>
+  <%= hidden_field_tag(:user_id, params[:id]) %>
+  <%= hidden_field_tag(:pet_id, params[:pet_id]) %>
+  <%= a.input :start_time, as: :datetime, html5: true, hint: "Select date and time", label: false %>
+  <span class="highlight-container" style= "padding: 1px 11px 4px 4px;"><span class="highlight btn-update" style= "padding: 1px;">
+  <%= a.button :submit, "Submit", style: "color: white; border: none; font-weight: bold;" %></span></span>
+<% end %>

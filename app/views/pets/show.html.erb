@@ -44,11 +44,19 @@
                           <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
                       </span>
 
-                        <h4 class="my-3 "><%= link_to "My Appointments", my_appointments_path, class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
-
-                <% end %>
+      <% if current_user.type_of_user == "Veterinary" %>
+          <div class="col-3 mb-3">
+          <%= link_to pet_veterinary_path(@pet, current_user) do %>
+            <div class="card rounded-4 shadow ml-auto" style="width: 18rem;">
+              <div class= "bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="<%= image_path("calendar.webp") %>" class="img-fluid" style="width: 18rem; height: 15rem; border-radius: 10px 10px 0 0;"/>
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+                  <h4 class="my-3 "><%= link_to  "Book an Appointment", pet_veterinary_path(@pet, current_user), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
             </div>
-        <% end %>
+          <% end %>
+          </div>
+      <% end %>
 
           <div class="col-3 mb-3">
             <%= link_to pet_vaccinations_path(@pet) do %>

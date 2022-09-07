@@ -1,33 +1,33 @@
 <div class="container">
 
-  <section class="mb-5" style="background-color: #F4F4F4;">
-    <div class="container py-5 h-100">
+  <section class="p-5 mb-5" style="background-color: #F4F4F4;">
+    <div class="container">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-10 col-lg-8 col-xl-8">
-          <div class="card shadow-lg" style="border-radius: 0;">
+          <div class="card shadow-lg" style="border-radius: 0;" data-aos="flip-left">
             <div class="card-body p-5 text-center">
 
-              <h2 class= "mb-4">Update your Pet details</h2>
-              <img src="<%= image_path("typing.png") %>" style= "width: 90px">
-
-                <%= simple_form_for @pet  do |f|%>
-
-                  <div class="form-outline mb-4">
-                    <%= f.input :name %>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <%= f.input :birthday , as: :date %>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <%= f.association :species_type, collection: SpeciesType.all %>
-                  </div>
-                  <div class="form-outline mb-5">
-                    <%= f.input :photo, as: :file %>
-                  </div>
-                  <div class="form-outline mt-4">
-                    <%= f.button :submit, class: "btn btn-primary" %>
-                  </div>
-                <% end %>
+              <div class= "d-flex align-items-center justify-content-center mb-4">
+                <%= image_tag "logo-caminando.png" %>
+                <h2 class= "px-4 m-0">Edit your pet's profile</h2>
+              </div>
+              <%= simple_form_for @pet  do |f|%>
+                <div class="form-outline mb-4">
+                  <%= f.input :name %>
+                </div>
+                <div class="form-outline mb-4">
+                  <%= f.input :birthday , as: :date %>
+                </div>
+                <div class="form-outline mb-4">
+                  <%= f.association :species_type, collection: SpeciesType.all %>
+                </div>
+                <div class="form-outline mb-5">
+                  <%= f.input :photo, as: :file %>
+                </div>
+                <div class="form-outline mt-4">
+                  <span class="highlight-container"><span class="highlight"><%= f.button :submit, class: "btn-update" %></span></span>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

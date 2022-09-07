@@ -7,15 +7,18 @@
     <%= csp_meta_tag %>
     <link rel="icon" href= "<%= image_path "logo-perezoso.png" %>">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Just+Another+Hand&family=Knewave&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300&family=Roboto:wght@300;400;500;700&family=Sriracha&display=swap" rel="stylesheet">
 
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+<body>
     <% unless current_page?(root_path) %>
       <%= render "shared/navbar" %>
     <% end %>
@@ -24,11 +27,13 @@
       <div class="margin-all">
         <%= yield %>
       </div>
-      <% else %>
-        <%= yield %>
-      <% end %>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <%= turbo_frame_tag "remote_modal" %>
     <%= render "shared/footer" %>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init();</script>
