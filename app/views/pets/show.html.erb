@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row text-center justify-content-center">
         <% if current_user.type_of_user == "Pet Owner" %>
-            <div class="col-md-4 ">
+            <div class="col-3 md-3 ">
               <%= link_to pet_appointments_path(@pet) do %>
                   <span class="fa-stack fa-4x">
                       <i class="fas fa-square fa-stack-2x text-success"></i>
@@ -37,7 +37,7 @@
         <% end %>
 
         <% if current_user.type_of_user == "Veterinary" %>
-            <div class="mb-2">
+            <div class="col-3 mb-3">
               <%= link_to pet_appointments_path(@pet) do %>
                       <span class="fa-stack fa-4x">
                           <i class="fas fa-square fa-stack-2x text-success"></i>
@@ -50,29 +50,28 @@
             </div>
         <% end %>
 
-        <div class="col-sm-3 col-md-3 mb-4 ">
+          <div class="col-3 mb-3">
             <%= link_to pet_vaccinations_path(@pet) do %>
-                <div class="col-md-4">
+
                     <span class="fa-stack fa-4x">
                         <i class="fas fa-square fa-stack-2x text-success"></i>
                         <i class="fa-solid fa-syringe fa-stack-1x fa-inverse"></i>
                     </span>
                         <h4 class="my-3"> <%= link_to "Vaccinations", pet_vaccinations_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
-                </div>
+
             <% end %>
         </div>
 
-        <div class="col-sm-3 col-md-3 mb-4">
+         <div class="col-3 mb-3">
             <%= link_to pet_clinical_histories_path(@pet) do %>
-                <div class="col-md-4 ">
+
                   <span class="fa-stack fa-4x">
                       <i class="fas fa-square fa-stack-2x text-success"></i>
                       <i class="fas fa-mobile fa-stack-1x fa-inverse"></i>
                   </span>
-
                       <h4 class="my-3 md-1"><%= link_to "Clinical History", pet_clinical_histories_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 85%" %></h4>
 
-                </div>
+
             <% end %>
         </div>
 
