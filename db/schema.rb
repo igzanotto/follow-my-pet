@@ -73,15 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_181258) do
     t.index ["user_id"], name: "index_clinical_histories_on_user_id"
   end
 
-  create_table "consultations", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.datetime "star_time"
-    t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
@@ -144,6 +135,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_181258) do
     t.string "speciality"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["type_of_user"], name: "index_users_on_type_of_user"
   end
 
   create_table "vaccinations", force: :cascade do |t|
