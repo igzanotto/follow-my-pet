@@ -73,15 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_181258) do
     t.index ["user_id"], name: "index_clinical_histories_on_user_id"
   end
 
-  create_table "consultations", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.datetime "star_time"
-    t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false

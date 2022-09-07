@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="container">
   <div class="form-group mt-3 mb-3 col-2 mr-1">
     <p>Search by Pet Owner</p>
     <%= form_with url: my_patients_path, method: :get, class: "form-control" do %>
@@ -10,28 +10,34 @@
     </div>
     <% end %>
   </div>
-  <div class="cards-patients">
 
-    <% if @mypatients_pets == [] %>
-      <p>No results found</p>
-    <% else %>
-      <% @mypatients_pets.each do |pet| %>
-        <div class="card" style="width: 18rem;">
-          <% if pet.photo.present? %>
-            <%= cl_image_tag pet.photo.key, class: "card-img-top" %>
-          <% else %>
-            <img class="card-img-top" src="<%= image_path("vet.png") %>" alt="Card image cap">
-          <% end %>
-          <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
-          <div class="card-body">
-            <h5 class="card-title"><%= pet.name %></h5>
-            <p class="card-text"><strong>Pet Owner:</strong> <%= pet.user.name %></p>
-            <p class="card-text"><strong>Birthday:</strong> <%= pet.birthday %></p>
-            <p class="card-text"><strong>Species:</strong> <%= pet.species_type.name %></p>
-            <%= link_to "Details", pet_path(pet), class: "btn btn-primary" %>
+</div>
+
+<div class="cards-patients">
+  <% if @mypatients_pets == [] %>
+    <p>No results found</p>
+  <% else %>
+    <% @mypatients_pets.each do |pet| %>
+      <% if pet.photo.present? %>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="card-patients" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill %>')">
+              <%= pet.name %>
+            </div>
+            <div class="card-content">
+              <p><i class="fa-solid fa-person"></i><strong> Pet Owner:</strong> <%= pet.user.name %></p>
+              <p><i class="fa-solid fa-cake-candles"></i><strong> Birthday:</strong> <%= pet.birthday %></p>
+              <p><i class="fa-solid fa-bone"></i><strong> Species:</strong> <%= pet.species_type.name %></p>
+              <br>
+              <span class="highlight-container p-2"><span class="highlight"><%= link_to "Details", pet_path(pet), class: "btn-update" %></span></span>
+            </div>
           </div>
+        </div>
+      <% else %>
+        <div class="card-patients" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path "vet.png", height: 300, crop: :fill %>')">
+          <%= pet.name %>
         </div>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 </div>
