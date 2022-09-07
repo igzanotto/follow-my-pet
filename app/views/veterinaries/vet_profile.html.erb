@@ -9,7 +9,7 @@
             <ol class="breadcrumb mb-0 align-self-center">
               <%# <li class="breadcrumb-item h4 m-0"><%= @veterinary.name </li> %>
 
-              <li class="breadcrumb-item h4 m-0", style="font-weight: bolder;"><span class="highlight-container" style= "margin-left: 10px; padding: 10px;"><span class="highlight" style= "color: white;"><%= @veterinary.name.split[0...-1].join(" ") %></span></span><%= @veterinary.name.split.last %></li>
+              <li class="breadcrumb-item h4 m-0", style="font-weight: bolder;">My Profile: <span class="highlight-container" style= "margin-left: 10px; padding: 10px;"><span class="highlight" style= "color: white;"><%= @veterinary.name %></span></span></li>
 
             </ol>
             <div class="align-self-center mb-0 ml-auto h4">
@@ -42,25 +42,12 @@
                   <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;"
                 </button> %>
 
-                  <span class="highlight-container" style= "padding: 5px 15px 10px 5px;"><span class="highlight btn-update" style= "padding: 10px;"><%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;" %></span></span>
+                <span class="highlight-container" style= "padding: 5px 15px 10px 5px;">
+                  <span class="highlight btn-update" style= "padding: 10px;">
+                    <%= link_to "Edit Profile", edit_user_registration_path, style: "color: white;" %>
+                  </span>
+                </span>
 
-              </div>
-            </div>
-          </div>
-
-          <div class="card mb-4 mb-lg-0" data-aos="flip-left">
-            <div class="card-body p-4">
-              <p style="font-weight: bolder;">New appointment</p>
-              <div>
-                  <%= render "veterinaries/newappointment" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="card mb-4 mt-4 mb-lg-0" data-aos="flip-left">
-            <div class="card-body p-4">
-              <div>
-                  <%= render "veterinaries/newreview" %>
               </div>
             </div>
           </div>

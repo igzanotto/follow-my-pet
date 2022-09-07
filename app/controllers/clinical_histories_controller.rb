@@ -23,12 +23,11 @@ class ClinicalHistoriesController < ApplicationController
       @clinical_history.pet_id = @pet.id
       @clinical_history.save
 
-      redirect_to pet_clinical_histories_path
-      # @offer.user_id = current_user.id
-      # if @clinical_history.save
-      # else
-        # render 'offers/new', status: :unprocessable_entity
-      # end
+      if @clinical_history.save
+        redirect_to pet_clinical_histories_path
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
 
     def edit

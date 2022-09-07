@@ -1,59 +1,80 @@
-<div class="container mt-4 ml-auto">
+<div class="container ml-auto">
 
-    <div class="d-flex justify-content-between mb-3">
-        <div class="p-2"><h1>Vaccinations</h1></div>
-        <div class="align-self-center">
-          <div class="p-2 align-self-center h1"><i class="fa-solid fa-syringe"></i></div>
+  <section class="pt-0 mt-4" style="background-color: #F4F4F4; padding-bottom: 80px;">
+    <div class="container">
+
+      <div class="row">
+        <div class="col" data-aos="zoom-in">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 d-flex justify-content-between" style="background-color: #FFFFFF !important;">
+            <ol class="breadcrumb mb-0 align-self-center">
+              <li class="breadcrumb-item h4 m-0", style="font-weight: bolder;">Vaccination History for: <span class="highlight-container" style= "margin-left: 10px; padding: 10px;"><span class="highlight" style= "color: white;"><%= @pet.name %></span></span></li>
+            </ol>
+            <div class="align-self-center mb-0 ml-auto h4">
+              <%= image_tag("avatar.png") %>
+            </div>
+          </nav>
         </div>
-    </div>
-    <hr>
+      </div>
 
-    <div class="container bg-white rounded-4 mt-4 p-3">
-      <div class="container mt-3 mb-3">
+      <div class="container bg-white rounded-4 mt-4 p-3">
+        <div class="container mt-3 mb-3">
 
-        <div class="d-flex justify-content-between mb-3">
-          <div class="p-2"><h2>Details</h2></div>
-          <div class="p-2 d-flex justify-content-between">
-              <% if current_user.type_of_user == "Veterinary" %>
-              <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_vaccination_path, class: "btn btn-primary" %></div>
+          <div class="d-flex justify-content-between mb-3">
+            <div class="p-2"><h2>Details</h2></div>
+              <div class="p-2 d-flex justify-content-between">
+                  <% if current_user.type_of_user == "Veterinary" %>
+
+                  <span class="highlight-container p-1"><span class="highlight"><%= link_to "Create new", new_pet_vaccination_path, class: "btn btn-update" %></span></span>
+
+                  <%# <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_vaccination_path, class: "btn btn-primary" </div> %>
+                  <% end %>
+
+                  <span class="highlight-container p-1" style="margin-left: 15px"><span class="highlight"><%= link_to "Book an appointment", pet_veterinary_path(@pet, current_user), class: "btn btn-update" %></span></span>
+
+                  <%# <div class="p-2"><%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" </div> %>
+              </div>
+            </div>
+
+
+            <div id="accordion">
+
+              <% if @vaccinations != [] %>
+
+                <% @vaccinations.each do |v| %>
+
+                  <div class="card">
+                    <h2 class="card-header" id="heading<%= v.id %>">
+                      <div class="btn btn-link text-decoration-none">
+                        <div class="d-flex justify-content-between">
+                          <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.created_at.strftime('%Y-%m-%d') %></div>
+                          <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.vaccine.name.capitalize %></div>
+                          <div class="m-4 mt-0 mr-0 mb-0 align-self-center">Exp. Date: <%= v.expiration_date %></div>
+
+                          <%# DOWNLOAD FILE %>
+                          <% if v.photo.present? %>
+                            <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
+                              <%= link_to cl_image_path(v.photo.key, flags: :attachment) do %>
+                                <i class="fa-solid fa-file-arrow-down h5"></i>
+                              <% end %>
+                            </div>
+                          <% end %>
+
+                        </div>
+                      </div>
+                    </h2>
+                  </div>
+                <% end %>
+
+              <% else %>
+                <p>No vaccinations available yet</p>
               <% end %>
-              <div class="p-2"><%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" %></div>
+
+            </div>
+
           </div>
         </div>
-
-        <div id="accordion">
-
-          <% if @vaccinations != [] %>
-
-            <% @vaccinations.each do |v| %>
-
-              <div class="card">
-                <h2 class="card-header" id="heading<%= v.id %>">
-                  <div class="btn btn-link text-decoration-none">
-                    <div class="d-flex justify-content-between">
-                      <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.created_at.strftime('%Y-%m-%d') %></div>
-                      <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.vaccine.name.capitalize %></div>
-                      <div class="m-4 mt-0 mr-0 mb-0 align-self-center">Exp. Date: <%= v.expiration_date %></div>
-
-                      <%# DOWNLOAD FILE %>
-                      <% if v.photo.present? %>
-                        <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
-                          <%= link_to cl_image_path(v.photo.key, flags: :attachment) do %>
-                            <i class="fa-solid fa-file-arrow-down h5"></i>
-                          <% end %>
-                        </div>
-                      <% end %>
-
-                  </div>
-                </h2>
-              </div>
-            <% end %>
-
-          <% else %>
-            <p>No vaccinations available yet</p>
-          <% end %>
-
       </div>
+
     </div>
-  </div>
+  </section>
 </div>

@@ -7,5 +7,8 @@ class Pet < ApplicationRecord
   has_many :studies, through: :clinical_histories
 
   has_one_attached :photo
-
+  validates :photo, presence: true
+  validates :user_id, presence: true
+  validates :name, presence: true
+  validates :birthday, presence: true
 end
