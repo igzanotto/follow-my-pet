@@ -30,15 +30,30 @@ class User < ApplicationRecord
   }
 
   validates :type_of_user, presence: true
+  validates :name, presence: true
 
-  validate :method
-
-  def method
-    if self.type_of_user == "Veterinary"
-      unless self.phone.present?
-        self.errors.add :phone, "need a phone number Lucas"
-      end
-    end
+  with_options if: :is_vet? do |vet|
+    # vet.validates :phone, length: { minimum: 10 }
+    vet.validates :phone, presence: true
+    vet.validates :location, presence: true
+    vet.validates :doctors, presence: true
   end
+
+  def is_vet?
+    self.type_of_user == "Veterinary"
+  end
+
+
+
+
+  # validate :method
+
+  # def method
+  #   if self.type_of_user == "Veterinary"
+  #     # unless self.phone.present?
+  #     #   self.errors.add :phone, "need a phone number Lucas"
+  #     # end
+  #   end
+  # end
 
 end
