@@ -7,7 +7,8 @@
           <div class="card shadow-lg" style="border-radius: 0;" data-aos="flip-left">
             <div class="card-body p-5 text-center">
 
-              <h2 class= "mb-4">Create a new pet</h2>
+              <h2 class= "mb-4">Create a new pet </h2>
+                <img src="<%= image_path("typing.png") %>" style= "width: 90px">
 
                 <%= simple_form_for @pet  do |f|%>
 
@@ -27,7 +28,6 @@
                       <span class="highlight-container"><span class="highlight"><%= f.button :submit, class: "btn-update p-2" %></span></span>
                   </div>
                 <% end %>
-
             </div>
           </div>
         </div>
