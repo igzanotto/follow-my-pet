@@ -5,7 +5,7 @@
 
       <div class="row">
         <div class="col" data-aos="zoom-in">
-          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 d-flex justify-content-between" style="background-color: #FFFFFF !important;">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 d-flex justify-content-between shadow" style="background-color: #FFFFFF !important;">
             <ol class="breadcrumb mb-0 align-self-center">
               <li class="breadcrumb-item h4 m-0", style="font-weight: bolder;">Vaccination History for: <span class="highlight-container" style= "margin-left: 10px; padding: 10px;"><span class="highlight" style= "color: white;"><%= @pet.name %></span></span></li>
             </ol>
@@ -16,65 +16,86 @@
         </div>
       </div>
 
-      <div class="container bg-white rounded-4 mt-4 p-3">
+      <div class="container shadow bg-white mt-4 p-3" data-aos="zoom-in">
         <div class="container mt-3 mb-3">
 
-          <div class="d-flex justify-content-between mb-3">
-            <div class="p-2"><h2>Details</h2></div>
-              <div class="p-2 d-flex justify-content-between">
-                  <% if current_user.type_of_user == "Veterinary" %>
+          <div class="card">
 
+            <div class="card-header p-3 d-flex align-items-center justify-content-between">
+              <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Details</h5>
+              <div>
+                <% if current_user.type_of_user == "Veterinary" %>
                   <span class="highlight-container p-1"><span class="highlight"><%= link_to "Create new", new_pet_vaccination_path, class: "btn btn-update" %></span></span>
-
-                  <%# <div class="p-2 align-self-center"><%= link_to "Create new", new_pet_vaccination_path, class: "btn btn-primary" </div> %>
-                  <% end %>
-
-                  <span class="highlight-container p-1" style="margin-left: 15px"><span class="highlight"><%= link_to "Book an appointment", pet_veterinary_path(@pet, current_user), class: "btn btn-update" %></span></span>
-
-                  <%# <div class="p-2"><%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-primary" </div> %>
+                <% end %>
+                <span class="highlight-container p-1" style="margin-left: 15px"><span class="highlight"><%= link_to "Book an appointment", pet_veterinary_path(@pet, current_user), class: "btn btn-update" %></span></span>
               </div>
             </div>
 
 
-            <div id="accordion">
+            <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative">
+              <table class="table mb-0 table-striped">
+                <thead>
+                  <tr>
+                    <th class= "" scope="col">Date</th>
+                    <th class= "" scope="col">Veterinary</th>
+                    <th class= "" scope="col">Vaccine</th>
+                    <th class= "" scope="col">Expiration Date</th>
+                    <th class= "text-center" scope="col">Preview</th>
+                    <th class= "text-center" scope="col">Download</th>
+                  </tr>
+                </thead>
 
-              <% if @vaccinations != [] %>
+                <tbody>
 
-                <% @vaccinations.each do |v| %>
+                  <% if @vaccinations != [] %>
+                    <% @vaccinations.each do |st| %>
+                      <tr class="fw-normal">
 
-                  <div class="card">
-                    <h2 class="card-header" id="heading<%= v.id %>">
-                      <div class="btn btn-link text-decoration-none">
-                        <div class="d-flex justify-content-between">
-                          <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.created_at.strftime('%Y-%m-%d') %></div>
-                          <div class="m-4 mt-0 mr-0 mb-0 align-self-center"><%= v.vaccine.name.capitalize %></div>
-                          <div class="m-4 mt-0 mr-0 mb-0 align-self-center">Exp. Date: <%= v.expiration_date %></div>
+                        <td class="">
+                          <span class="ms-2"> <%= st.clinical_history.date %> </span>
+                        </td>
 
-                          <%# DOWNLOAD FILE %>
-                          <% if v.photo.present? %>
+                        <td class=" align-center">
+                          <span class="ms-2"> <%= st.clinical_history.user.name %> </span>
+                        </td>
+                        <td class="">
+                          <span> <%= st.vaccine.name %> </span>
+                        </td>
+                        <td class="">
+                          <span><%= st.expiration_date %></span>
+                        </td>
+
+                        <td class="text-center">
+                          <% if st.photo.present? %>
+                            <%= cl_image_tag st.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: "width: 40px; height: 40px;"%>
+                          <% end %>
+                        </td>
+
+                        <td class="text-center">
+                          <% if st.photo.present? %>
                             <div class="m-5 mt-0 mr-0 mb-0 align-self-center">
-                              <%= link_to cl_image_path(v.photo.key, flags: :attachment) do %>
-                                <i class="fa-solid fa-file-arrow-down h5"></i>
+                              <%= link_to cl_image_path(st.photo.key, flags: :attachment) do %>
+                                <i class="fa-solid fa-file-arrow-down h5 text-primary" style="font-size: 30px; padding-top: 5px;"></i>
                               <% end %>
                             </div>
                           <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
 
-                        </div>
-                      </div>
-                    </h2>
-                  </div>
-                <% end %>
-
-              <% else %>
-                <p>No vaccinations available yet</p>
-              <% end %>
-
+                  <% else %>
+                    <p>No vaccinations available yet</p>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
 
           </div>
+
         </div>
       </div>
 
     </div>
+
   </section>
 </div>

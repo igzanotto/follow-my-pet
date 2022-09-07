@@ -11,11 +11,12 @@
   font-size: 70px;
   font-weight: bold;
 }
+
 .home-container span{
   font-size: 26px;
   color: whitesmoke;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
 }
 .home-container p{
@@ -118,7 +119,6 @@
 
 section#contact {
   background-color: #FFFFFF;
-  background-image: url("../assets/img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -174,4 +174,70 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .card-testimonial {
   border-radius: .7rem;
+}
+
+// RESPONSIVE
+
+@media (max-width: 768px) {
+  .text-start h1 {
+    font-size: 50px;
+    margin-top: 38%;
+  }
+
+  .text-start span {
+    font-size: 22px;
+   }
+
+     .text-start h1 {
+    font-size: 50px;
+
+  }
+
+  #title-color {
+    margin-top: 0%;
+  }
+  .sub-heading {
+    margin-top: 110px;
+  }
+
+  .sub-heading-text {
+    width: 80%;
+  }
+
+  .sub-heading-text h3{
+    font-size: 22px;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .text-start h1 {
+    font-size: 50px;
+    margin-top: 45%;
+  }
+
+  .text-start span {
+    display: none;
+   }
+
+     .text-start h1 {
+    font-size: 40px;
+
+  }
+
+  #title-color {
+    margin-top: 0%;
+  }
+  .sub-heading {
+    margin-top: 110px;
+  }
+
+  .sub-heading-text {
+    width: 80%;
+  }
+
+  .sub-heading-text h3{
+    font-size: 22px;
+  }
+
 }

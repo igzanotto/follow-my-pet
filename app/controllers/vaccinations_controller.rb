@@ -50,6 +50,6 @@ class VaccinationsController < ApplicationController
   private
 
   def vaccination_params
-    params.require(:vaccination).permit(:vaccine_id, :expiration_date)
+    params.require(:vaccination).permit(:vaccine_id, :expiration_date, :photo)
   end
 end

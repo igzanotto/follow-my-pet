@@ -54,10 +54,10 @@ caro = URI.open("https://ca.slack-edge.com/T02NE0241-U03NS6EMXFY-e01b612d5e07-51
 clari = URI.open("https://ca.slack-edge.com/T02NE0241-U03PQPPGXUG-abbe6fa51dcc-512")
 lu = URI.open("https://ca.slack-edge.com/T02NE0241-U03PBS9AV17-a13d8e7e6e83-512")
 
-owner1 = User.create!(email: "sofi@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Sofi Larrea")
-owner2 = User.create!(email: "caro@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Caro Arlia")
-owner3 = User.create!(email: "clari@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clari Ursini")
-owner4 = User.create!(email: "lucas@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Lucas Cappa")
+owner1 = User.create!(email: "sofi@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Sofi Larrea", phone: "+54 9 2615 98-3680")
+owner2 = User.create!(email: "caro@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Caro Arlia", phone: "+34 691 34 58 23")
+owner3 = User.create!(email: "clari@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Clari Ursini", phone: "+54 9 1149608212")
+owner4 = User.create!(email: "lucas@gmail.com", password: "123456", type_of_user: "Pet Owner", name: "Lucas Cappa", phone: "+54 9 11 6371-5073")
 
 owner1.photo.attach(io: sofi, filename: "Sofi.png", content_type: "image/png")
 owner2.photo.attach(io: caro, filename: "Caro.png", content_type: "image/png")

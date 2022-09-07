@@ -19,13 +19,23 @@ class AppointmentsController < ApplicationController
     @appointment.user = @user
 
     if @appointment.save
-      redirect_to pet_appointments_path(@pet)
+      if current_user.type_of_user == "Veterinary"
+        redirect_to my_appointments_path
+      else
+        redirect_to pet_appointments_path(@pet)
+      end
     else
       flash[:alert] = "Something went wrong."
-      # @veterinary = @user
-      # render 'veterinaries/show'
-      # @veterinary = @user
-      # render :new, status: :unprocessable_entity
+      # CALENDAR
+      start_date = params.fetch(:start_time, Date.today).to_date
+      # For a monthly view:
+      @appointments = Appointment.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+      @veterinary = @user
+      @reviews = Review.where(user: @veterinary).last(3)
+      @reviews_filtered = Review.where(user: @veterinary).average(:rating)
+      @average = @reviews_filtered.to_i
+      @review = Review.new
+      render 'veterinaries/show', status: :unprocessable_entity
     end
   end
 
