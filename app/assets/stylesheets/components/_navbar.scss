@@ -63,8 +63,37 @@
   margin: 0px;
 }
 .navbar-brand span {
-  font-family: 'Courgette', cursive;
+  // font-family: 'Knewave', cursive;
+  // font-family: 'Courgette', cursive;
+  font-family: 'Sriracha', cursive;
   font-size: 27px;
-  margin-left: 12px;
+  margin-left: 17px;
   margin-top: 5px;
+}
+
+.navbar-brand:hover {
+  color: #555358;
+}
+
+.navbar-brand span:hover {
+  color: #555358;
+}
+
+.nav-user:hover a{
+  color: #555358;
+}
+
+.nav-link:hover{
+  color: #555358;
+}
+
+.nav-user{
+  font-size: 17px;
+  margin-right: 4px;
+}
+
+.nav-user i{
+  font-size: 20px;
+  margin-right: 5px;
+  margin-left: 8px;
 }

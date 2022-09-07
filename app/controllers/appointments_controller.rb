@@ -21,8 +21,11 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       redirect_to pet_appointments_path(@pet)
     else
-      @veterinary = @user
-      render 'veterinaries/show', status: :unprocessable_entity
+      flash[:alert] = "Something went wrong."
+      # @veterinary = @user
+      # render 'veterinaries/show'
+      # @veterinary = @user
+      # render :new, status: :unprocessable_entity
     end
   end
 

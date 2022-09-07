@@ -3,7 +3,7 @@
     <div class="align-items-center">
       <%= link_to root_path, class: "navbar-brand d-flex" do %>
         <div class="logo"> </div>
-        <span>Follow My Pet</span>
+        <span>Follow my Pet</span>
       <% end %>
     </div>
 
@@ -16,18 +16,18 @@
         <% if user_signed_in? %>
           <li class="nav-item d-flex">
             <% if current_user.type_of_user == "Pet Owner" %>
-              <%= link_to pets_path, class: "nav-link" do %>
+              <%= link_to pets_path, class: "nav-link nav-user" do %>
                 <i class="fa-solid fa-person"></i>
                 <%= current_user.name %>
               <% end %>
             <% else %>
-              <%= link_to my_appointments_path, class: "nav-link" do %>
+              <%= link_to vet_profile_path, class: "nav-link nav-user" do %>
                 <i class="fa-solid fa-house-chimney-medical"></i>
                 <%= current_user.name %>
               <% end %>
             <% end %>
             <% if @pet != nil && @pet.id != nil %>
-              <%= link_to pet_path(@pet), class: "nav-link" do %>
+              <%= link_to pet_path(@pet), class: "nav-link nav-user" do %>
                 | <i class="fa-solid fa-bone"></i>
                 <%= @pet.name %>
               <% end %>
@@ -52,6 +52,7 @@
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-suitcase-rolling"></i>
                   <%= link_to "My patients", my_patients_path, class: "dropdown-item" %></li>
                   <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-house"></i> <%= link_to "My appointments", my_appointments_path, class: "dropdown-item" %></li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-message"></i> <%= link_to "Messages", chatroom_path(Chatroom.first), class: "dropdown-item" %></li>
                 <% end %>
                 <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-sliders"></i> <%= link_to "My account", edit_user_registration_path, class: "dropdown-item" %></li>
                 <li class="list-group-item d-flex justify-content-between align-items-center"><i class="fa-solid fa-right-from-bracket"></i> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
@@ -60,7 +61,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link", style: "font-size: 19px; padding-right: 20px;" %>
           </li>
         <% end %>
       </ul>
