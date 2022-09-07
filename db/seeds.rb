@@ -33,6 +33,20 @@ Review.destroy_all
 puts "Deleting users"
 User.destroy_all
 
+puts "Creating users-veterinaries"
+vet1 = User.new(email: "vet1@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Caballito", longitude: -58.45, latitude: -34.61667, speciality: "Clinic, Bath, Radiology, Lab")
+vet2 = User.new(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Recoleta", longitude: 58.2326, latitude: 34.3526, speciality: "Bath")
+vet3 = User.new(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Mendoza", longitude: -68.8472, latitude: -32.8903, speciality: "Clinic, Surgery, Radiology, Lab")
+vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Santa Fe", longitude: 60.411680, latitude: 31.020240, speciality: "Clinic, Radiology, Nutrition, lab")
+vet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/borisclinic.png')), filename: 'borisclinic.png')
+vet2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sebastien.png')), filename: 'sebastien.png')
+vet3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/petlover.png')), filename: 'petlover.png')
+vet4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/scooby.png')), filename: 'scooby.png')
+vet1.save!
+vet2.save!
+vet3.save!
+vet4.save!
+puts "Done"
 
 puts "Creating users-pet-owners"
 sofi = URI.open("https://ca.slack-edge.com/T02NE0241-U03NNS0RVHV-f5e916a99167-512")
