@@ -8,6 +8,7 @@
             <div class="card-body p-5 text-center">
 
               <h2 class= "mb-4">Update your Pet details</h2>
+              <img src="<%= image_path("typing.png") %>" style= "width: 90px">
 
                 <%= simple_form_for @pet  do |f|%>
 
@@ -27,7 +28,6 @@
                     <%= f.button :submit, class: "btn btn-primary" %>
                   </div>
                 <% end %>
-
             </div>
           </div>
         </div>
