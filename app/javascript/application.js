@@ -5,14 +5,14 @@ import "bootstrap"
 import * as bootstrap from "bootstrap"
 window.bootstrap = bootstrap
 
-console.log("hola desde aplication.js")
+// console.log("hola desde aplication.js")
 
 const signUpVet = document.querySelector("#user_type_of_user_veterinary");
 
 const signUpOwner = document.querySelector("#user_type_of_user_pet_owner");
 
 
-console.log(signUpVet)
+// console.log(signUpVet)
 
 signUpVet.addEventListener('click', (event) => {
   // Do something (callback)
