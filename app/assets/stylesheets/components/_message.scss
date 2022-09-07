@@ -13,9 +13,14 @@
 }
 
 .sender-style {
-  background-color: lightcoral;
+  background-color: #cc704b96;
 }
 
 .receiver-style {
-  background-color: lightblue;
+  background-color: #4297a86b;
+}
+
+.message-row p {
+  margin-left: 45px;
+  word-wrap: break-word;
 }

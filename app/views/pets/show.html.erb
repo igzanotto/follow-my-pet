@@ -48,19 +48,19 @@
             </div>
         <% end %>
 
-          <div class="col-3 mb-3">
-            <%= link_to pet_vaccinations_path(@pet) do %>
+  <div class="col-3 mb-3">
+    <%= link_to pet_vaccinations_path(@pet) do %>
 
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-square fa-stack-2x text-success"></i>
-                        <i class="fa-solid fa-syringe fa-stack-1x fa-inverse"></i>
-                    </span>
-                        <h4 class="my-3"> <%= link_to "Vaccinations", pet_vaccinations_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
+            <span class="fa-stack fa-4x">
+                <i class="fas fa-square fa-stack-2x text-success"></i>
+                <i class="fa-solid fa-syringe fa-stack-1x fa-inverse"></i>
+            </span>
+                <h4 class="my-3"> <%= link_to "Vaccinations", pet_vaccinations_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
 
-            <% end %>
-        </div>
+    <% end %>
+  </div>
 
-         <div class="col-3 mb-3">
+        <div class="col-3 mb-3">
             <%= link_to pet_clinical_histories_path(@pet) do %>
 
                   <span class="fa-stack fa-4x">
