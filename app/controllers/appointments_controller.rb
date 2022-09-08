@@ -35,6 +35,7 @@ class AppointmentsController < ApplicationController
       @reviews_filtered = Review.where(user: @veterinary).average(:rating)
       @average = @reviews_filtered.to_i
       @review = Review.new
+
       render 'veterinaries/show', status: :unprocessable_entity
     end
   end

@@ -13,7 +13,7 @@ class Appointment < ApplicationRecord
   end
 
   def date_invalid
-    if self.start_time < Date.today
+    if self.start_time.present? && self.start_time < Date.today
       self.errors.add(:start_time, "Date must be greater than today")
     end
   end
