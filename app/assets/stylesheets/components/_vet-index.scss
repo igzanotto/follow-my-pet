@@ -1,3 +1,19 @@
+.btn-pets {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.btn-pets a {
+  font-size: 18px;
+  color: white;
+}
+.btn-pets a:hover {
+  color: $green-fmp;
+}
+.back {
+  padding-top: 50px;
+}
+
 .card-body-vets {
   display: flex;
   align-items: center;
