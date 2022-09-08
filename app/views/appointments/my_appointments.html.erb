@@ -5,7 +5,7 @@
     </div>
   </div> -->
 
-  <div class="container d-grid gap-3">
+  <div class="container d-grid gap-3" style= "width: 80%; margin: 0 auto;">
     <h4><span class="highlight-container p-2"><span class="highlight" style= "color:white;"><%= current_user.name %></span></span>, these are your next appointments </h4>
     <ul class="list-group">
       <li class="list-group-item row no-gutter d-flex">
@@ -22,7 +22,7 @@
         <li class="list-group-item row no-gutter d-flex">
           <div class="col-9 col-lg-10 align-items-start">
             <%= appointment.start_time.strftime('%d %B %Y') %>
-            <%= appointment.start_time.strftime('%I:%M %p') %>  |
+            <%= appointment.start_time.strftime('%I:%M %p') %>
             <%= link_to pet_path(appointment.pet), class: "m-list" do %>
               <strong><%= appointment.pet.name %></strong>
             <% end %>
@@ -40,4 +40,29 @@
       </ul>
     <% end %>
   </div>
+
+  <div class="col-lg-8 mt-5" style= "width: 80%; margin: 0 auto;">
+    <div class="card" data-aos="flip-left">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-9">
+            <p class="mb-0" style="font-weight: bolder;">Appointments</p>
+          </div>
+          <div class="col-sm-12 mt-3 text-muted">
+
+              <%= month_calendar(events: @appointments) do |date, appointments| %>
+                <%= date %>
+                  <% appointments.each do |appointment| %>
+                  <div class="meeting">
+                    <p><%= appointment.pet.name %></p>
+                    <small><%= appointment.time  %></small>
+                  </div>
+                <% end %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

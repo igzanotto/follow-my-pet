@@ -8,7 +8,7 @@
               <div class= "d-flex align-items-center justify-content-center mb-4">
                 <%= image_tag "logo-caminando.png", class: "ml-5" %>
                 <h2 class= "px-4 m-0">Update your details</h2>
-                <%# <h2 class= "px-4 m-0">Update your details <%= resource_name.to_s.humanize %></h2> %>
+                <%# <h2 class= "px-4 m-0">Update your details <%= resource_name.to_s.humanize %></h2>
               </div>
               <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
               <%= f.error_notification %>
@@ -58,9 +58,9 @@
                   required: true, input_html: { autocomplete: "current-password" }, label: false, placeholder: "Password" %>
                 </div>
 
-                <span class="highlight-container"><span class="highlight"><%= f.button :submit, class: "btn-update" %></span></span>
+                <span class="highlight-container"><span class="highlight"><%= f.button :submit, class: "btn-update" %></span></span><br>
 
-                <hr class="my-4">
+                <%# <hr class="my-4"> %>
 
                 <%# <div class="d-flex align-items-center">
                   <div>Unhappy?</div>
