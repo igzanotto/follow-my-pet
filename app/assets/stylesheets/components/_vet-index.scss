@@ -1,11 +1,13 @@
 .btn-pets {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0px;
+  right: 10px;
+
 }
 .btn-pets a {
-  font-size: 18px;
+  font-size: 15px;
   color: white;
+  text-shadow: 1px 1px 11px #312e2e;
 }
 .btn-pets a:hover {
   color: $green-fmp;
