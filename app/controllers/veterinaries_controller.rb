@@ -66,6 +66,8 @@ class VeterinariesController < ApplicationController
     @appointment = Appointment.new
     @review = Review.new
 
+
+
     # CALENDAR
 
     start_date = params.fetch(:start_time, Date.today).to_date
