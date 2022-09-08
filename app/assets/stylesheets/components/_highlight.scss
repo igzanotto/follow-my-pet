@@ -1,9 +1,9 @@
-.container-hightlight {
-  line-height: 1.4;
-  text-align: center;
-  padding: 44px;
-  color: #333;
-}
+// .container-hightlight {
+//   line-height: 1.4;
+//   text-align: center;
+//   padding: 44px;
+//   color: #333;
+// }
 .highlight-container, .highlight {
   position: relative;
 }
@@ -26,6 +26,31 @@
   border-radius: 20% 25% 20% 24%;
   padding: 10px 3px 3px 10px;
 }
-.container-hightlight h1 {
-  font-size: 50px;
+// .container-hightlight h1 {
+//   font-size: 50px;
+// }
+
+// HIGHLIGHT HOME
+
+.highlight-container-home, .highlight-home {
+  position: relative;
+}
+.highlight-container-home {
+  display: inline-block;
+}
+
+.highlight-container-home:before {
+  content: " ";
+  display: block;
+  height: 90%;
+  width: 100%;
+  margin-left: -3px;
+  margin-right: -3px;
+  position: absolute;
+  background: #4297A8;
+  transform: rotate(2deg);
+  top: -1px;
+  left: -1px;
+  border-radius: 20% 25% 20% 24%;
+  padding: 10px 3px 3px 10px;
 }

@@ -10,7 +10,7 @@ class VeterinariesController < ApplicationController
             {
               lat: vet.latitude,
               lng: vet.longitude,
-              image_url: helpers.asset_url("logo-caminando.png"),
+              image_url: helpers.asset_url("paw-solid.png"),
               info_window: render_to_string(partial: "info_window", locals: {vet: vet})
             }
           end
