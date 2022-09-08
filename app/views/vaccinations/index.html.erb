@@ -54,7 +54,7 @@
                       <tr class="fw-normal">
 
                         <td class="">
-                          <span class="ms-2"> <%= st.clinical_history.date %> </span>
+                          <span class="ms-2"> <%= st.clinical_history.date.strftime('%d %B %Y') %> </span>
                         </td>
 
                         <td class=" align-center">
@@ -64,7 +64,7 @@
                           <span> <%= st.vaccine.name %> </span>
                         </td>
                         <td class="">
-                          <span><%= st.expiration_date %></span>
+                          <span><%= st.expiration_date.strftime('%d %B %Y') %></span>
                         </td>
 
                         <td class="text-center">
