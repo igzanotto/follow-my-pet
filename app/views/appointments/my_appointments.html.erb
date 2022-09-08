@@ -23,7 +23,7 @@
           <div class="col-9 col-lg-10 align-items-start">
             <%= appointment.start_time.strftime('%d %B %Y') %>
             <%= appointment.start_time.strftime('%I:%M %p') %>  |
-            <%= link_to pet_path(appointment.pet) do %>
+            <%= link_to pet_path(appointment.pet), class: "m-list" do %>
               <strong><%= appointment.pet.name %></strong>
             <% end %>
             (<small><%= appointment.pet.user.name %> <i class="fa-solid fa-person"></i></small>)
