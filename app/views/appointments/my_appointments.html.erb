@@ -7,6 +7,7 @@
 
   <div class="container d-grid gap-3">
     <h4><span class="highlight-container p-2"><span class="highlight" style= "color:white;"><%= current_user.name %></span></span>, these are your next appointments </h4>
+    <h5 class="m-0" style="font-weight:bold;">Today</h5>
     <ul class="list-group">
       <li class="list-group-item row no-gutter d-flex">
         <div class="col-12 align-items-center">
@@ -17,12 +18,38 @@
         </div>
       </li>
     </ul>
+    <% @today_appointments.each do |appointment| %>
+      <ul class="list-group">
+        <li class="list-group-item row no-gutter d-flex">
+          <div class="col-9 col-lg-10 align-items-start">
+            <%= appointment.start_time.strftime('%d %B %Y') %>
+            <%= appointment.start_time.strftime('%I:%M %p') %>
+            <span>  |</span>
+            <%= link_to pet_path(appointment.pet), class: "m-list" do %>
+              <strong><%= appointment.pet.name %></strong>
+            <% end %>
+            (<small><%= appointment.pet.user.name %> <i class="fa-solid fa-person"></i></small>)
+          </div>
+          <div class="col-3 col-lg-2 text-end">
+            <%= link_to appointment_path(appointment), class:"ms-3 text-success", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+            <%= link_to edit_appointment_path(appointment), data: { controller: "turbo" }, class:"ms-3 text-success" do %>
+              <i class="fa-regular fa-pen-to-square"></i>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+
+    <h5 class="mt-5 mb-0" style="font-weight:bold;">Following appointments</h5>
     <% @next_appointments.each do |appointment| %>
       <ul class="list-group">
         <li class="list-group-item row no-gutter d-flex">
           <div class="col-9 col-lg-10 align-items-start">
             <%= appointment.start_time.strftime('%d %B %Y') %>
-            <%= appointment.start_time.strftime('%I:%M %p') %>  |
+            <%= appointment.start_time.strftime('%I:%M %p') %>
+            <span>  |</span>
             <%= link_to pet_path(appointment.pet), class: "m-list" do %>
               <strong><%= appointment.pet.name %></strong>
             <% end %>

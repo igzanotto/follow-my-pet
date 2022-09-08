@@ -51,7 +51,8 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.where(user_id: @user)
     # quiero poder ver citas pasadas o no?
     @past_appointments = @appointments.where('start_time < ?', Date.today)
-    @next_appointments = @appointments.where('start_time >= ?', Date.today)
+    @next_appointments = @appointments.where('start_time > ?', Date.tomorrow)
+    @today_appointments = @appointments.where('start_time < ? AND start_time > ?', Date.tomorrow, Date.today)
     # render 'appointments/index'
 
   end

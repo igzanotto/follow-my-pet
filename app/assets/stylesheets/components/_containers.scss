@@ -47,6 +47,13 @@
   }
 }
 
+@media (min-width: 1800px) {
+  .container-lists {
+    max-width: 1200px !important;
+  }
+}
+
+
 .margin-all {
   margin-top: 110px;
 }
