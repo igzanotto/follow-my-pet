@@ -172,8 +172,21 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 // TESTIMONIALS //
 
-.card-testimonial {
-  border-radius: .7rem;
+// .card-testimonial {
+//   border-radius: .7rem;
+// }
+.zoom {
+  // padding: 50px;
+  // background-color: green;
+  transition: transform .2s;
+  // width: 200px;
+  // height: 200px;
+  // margin: 0 auto;
+}
+.zoom:hover {
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
 }
 
 // RESPONSIVE
