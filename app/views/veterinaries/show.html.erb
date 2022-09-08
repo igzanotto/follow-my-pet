@@ -57,13 +57,15 @@
             </div>
           </div>
 
-          <div class="card mb-4 mt-4 mb-lg-0" data-aos="flip-left">
-            <div class="card-body p-4">
-              <div>
-                  <%= render "veterinaries/newreview" %>
+          <% if current_user.type_of_user == "Pet Owner" %>
+            <div class="card mb-4 mt-4 mb-lg-0" data-aos="flip-left">
+              <div class="card-body p-4">
+                <div>
+                    <%= render "veterinaries/newreview" %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
 
           <div class="card mb-4 mt-4 mb-lg-0" data-aos="flip-left">
             <div class="card-body p-4">
