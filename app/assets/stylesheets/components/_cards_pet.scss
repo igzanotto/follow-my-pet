@@ -18,3 +18,74 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
 }
+
+// RESPONSIVE TARJETAS PET SHOW
+
+// Para el texto de las categorias
+@media (min-width: 768px) and (max-width: 992px) {
+  .h5-card-pets {
+    font-size: 14px !important;
+  }
+}
+
+// Para lar cards con info del ppet
+@media (max-width: 1200px) {
+  .pet-info-container {
+    display: flex;
+  }
+  .pet-content{
+     display: none;
+   }
+
+   .card-pet-1 {
+    justify-content: flex-start !important;
+   }
+
+   .card-pet-1 img {
+    width: 50% !important;
+   }
+
+   .card-product-infos{
+    justify-self: center;
+    margin-left: 15px;
+   }
+}
+
+@media (min-width: 1200px) {
+  .pet-info-second {
+    display: none;
+  }
+  .pet-info-first {
+  width: 70%;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  .card-pet-1 .card-product-infos h2 {
+    font-size: 30px;
+   }
+
+   .card-product-infos{
+    margin-left: 0px;
+   }
+}
+
+@media (max-width: 768px) {
+  .pet-info-container {
+    flex-direction: column;
+  }
+
+  .page-section{
+    margin-top: 20px;
+  }
+
+  .pet-info-first {
+    margin-bottom: 0px !important;
+  }
+
+  .pet-info-second {
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+  }
+
+}

@@ -9,7 +9,7 @@
       <div class="row justify-content-start container-btn sub-heading">
         <div class="col-5 mb-4 sub-heading-text" data-aos="fade-right">
           <h3>Do you wanna track your pet's health?</h3>
-          <%= link_to "Let's go!", new_user_registration_path, class: "btn btn-success btn-lg text-white shadow rounded-4 mt-3 p-3" %>
+          <%= link_to "Let's go!", new_user_session_path, class: "btn btn-success btn-lg text-white shadow rounded-4 mt-3 p-3" %>
         </div>
       </div>
     </div>
@@ -55,30 +55,11 @@
 
 <section class="page-section" style="color: #000; background-color: #4297A8;">
   <div class="container">
-    <div class="text-center" data-aos="fade-down">
-        <h2 class="section-heading text-uppercase text-white">OUR EXPERIENCES</h2>
-        <h3 class="section-subheading text-white">We share experiences from across the country!</h3>
-    </div>
 
-<%# <section style="color: #000; background-color: #4297A8;">
-  <div class="container py-5">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-10 col-xl-8 text-center">
-        <h3 class="fw-bold mb-4">Testimonials</h3>
-        <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-          numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-          quisquam eum porro a pariatur veniam.
-        </p>
+      <div class="text-center" data-aos="fade-down">
+          <h2 class="section-heading text-uppercase text-white">OUR EXPERIENCES</h2>
+          <h3 class="section-subheading text-white">We share experiences from across the globe!</h3>
       </div>
-    </div> %>
-    <%# <article class="card-testimonial">
-      <div class="card-t-content">
-        <h3 class="card__title">TITLE</h3>
-        <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, reprehenderit! Neque
-          consequatur velit...</p>
-      </div>
-    </article> %>
 
     <div class="row text-center">
       <div class="col-md-4 mb-4 mb-md-0">
@@ -89,12 +70,12 @@
                 class="rounded-circle shadow-1-strong" width="100" height="100" />
             </div>
             <h5 class="font-weight-bold">Andres</h5>
-            <h6 class="font-weight-bold my-3">Santa Fe</h6>
+            <h6 class="font-weight-bold my-3">Chile</h6>
             <ul class="list-unstyled d-flex justify-content-center">
               <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star fa-sm text-info"></i></li>
-              <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+              <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
             </ul>
             <p class="mb-2">
@@ -111,13 +92,13 @@
                 class="rounded-circle shadow-1-strong" width="100" height="100" />
             </div>
             <h5 class="font-weight-bold">Mauri</h5>
-            <h6 class="font-weight-bold my-3">Caballito</h6>
+            <h6 class="font-weight-bold my-3">Chile</h6>
             <ul class="list-unstyled d-flex justify-content-center">
               <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star fa-sm text-info"></i></li>
+              <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
-              <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
-              <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+              <li><i class="fa-star fa-regular fa-sm fas text-info"></i></li>
             </ul>
             <p class="mb-2">
               <i class="fas fa-quote-left pe-2"></i>Great app, it helps us a lot organizing the appointments agenda and communicating with the veterinaries. Great functionalities.
@@ -133,16 +114,16 @@
                 class="rounded-circle shadow-1-strong" width="100" height="100" />
             </div>
             <h5 class="font-weight-bold">Nati</h5>
-            <h6 class="font-weight-bold my-3">Mendoza</h6>
+            <h6 class="font-weight-bold my-3">Cordoba</h6>
             <ul class="list-unstyled d-flex justify-content-center">
               <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star fa-sm text-info"></i></li>
               <li><i class="fas fa-star fa-sm text-info"></i></li>
-              <li><i class="fas fa-star-half-alt fa-sm text-info"></i></li>
+              <li><i class="fas fa-star fa-sm text-info"></i></li>
             </ul>
             <p class="mb-2">
-              <i class="fas fa-quote-left pe-2"></i>Great service, it makes easier to handle the clinical history and studies records. It is organized and easy to use! Very good experience.
+              <i class="fas fa-quote-left pe-2"></i>Great service, it makes easier to handle the clinical history and studies records. It is organized and easy to use!
             </p>
           </div>
         </div>
@@ -164,7 +145,7 @@
             <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("purina.png")%>" alt="..." aria-label="Purina Logo" /></a>
         </div>
         <div class="col-md-3 col-sm-6 my-3">
-            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("boris-vet.png")%>" alt="..." aria-label="Facebook Logo" /></a>
+            <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("boris-vet.png")%>" alt="..." aria-label="Bosris Vet Logo" /></a>
         </div>
         <div class="col-md-3 col-sm-6 my-3">
             <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="<%= image_path("google.svg")%>" alt="..." aria-label="Google Logo" /></a>
@@ -190,8 +171,8 @@
                     <img class="mx-auto rounded-circle  mb-2" src="https://ca.slack-edge.com/T02NE0241-U03PQPPGXUG-abbe6fa51dcc-512" alt="Clari", style="max-width: 80%; max-height: 100%;" />
                     <h4 class="mt-2">Clari Ursini</h4>
                     <p class="text-muted">Team Collaborator</p>
-                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/clariursini" aria-label="Clari Ursini Git Hub Profile"><i class="fa-brands fa-github"></i></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/clara-ursini/" aria-label="Clari Ursini LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://github.com/clariursini" aria-label="Clari Ursini Git Hub Profile"><i class="fa-brands fa-github"></i></i></a>
+                    <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://www.linkedin.com/in/clara-ursini/" aria-label="Clari Ursini LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 mb-4">
@@ -199,8 +180,8 @@
                     <img class="mx-auto rounded-circle  mb-2" src="https://ca.slack-edge.com/T02NE0241-U03NNS0RVHV-f5e916a99167-512" alt="Sofi", style="max-width: 80%; max-height: 100%;" />
                     <h4 class="mt-2">Sofi Larrea</h4>
                     <p class="text-muted">Team Collaborator</p>
-                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/sofilarrea" aria-label="Sofi Larrea Git Hub Profile"><i class="fa-brands fa-github"></i></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Sofi Larrea LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://github.com/sofilarrea" aria-label="Sofi Larrea Git Hub Profile"><i class="fa-brands fa-github"></i></i></a>
+                    <a class="btn btn-dark btn-social mx-2" target="_blank" href="#!" aria-label="Sofi Larrea LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 mb-4">
@@ -208,8 +189,8 @@
                     <img class="mx-auto rounded-circle  mb-2" src="https://ca.slack-edge.com/T02NE0241-U03PBS9AV17-a13d8e7e6e83-512" alt="Lucas", style="max-width: 80%; max-height: 100%;" />
                     <h4 class="mt-2">Lucas Capparelli</h4>
                     <p class="text-muted">Team Collaborator</p>
-                    <a class="btn btn-dark btn-social mx-2" href="https://github.com/capparellilucas" aria-label="Lucas Cappa Git Hub Profile"><i class="fa-brands fa-github"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/lucas-pablo-capparelli-6636001b6/" aria-label="Lucas Cappa LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://github.com/capparellilucas" aria-label="Lucas Cappa Git Hub Profile"><i class="fa-brands fa-github"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://www.linkedin.com/in/lucas-pablo-capparelli-6636001b6/" aria-label="Lucas Cappa LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 mb-4">
@@ -218,8 +199,8 @@
                     <h4 class="mt-2">Caro Arlia</h4>
                     <p class="text-muted">Team Collaborator</p>
                     <div>
-                      <a class="btn btn-dark btn-social mx-2" href="https://github.com/carolina-arlia" aria-label="Caro Arlia Git Hub Profile"><i class="fa-brands fa-github"></i></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/caroarlia/" aria-label="Caro Arlia LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://github.com/carolina-arlia" aria-label="Caro Arlia Git Hub Profile"><i class="fa-brands fa-github"></i></i></a>
+                      <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://www.linkedin.com/in/caroarlia/" aria-label="Caro Arlia LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                     </div>
 
                 </div>
@@ -293,7 +274,11 @@
             <!-- Submit Button-->
             <div class="text-center">
               <%# <button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button> %>
-              <span class="highlight-container" style="padding: 5px 15px 10px 10px;"><span class="highlight" style="color: white;">Send Message</span></span>
+              <span class="highlight-container" style="padding: 5px 15px 10px 10px;">
+                <span class="highlight" style="color: white;">
+                  <span class="btn-update">Send Message</span>
+                </span>
+              </span>
             </div>
         </form>
     </div>

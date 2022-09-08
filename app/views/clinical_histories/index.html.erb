@@ -27,8 +27,10 @@
               <div>
                 <% if current_user.type_of_user == "Veterinary" %>
                   <span class="highlight-container p-1"><span class="highlight"><%= link_to "Create new", new_pet_clinical_history_path, class: "btn btn-update" %></span></span>
-                <% end %>
                   <span class="highlight-container p-1" style="margin-left: 15px"><span class="highlight"><%= link_to "Book an appointment", pet_veterinary_path(@pet, current_user), class: "btn btn-update" %></span></span>
+                <% else %>
+                  <span class="highlight-container p-1" style="margin-left: 15px"><span class="highlight"><%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-update" %></span></span>
+                <% end %>
               </div>
             </div>
 
@@ -113,8 +115,10 @@
               <div>
                 <% if current_user.type_of_user == "Veterinary" %>
                   <span class="highlight-container p-1"><span class="highlight"><%= link_to "Create new", new_pet_study_path, class: "btn btn-update" %></span></span>
-                <% end %>
                   <span class="highlight-container p-1" style="margin-left: 15px"><span class="highlight"><%= link_to "Book an appointment", pet_veterinary_path(@pet, current_user), class: "btn btn-update" %></span></span>
+                <% else %>
+                  <span class="highlight-container p-1" style="margin-left: 15px"><span class="highlight"><%= link_to "Book an appointment", pet_veterinaries_path(@pet), class: "btn btn-update" %></span></span>
+                <% end %>
               </div>
             </div>
 

@@ -1,8 +1,22 @@
-.container-show-header { /*esto esta en my appointments y appointments de una pet*/
+// MY APPOINTMENTS Y APPOINTMENTS PET
+/*esto esta en my appointments y appointments de una pet*/
+
+.container-show-header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
+
+// CONTAINER PRINCIPAL PET SHOW
+.pets-show {
+  margin-bottom: 100px;
+}
+
+// CONTAINER SING UP
+.sign-up-container{
+  margin-top: -10px;
+}
+
 @media (min-width: 576px) {
   .container-lists {
     max-width: 540px;
