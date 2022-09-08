@@ -8,3 +8,11 @@
 .m-list {
   margin-left: 16px;
 }
+
+.fw-normal {
+  cursor: pointer;
+}
+
+.fw-normal span:hover {
+  color: $green-fmp;
+}

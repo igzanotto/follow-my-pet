@@ -42,6 +42,7 @@ class AppointmentsController < ApplicationController
   # Turnos de una mascota: pet_appointments_path
   def index
     @pet = Pet.find(params[:pet_id])
+    # @appointments = @pet.appointments.where('start_time >= ?', Date.today) // descomentar si se quiere poner el calendar en el index de appointments
     @next_appointments = @pet.appointments.where('start_time >= ?', Date.today)
   end
 

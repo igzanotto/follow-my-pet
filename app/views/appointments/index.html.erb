@@ -42,4 +42,31 @@
       </ul>
     <% end %>
   </div>
+
+<%# MAPA POR SI SE QUIERE MOSTRAR CON APPOINTMENTS SOLO DEL PET %>
+
+    <%# <div class="col-lg-8 mt-5" style= "width: 80%; margin: 0 auto;">
+    <div class="card" data-aos="flip-left">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-9">
+            <p class="mb-0" style="font-weight: bolder;">Appointments</p>
+          </div>
+          <div class="col-sm-12 mt-3 text-muted"> %>
+
+              <%#= month_calendar(events: @appointments) do |date, appointments| %>
+                <%#= date %>
+                  <%# appointments.each do |appointment| %>
+                  <%# <div class="meeting">
+                    <p><%= appointment.pet.name %> <%#</p>
+                    <small><%#= appointment.time  %> <%#</small>
+                  </div>
+                <%# end %>
+              <%# end %>
+          <%# </div>
+        </div>
+      </div>
+    </div>
+  </div> %>
+
 </div>
