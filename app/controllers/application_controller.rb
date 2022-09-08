@@ -28,4 +28,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_root_path
+    if current_user.type_of_user == "Pet Owner"
+      pets_path
+    else
+      vet_profile_path
+    end
+  end
+
 end

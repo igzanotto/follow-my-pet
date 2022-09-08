@@ -187,8 +187,13 @@
     <% end %>
 
     <% if current_user.type_of_user == "Veterinary" %>
-      <div class="mt-5 mb-4 d-flex justify-content-center">
-          <%= link_to "Back to my Patients", my_patients_path, class:"btn btn-secondary shadow rounded-5"  %>
+      <div class="d-flex justify-content-center">
+        <div class="mt-5 mb-4 d-flex justify-content-center">
+            <%= link_to "Back to my patients", my_patients_path, class:"btn btn-secondary shadow rounded-5 m-3"  %>
+        </div>
+        <div class="mt-5 mb-4 d-flex justify-content-center">
+          <%= link_to "Back to my appointments", my_appointments_path, class:"btn btn-secondary shadow rounded-5 m-3"  %>
+        </div>
       </div>
     <% end %>
   </div>
