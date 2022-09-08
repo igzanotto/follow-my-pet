@@ -1,4 +1,4 @@
-<div class="container ml-auto">
+<div class="container sign-up-container ml-auto">
   <section class="pt-0" style="background-color: #F4F4F4; padding-bottom: 80px;">
     <div class="container" style="margin-top: 30px;">
       <div class="row d-flex justify-content-center align-items-center" id="login">
@@ -53,7 +53,8 @@
                 </div>
 
                   <div class="form-outline mb-4">
-                    <%= f.input :location, hint: "Write your location", required: false, label: false, placeholder: "Location" %>
+                    <%# <%= f.input :location, hint: "Write your location", required: false, label: false, placeholder: "Location" %>
+                    <%= f.input :location, input_html: {data: {location_autocomplete_target: "location"}, class: "d-none"}, wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}, label: "Location" %>
                   </div>
                   <div class="form-outline mb-4">
                     <%= f.input :doctors, hint: "Name the doctors", required: false, label: false, placeholder: "Doctors" %>

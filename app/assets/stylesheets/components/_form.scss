@@ -101,12 +101,10 @@
   .select-date .d-flex select{
     margin-bottom: 3px;
   }
+}
 
-  // #appointment_start_time_5i {
-  //   display: none;
-  // }
-
-  // #appointment_start_time_4i #text {
-  //   display: none;
-  // }
+@media (max-width: 1055px) and (min-width: 769px) {
+  .appotintment-edit{
+    max-width: 80% !important;
+  }
 }

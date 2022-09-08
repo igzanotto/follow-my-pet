@@ -1,103 +1,195 @@
-<div class="container mt-4 mb-5 ml-auto conteiner-lists">
-  <div data-aos="fade-right" class="container mb-5 mt-4">
-    <div class="card-product rounded-4" style="justify-content: space-between;">
-      <% if @pet.photo.present? %>
-        <%= cl_image_tag(@pet.photo.key) %>
-      <% else %>
-        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
-      <% end %>
-      <div class="card-product-infos">
-        <h2><%= @pet.name %></h2>
-      </div>
-      <div class="card-product-infos p-5">
-        <p>Species: <strong><%= @pet.species_type.name %></strong></p>
-        <p>Pet Owner: <strong><%= @pet.user.name %></strong></p>
-        <p>Birthday: <strong><%= @pet.birthday %></strong></p>
-        <p><strong>Phone:</strong> <%= @pet.user.phone %></p>
-        <p><strong>Email:</strong> <%= @pet.user.email %></p>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="container pets-show">
 
-<div class="container">
-    <div class="row text-center justify-content-center">
-        <% if current_user.type_of_user == "Pet Owner" %>
-            <div class="col-3 md-3 ">
-              <%= link_to pet_appointments_path(@pet) do %>
-                  <span class="fa-stack fa-4x">
-                      <i class="fas fa-square fa-stack-2x text-success"></i>
-                      <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
-                  </span>
-                  <div class="container d-flex justify-content-center">
-                      <h4 class="my-3"><%= link_to "My Appointments", pet_appointments_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
-                  </div>
-              <% end %>
-            </div>
-        <% end %>
+  <%# ------ CARD MASCOTA INCIAL ---------------------- %>
+  <div class= "pet-info-container">
 
-        <% if current_user.type_of_user == "Veterinary" %>
-            <div class="col-3 mb-3">
-              <%= link_to pet_veterinary_path(@pet, current_user) do %>
-                      <span class="fa-stack fa-4x">
-                          <i class="fas fa-square fa-stack-2x text-success"></i>
-                          <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
-                      </span>
-                      <h4 class="my-3 "><%= link_to "Book an Appointment", pet_veterinary_path(@pet, current_user), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
-                <% end %>
-            </div>
-        <% end %>
-
-  <div class="col-3 mb-3">
-    <%= link_to pet_vaccinations_path(@pet) do %>
-
-            <span class="fa-stack fa-4x">
-                <i class="fas fa-square fa-stack-2x text-success"></i>
-                <i class="fa-solid fa-syringe fa-stack-1x fa-inverse"></i>
-            </span>
-                <h4 class="my-3"> <%= link_to "Vaccinations", pet_vaccinations_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
-
-    <% end %>
-  </div>
-
-        <div class="col-3 mb-3">
-            <%= link_to pet_clinical_histories_path(@pet) do %>
-
-                  <span class="fa-stack fa-4x">
-                      <i class="fas fa-square fa-stack-2x text-success"></i>
-                      <i class="fas fa-mobile fa-stack-1x fa-inverse"></i>
-                  </span>
-                      <h4 class="my-3 md-1"><%= link_to "Clinical History", pet_clinical_histories_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 85%" %></h4>
-
-
-            <% end %>
+    <div class="container pet-info-first mt-4 mb-3 ml-auto conteiner-lists">
+      <div data-aos="fade-right" class="container mb-5 mt-4">
+        <div class="card-product rounded-4 card-pet-1" style="justify-content: space-between;">
+          <% if @pet.photo.present? %>
+            <%= cl_image_tag(@pet.photo.key) %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= @pet.name %></h2>
+          </div>
+          <div class="card-product-infos pet-content">
+            <p>Species: <strong><%= @pet.species_type.name %></strong></p>
+            <p>Pet Owner: <strong><%= @pet.user.name %></strong></p>
+            <p>Birthday: <strong><%= @pet.birthday %></strong></p>
+            <p>Phone: <strong><%= @pet.user.phone %></p></strong>
+            <p>Email: <strong><%= @pet.user.email %></p></strong>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <% if current_user.type_of_user == "Pet Owner" %>
-            <div class="col-mb-4 ">
-                <%= link_to pet_veterinaries_path(@pet) do %>
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-square fa-stack-2x text-success"></i>
-                        <i class="fa-solid fa-house-medical fa-stack-1x fa-inverse"></i>
-                    </span>
-                        <h4 class="my-3"><%= link_to "Veterinaries", pet_veterinaries_path(@pet), class:"font-weight-normal text-decoration-none", style: "color: grey; max-width: 100%" %></h4>
-                <% end %>
+    <div class="container pet-info-second mt-4 mb-3 ml-auto conteiner-lists">
+      <div data-aos="fade-right" class="container mb-5 mt-4">
+        <div class="card-product rounded-4" style="justify-content: space-between;">
+          <div class="card-product-infos text-center" style="margin: 0 auto;">
+            <p>Species: <strong><%= @pet.species_type.name %></strong></p>
+            <p>Pet Owner: <strong><%= @pet.user.name %></strong></p>
+            <p>Birthday: <strong><%= @pet.birthday %></strong></p>
+            <p>Phone: <strong><%= @pet.user.phone %></p></strong>
+            <p>Email: <strong><%= @pet.user.email %></p></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-------------- CATEGORY CARDS SECTION PARA PET OWNER  ------------->
+  <% if current_user.type_of_user == "Pet Owner" %>
+    <section class="page-section rounded-4 shadow" style="color: #000; background-color: #4297A8;">
+      <div class="container">
+        <div class="row text-center">
+
+            <div class="col-md-3 mb-4 mb-md-0">
+              <div class="card shadow rounded-4" data-aos="flip-right">
+                <div class="card-body py-4 mt-2">
+                  <div class="d-flex justify-content-center mb-4">
+                    <%= link_to pet_appointments_path(@pet) do %>
+                      <img src="<%= image_path("calndaricon.png") %>"
+                      class="rounded-circle shadow-1-strong" width="100" height="100" />
+                    <% end %>
+                  </div>
+                  <%= link_to pet_appointments_path(@pet) do %>
+                    <h5 class="font-weight-bold h5-card-pets">My appointments</h5>
+                  <% end %>
+                </div>
+              </div>
             </div>
-        <% end %>
-    </div>
-</div>
 
+          <div class="col-md-3 mb-4 mb-md-0">
+            <div class="card shadow rounded-4" data-aos="flip-right">
+              <div class="card-body py-4 mt-2">
+                <div class="d-flex justify-content-center mb-4">
+                <%= link_to pet_vaccinations_path(@pet) do %>
+                  <img src="<%= image_path("vaccinationicon.png") %>"
+                    class="rounded-circle shadow-1-strong" width="100" height="100" />
+                <% end %>
+                </div>
+                <%= link_to pet_vaccinations_path(@pet) do %>
+                  <h5 class="font-weight-bold h5-card-pets">Vaccinations</h5>
+                <% end %>
+              </div>
+            </div>
+          </div>
 
-<% if current_user.type_of_user == "Pet Owner" %>
-    <div class="mt-5 mb-4 d-flex justify-content-center">
-        <%= link_to "Delete",  pet_path(@pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-secondary shadow rounded-5", style: "margin-right: 20px; padding-left: 30px; padding-right: 30px;" %>
-        <%= link_to "Edit",  edit_pet_path(@pet), class: "btn btn-secondary shadow rounded-5", style: "margin-right: 20px; padding-left: 40px; padding-right: 40px;" %>
-        <%= link_to "Back to my Pets", pets_path, class:"btn btn-secondary shadow rounded-5"  %>
-    </div>
+          <div class="col-md-3 mb-4 mb-md-0">
+            <div class="card shadow rounded-4" data-aos="flip-right">
+              <div class="card-body py-4 mt-2">
+                <div class="d-flex justify-content-center mb-4">
+                <%= link_to pet_clinical_histories_path(@pet) do %>
+                  <img src="<%= image_path("historyicon.png") %>"
+                    class="rounded-circle shadow-1-strong" width="100" height="100" />
+                  <% end %>
+                </div>
+                <%= link_to pet_clinical_histories_path(@pet) do %>
+                  <h5 class="font-weight-bold h5-card-pets">Clinical History</h5>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+            <div class="col-md-3 mb-4 mb-md-0">
+              <div class="card shadow rounded-4" data-aos="flip-right">
+                <div class="card-body py-4 mt-2">
+                  <div class="d-flex justify-content-center mb-4">
+                  <%= link_to pet_veterinaries_path(@pet) do %>
+                    <img src="<%= image_path("veticon.png") %>"
+                      class="rounded-circle shadow-1-strong" width="100" height="100" />
+                    <% end %>
+                  </div>
+                  <%= link_to pet_veterinaries_path(@pet) do %>
+                    <h5 class="font-weight-bold h5-card-pets">Veterinaries</h5>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </section>
   <% end %>
+
+<!-------------- CATEGORY CARDS SECTION PARA VETERINARY ------------->
 
   <% if current_user.type_of_user == "Veterinary" %>
-    <div class="mt-5 mb-4 d-flex justify-content-center">
-        <%= link_to "Back to my Patients", my_patients_path, class:"btn btn-secondary shadow rounded-5"  %>
-    </div>
+    <section class="page-section rounded-4 shadow" style="color: #000; background-color: #4297A8;">
+      <div class="container">
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4 mb-md-0">
+              <div class="card shadow rounded-4" data-aos="flip-right">
+                <div class="card-body py-4 mt-2">
+                  <div class="d-flex justify-content-center mb-4">
+                  <%= link_to pet_veterinary_path(@pet, current_user) do %>
+                    <img src="<%= image_path("calndaricon.png") %>"
+                      class="rounded-circle shadow-1-strong" width="100" height="100" />
+                    <% end %>
+                  </div>
+                  <%= link_to pet_veterinary_path(@pet, current_user) do %>
+                    <h5 class="font-weight-bold h5-card-pets">Book an appointment</h5>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <div class="card shadow rounded-4" data-aos="flip-right">
+              <div class="card-body py-4 mt-2">
+                <div class="d-flex justify-content-center mb-4">
+                <%= link_to pet_vaccinations_path(@pet) do %>
+                  <img src="<%= image_path("vaccinationicon.png") %>"
+                    class="rounded-circle shadow-1-strong" width="100" height="100" />
+                  <% end %>
+                </div>
+                <%= link_to pet_vaccinations_path(@pet) do %>
+                  <h5 class="font-weight-bold h5-card-pets">Vaccinations</h5>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <div class="card shadow rounded-4" data-aos="flip-right">
+              <div class="card-body py-4 mt-2">
+                <div class="d-flex justify-content-center mb-4">
+                <%= link_to pet_clinical_histories_path(@pet) do %>
+                  <img src="<%= image_path("historyicon.png") %>"
+                    class="rounded-circle shadow-1-strong" width="100" height="100" />
+                <% end %>
+                </div>
+                <%= link_to pet_clinical_histories_path(@pet) do %>
+                  <h5 class="font-weight-bold h5-card-pets">Clinical History</h5>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   <% end %>
+
+  <%# ------ BOTONES ---------------------- %>
+  <div class="container">
+    <% if current_user.type_of_user == "Pet Owner" %>
+      <div class="mt-5 mb-4 d-flex justify-content-center">
+          <%= link_to "Delete",  pet_path(@pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-secondary shadow rounded-5", style: "margin-right: 20px; padding-left: 30px; padding-right: 30px;" %>
+          <%= link_to "Edit",  edit_pet_path(@pet), class: "btn btn-secondary shadow rounded-5", style: "margin-right: 20px; padding-left: 40px; padding-right: 40px;" %>
+          <%= link_to "Back to my Pets", pets_path, class:"btn btn-secondary shadow rounded-5"  %>
+      </div>
+    <% end %>
+
+    <% if current_user.type_of_user == "Veterinary" %>
+      <div class="mt-5 mb-4 d-flex justify-content-center">
+          <%= link_to "Back to my Patients", my_patients_path, class:"btn btn-secondary shadow rounded-5"  %>
+      </div>
+    <% end %>
+  </div>
+</div>
