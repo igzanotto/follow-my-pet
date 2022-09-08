@@ -42,7 +42,7 @@
                   <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;"
                 </button> %>
                   <% if current_user.type_of_user == "Pet Owner" %>
-                    <span class="highlight-container" style= "padding: 5px 15px 10px 5px;"><span class="highlight btn-update" style= "padding: 10px;"><%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;" %></span></span>
+                    <span class="highlight-container" style= "padding: 5px 15px 10px 5px;"><span class="highlight" style= "padding: 10px;"><%= link_to "Message", chatroom_path(Chatroom.first), class: "btn-update" %></span></span>
                   <% end %>
               </div>
             </div>
@@ -72,12 +72,12 @@
               <p style="font-weight: bolder;">Reviews</p>
               <% @reviews.each do |review| %>
                 <div class="d-flex">
-                  <p style="margin-right: 15px;">"<%= review.content %>"</p>
-                  <div>
+                  <div style="margin-right: 15px;">
                     <% review.rating.to_i.times do %>
                       <i class="fa-solid fa-star" style= "color: orange"></i>
                     <% end %>
                   </div>
+                  <p>"<%= review.content %>"</p>
                 </div>
               <% end %>
             </div>
