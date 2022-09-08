@@ -1,0 +1,31 @@
+<div class="card shadow rounded-4 card-vet mb-3" style="max-width: 540px;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <% if vet.photo.present? %>
+                        <%= cl_image_tag vet.photo.key, style: "width: 100%; height: 100%; border-radius: 10px 0 0 10px;" %>
+                      <% else %>
+                        <img src="https://images.unsplash.com/photo-1599443015574-be5fe8a05783?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" style="width: 100%; height: 100%; border-radius: 10px 0 0 10px;" />
+                      <% end %>
+                    </div>
+                    <div class="col-md-8 card-body-vets">
+                      <div class="card-body">
+                        <h5 class="card-title" style= "color: #4297A8; font-weight: bolder; text-shadow: 1px 2px 0px #e1dfdf;"><%= vet.name.capitalize %> </h5>
+                        <%# <div> %>
+                        <%# <% if vet.speciality.present? %>
+                          <%# <p style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Specialities: </em><%= vet.speciality </p> %>
+                        <%# <% else %>
+                          <%# <p style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Specialities: </em> Undefined</p> %>
+                        <%# <% end %>
+                        <%# </div> %>
+                        <%# <p class="card-text" style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Location: </em><%= vet.location</p> %>
+                        <%# <p class="card-text" style="font-size: 12px; margin-bottom: 5px; color: #555358;"><em>Phone: </em><%= vet.phone</p> %>
+                        <%# <p class="card-text" style="font-size: 12px; margin-bottom: 10px; color: #555358;"><em>Doctors: </em><%= vet.doctors</p> %>
+                        <%# <p class="card-text" style="font-size: 12px; margin-bottom: 10px; color: #555358;"> %>
+                          <%# <% vet.reviews.average(:rating).to_i.times do %>
+                            <%# <i class="fa-solid fa-star" style= "color: orange"></i> %>
+                          <%# <% end</p> %>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
