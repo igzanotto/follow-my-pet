@@ -42,12 +42,19 @@ vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Vete
 vet5 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Small Dog Center", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: ["Clinic", "Radiology"])
 vet6 = User.new(email: "vet6@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Happy Dog Clinic", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
 
+vet7 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Radiolody Center Little Horse", doctors: "Dr. Pedro Gomez, Dra. Carla Fernández", phone: "+54659855489", location: "Federico García Lorca 350, Caballito, Caballito - Buenos Aires, C1405, Argentina", longitude: -58.43809, latitude: -34.5883, speciality: "Clinic, Radiology, Nutrition, Lab")
+
+
+
+
 vet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/borisclinic.png')), filename: 'borisclinic.png')
 vet2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sebastien.png')), filename: 'sebastien.png')
 vet3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/petlover.png')), filename: 'petlover.png')
 vet4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/scooby.png')), filename: 'scooby.png')
 vet5.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/smalldog.png')), filename: 'smalldog.png')
 vet6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/happydog.png')), filename: 'happydog.png')
+vet7.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/horse.png')), filename: 'horse.png')
+
 
 vet1.save!
 vet2.save!
@@ -55,6 +62,8 @@ vet3.save!
 vet4.save!
 vet5.save!
 vet6.save!
+vet7.save!
+
 puts "Done"
 
 puts "Creating users-pet-owners"
@@ -209,6 +218,9 @@ app22 = Appointment.create!(user: vet2, pet: pet7, start_time: DateTime.new(2022
 app23 = Appointment.create!(user: vet4, pet: pet8, start_time: DateTime.new(2022,9,22,13,0,6))
 app24 = Appointment.create!(user: vet4, pet: pet9, start_time: DateTime.new(2022,9,23,14,0,6))
 
+app25 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,9,19,0,6))
+app26 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,9,20,0,6))
+
 puts "Done"
 
 puts "Creating vaccines"
@@ -307,9 +319,11 @@ study15 = Study.new(clinical_history: ch3pet6, name: "Lab results")
 study16 = Study.new(clinical_history: ch3pet7, name: "Lab results")
 study17 = Study.new(clinical_history: ch3pet8, name: "Lab results")
 study18 = Study.new(clinical_history: ch3pet9, name: "Lab results")
+
 radiology = URI.open("https://c8.alamy.com/zoomses/9/df223ade4a414db5ab83c4fc6c7034d3/2bx8hbx.jpg")
 lab = URI.open("https://thumbs.dreamstime.com/z/resultado-del-an%C3%A1lisis-de-sangre-12613767.jpg")
 study1.photo.attach(io: radiology, filename: "2bx8hbx.jpg", content_type: "image/jpg")
+
 study2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
 study3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
 study4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/rx.jpg')), filename: 'rx.jpg')
@@ -327,6 +341,7 @@ study15.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.
 study16.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
 study17.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
 study18.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lab.png')), filename: 'lab.png')
+
 study1.save!
 study2.save!
 study3.save!
