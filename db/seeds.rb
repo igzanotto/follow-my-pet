@@ -424,4 +424,4 @@ review1 = Review.create!(content: "All right", rating: 3, user: vet4)
 
 puts "Done"
 
-chatroom = Chatroom.create!(name: "General")
+chatroom = Chatroom.create!(name: "Chat")
