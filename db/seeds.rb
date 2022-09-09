@@ -41,7 +41,7 @@ vet2 = User.new(email: "vet2@gmail.com", password: "123456", type_of_user: "Vete
 
 vet3 = User.new(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Conde 851, Colegiales, Comuna 13 - Buenos Aires, C1426, Argentina", longitude: -58.45070309805917, latitude: -34.57620440510802, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
 
-vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "11 de Septiembre de 1888 2139, C1428 AIG, Buenos Aires", longitude: -58.45143352340671, latitude: -34.55786660903639, speciality: ["Clinic", "Radiology"])
+vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Montañeses 2325, Belgrano, Comuna 13 - Buenos Aires, C1428, Argentina", longitude: -58.45143352340671, latitude: -34.55786660903639, speciality: ["Clinic", "Radiology"])
 
 vet5 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Small Dog Center", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Rojas 599, Caballito, Caballito - Buenos Aires, C1405, Argentina", longitude: -58.44407448865364, latitude: -34.61392894396332, speciality: ["Clinic", "Radiology"])
 
@@ -241,13 +241,13 @@ app9 = Appointment.create!(user: vet3, pet: pet1, start_time: DateTime.new(2022,
 app10 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,17,9,0,6))
 app11 = Appointment.create!(user: vet2, pet: pet3, start_time: DateTime.new(2022,9,18,11,0,6))
 app12 = Appointment.create!(user: vet4, pet: pet2, start_time: DateTime.new(2022,9,19,12,0,6))
-app13 = Appointment.create!(user: vet2, pet: pet1, start_time: DateTime.new(2022,9,10,15,0,6))
+app13 = Appointment.create!(user: vet2, pet: pet1, start_time: DateTime.new(2022,9,9,15,0,6))
 app14 = Appointment.create!(user: vet3, pet: pet2, start_time: DateTime.new(2022,9,11,14,0,6))
 
 app15 = Appointment.create!(user: vet1, pet: pet5, start_time: DateTime.new(2022,9,15,10,0,6))
 app16 = Appointment.create!(user: vet2, pet: pet6, start_time: DateTime.new(2022,9,18,11,0,6))
 app17 = Appointment.create!(user: vet4, pet: pet7, start_time: DateTime.new(2022,9,19,12,0,6))
-app18 = Appointment.create!(user: vet2, pet: pet8, start_time: DateTime.new(2022,9,10,13,0,6))
+app18 = Appointment.create!(user: vet2, pet: pet8, start_time: DateTime.new(2022,9,9,13,0,6))
 app19 = Appointment.create!(user: vet3, pet: pet9, start_time: DateTime.new(2022,9,11,14,0,6))
 
 app20 = Appointment.create!(user: vet2, pet: pet5, start_time: DateTime.new(2022,9,17,10,0,6))
@@ -256,8 +256,8 @@ app22 = Appointment.create!(user: vet2, pet: pet7, start_time: DateTime.new(2022
 app23 = Appointment.create!(user: vet4, pet: pet8, start_time: DateTime.new(2022,9,22,13,0,6))
 app24 = Appointment.create!(user: vet4, pet: pet9, start_time: DateTime.new(2022,9,23,14,0,6))
 
-app25 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,10,14,0,6))
-app26 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,10,15,0,6))
+app25 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,9,14,0,6))
+app26 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,9,15,0,6))
 
 puts "Done"
 

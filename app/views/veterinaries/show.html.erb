@@ -37,7 +37,7 @@
                   <i class="fa-solid fa-star" style= "color: orange"></i>
                 <% end %>
               </div>
-              <p class="text-muted mb-4"><%= @veterinary.location.split(",").first %></p>
+              <p class="text-muted mb-4"><%= @veterinary.location.split(",")[1] %></p>
 
               <div class="d-flex justify-content-center mb-2">
                   <% if current_user.type_of_user == "Pet Owner" %>
