@@ -45,7 +45,7 @@ vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Vete
 
 vet5 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Small Dog Center", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Rojas 599, Caballito, Caballito - Buenos Aires, C1405, Argentina", longitude: -58.44407448865364, latitude: -34.61392894396332, speciality: ["Clinic", "Radiology"])
 
-vet6 = User.new(email: "vet6@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Happy Dog Clinic", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Avenida Rivadavia 5108, Caballito, Caballito - Buenos Aires, C1424CET, Argentina", longitude: -58.43746306588173, latitude: -34.619018951851785, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
+vet6 = User.new(email: "vet7@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Happy Dog Clinic", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Avenida Rivadavia 5108, Caballito, Caballito - Buenos Aires, C1424CET, Argentina", longitude: -58.43746306588173, latitude: -34.619018951851785, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
 
 vet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/borisclinic.png')), filename: 'borisclinic.png')
 vet2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sebastien.png')), filename: 'sebastien.png')
