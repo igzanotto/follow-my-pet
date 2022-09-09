@@ -42,7 +42,7 @@ vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Vete
 vet5 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Small Dog Center", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: ["Clinic", "Radiology"])
 vet6 = User.new(email: "vet6@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Happy Dog Clinic", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
 
-vet7 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Radiolody Center Little Horse", doctors: "Dr. Pedro Gomez, Dra. Carla Fernández", phone: "+54659855489", location: "Federico García Lorca 350, Caballito, Caballito - Buenos Aires, C1405, Argentina", longitude: -58.43809, latitude: -34.5883, speciality: "Clinic, Radiology, Nutrition, Lab")
+vet7 = User.new(email: "vet7@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Radiolody Center Little Horse", doctors: "Dr. Pedro Gomez, Dra. Carla Fernández", phone: "+54659855489", location: "Federico García Lorca 350, Caballito, Caballito - Buenos Aires, C1405, Argentina", longitude: -58.43809, latitude: -34.5883, speciality: "Clinic, Radiology, Nutrition, Lab")
 
 
 
