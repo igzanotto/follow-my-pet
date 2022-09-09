@@ -45,7 +45,12 @@ vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Vete
 
 vet5 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Small Dog Center", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Rojas 599, Caballito, Caballito - Buenos Aires, C1405, Argentina", longitude: -58.44407448865364, latitude: -34.61392894396332, speciality: ["Clinic", "Radiology"])
 
-vet6 = User.new(email: "vet7@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Happy Dog Clinic", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Avenida Rivadavia 5108, Caballito, Caballito - Buenos Aires, C1424CET, Argentina", longitude: -58.43746306588173, latitude: -34.619018951851785, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
+vet6 = User.new(email: "vet6@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Happy Dog Clinic", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Avenida Rivadavia 5108, Caballito, Caballito - Buenos Aires, C1424CET, Argentina", longitude: -58.43746306588173, latitude: -34.619018951851785, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
+
+vet7 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Radiolody Center Little Horse", doctors: "Dr. Pedro Gomez, Dra. Carla Fernández", phone: "+54659855489", location: "Federico García Lorca 350, Caballito, Caballito - Buenos Aires, C1405, Argentina", longitude: -58.43809, latitude: -34.5883, speciality: "Clinic, Radiology, Nutrition, Lab")
+
+
+
 
 vet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/borisclinic.png')), filename: 'borisclinic.png')
 vet2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sebastien.png')), filename: 'sebastien.png')
@@ -53,6 +58,8 @@ vet3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/petlove
 vet4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/scooby.png')), filename: 'scooby.png')
 vet5.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/smalldog.png')), filename: 'smalldog.png')
 vet6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/happydog.png')), filename: 'happydog.png')
+vet7.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/horse.png')), filename: 'horse.png')
+
 
 vet1.save!
 vet2.save!
@@ -60,6 +67,7 @@ vet3.save!
 vet4.save!
 vet5.save!
 vet6.save!
+vet7.save!
 
 puts "Done"
 
@@ -256,8 +264,8 @@ app22 = Appointment.create!(user: vet2, pet: pet7, start_time: DateTime.new(2022
 app23 = Appointment.create!(user: vet4, pet: pet8, start_time: DateTime.new(2022,9,22,13,0,6))
 app24 = Appointment.create!(user: vet4, pet: pet9, start_time: DateTime.new(2022,9,23,14,0,6))
 
-app25 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,9,14,0,6))
-app26 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,9,15,0,6))
+app25 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,9,19,0,6))
+app26 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,9,20,0,6))
 
 puts "Done"
 
