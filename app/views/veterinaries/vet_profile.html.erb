@@ -114,7 +114,8 @@
                   <p class="mb-0">Specialities</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><%= @veterinary.speciality %></p>
+                  <p class="text-muted mb-0">
+                    <%= @veterinary.speciality[1..-1].join(", ")%></p>
                 </div>
               </div>
               <hr>

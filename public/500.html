@@ -3,7 +3,7 @@
 <head>
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
+  <!-- <style>
   .rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
@@ -51,16 +51,17 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
-  </style>
+  </style> -->
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  <div class="dialog container" style= "margin-top: 80px;">
+    <div style= "text-align: center; margin: 20px;">
+      <h1 style="font-family: 'Nunito', 'Helvetica', 'sans-serif';">We're sorry, but something went wrong.</h1>
+      <p style="font-family: 'Nunito', 'Helvetica', 'sans-serif'; margin-top: 20px; font-size: 20px">If you are the application owner check the logs for more information.</p>
+      <img style= "width: 50%;" src="https://live.staticflickr.com/5324/9518446468_c574cd79c5_c.jpg" alt="Ill dog">
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
