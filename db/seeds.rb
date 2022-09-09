@@ -35,7 +35,7 @@ User.destroy_all
 
 puts "Creating users-veterinaries"
 
-vet1 = User.new(email: "vet1@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Rosario 866, Caballito, Caballito - Buenos Aires, C1424, Argentina", longitude: -58.44040919589571, latitude: -34.6204369051543, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
+vet1 = User.new(email: "vetboris@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Rosario 866, Caballito, Caballito - Buenos Aires, C1424, Argentina", longitude: -58.44040919589571, latitude: -34.6204369051543, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
 
 vet2 = User.new(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Vicente López 2050, Recoleta, Recoleta - Buenos Aires, 1113, Argentina", longitude: -58.39389188679799, latitude: -34.58899706114716, speciality: ["Bath"])
 
@@ -151,7 +151,7 @@ ch2pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "had a sto
 ch3pet1 = ClinicalHistory.create!(user: vet3, pet: pet1, description: "Clean ears using a medicated ear cleanser. Prescribed an ear cleanser and a topical medication to use at home. Prescribed oral antibiotics and anti-inflammatory medications.", date: DateTime.new(2022,4,1,11,0,6), name: "Ear Infection", type_of_history: "Consult")
 ch4pet1 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Treatment involves frequent bathing with a hypoallergenic shampoo, which may or may not contain anti-inflammatory ingredients. This not only soothes itchy and inflamed skin, but rinses off allergens that are present on the coat or on the skin. Anti-Inflammatory Therapy.", date: DateTime.new(2021,12,17,11,0,6), name: "Skin Allergies", type_of_history: "Consult")
 ch5pet1 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Vaccines of the year. Rabies. Expiration date May 2023", date: DateTime.new(2021,6,18,11,0,6), name: "Vaccines", type_of_history: "Vaccination")
-ch6pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Additional Vaccine. Bordetella. Expiration date May 2021", date: DateTime.new(2020,7,13,11,0,6), name: "Vaccines", type_of_history: "Vaccination")
+ch6pet1 = ClinicalHistory.create!(user: vet3, pet: pet1, description: "Additional Vaccine. Bordetella. Expiration date May 2021", date: DateTime.new(2020,7,13,11,0,6), name: "Vaccines", type_of_history: "Vaccination")
 ch7pet1 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Had a contusion in his head. Prescripted a Radiology to check for internal damage. Recommended to have a restricted diet.", date: DateTime.new(2021,6,14,11,0,6), name: "Consult and Radiology", type_of_history: "Study")
 ch8pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Came with an recurrent alergie, asked for a Blood test to check potential allergies. Prescripted corticosteroid 1mg.", date: DateTime.new(2020,7,18,11,0,6), name: "Blood Test", type_of_history: "Study")
 
@@ -284,7 +284,7 @@ vaccination7 = Vaccination.new(vaccine: vaccine1, clinical_history: ch5pet7, exp
 vaccination8 = Vaccination.new(vaccine: vaccine1, clinical_history: ch5pet8, expiration_date: Date.new(2023,5,22))
 vaccination9 = Vaccination.new(vaccine: vaccine1, clinical_history: ch5pet9, expiration_date: Date.new(2023,9,23))
 
-vaccination10 = Vaccination.new(vaccine: vaccine6, clinical_history: ch6pet1, expiration_date: Date.new(2023,9,25))
+vaccination10 = Vaccination.new(vaccine: vaccine6, clinical_history: ch6pet1, expiration_date: Date.new(202,10,24))
 vaccination11 = Vaccination.new(vaccine: vaccine6, clinical_history: ch6pet2, expiration_date: Date.new(2023,8,25))
 vaccination12 = Vaccination.new(vaccine: vaccine6, clinical_history: ch6pet3, expiration_date: Date.new(2024,9,25))
 vaccination13 = Vaccination.new(vaccine: vaccine6, clinical_history: ch6pet4, expiration_date: Date.new(2023,7,22))
