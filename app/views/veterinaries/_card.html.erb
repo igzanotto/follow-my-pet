@@ -8,8 +8,8 @@
     <div class="card-body">
       <h5 class="card-title" style="font-size: 16px;"><%= vet.name %></h5>
       <div>
-          <% if vet.speciality.present? %>
-            <p style="font-size: 12px; margin-bottom: 5px;">Specialities:<%= vet.speciality %></p>
+          <% if vet.speciality != [] %>
+            <p style="font-size: 12px; margin-bottom: 5px;">Specialities:<%= @veterinary.speciality[1..-1].join(", ")%></p>
           <% else %>
             <p style="font-size: 12px; margin-bottom: 5px;">Specialities: Undefined</p>
           <% end %>

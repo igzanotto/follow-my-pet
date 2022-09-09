@@ -34,22 +34,27 @@ puts "Deleting users"
 User.destroy_all
 
 puts "Creating users-veterinaries"
-vet1 = User.new(email: "vetboris@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Caballito", longitude: -58.45, latitude: -34.61667, speciality: "Clinic, Bath, Radiology, Lab")
-vet2 = User.new(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Recoleta", longitude: 58.2326, latitude: 34.3526, speciality: "Bath")
-vet3 = User.new(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Mendoza", longitude: -68.8472, latitude: -32.8903, speciality: "Clinic, Surgery, Radiology, Lab")
-vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Santa Fe", longitude: 60.411680, latitude: 31.020240, speciality: "Clinic, Radiology, Nutrition, lab")
-# vet5 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Radiolody Center Little Horse", doctors: "Dr. Pedro Gomez, Dra. Carla Fernández", phone: "+54659855489", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: "Clinic, Radiology, Nutrition, lab")
-# vet6 = User.new(email: "vet6@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Radiolody Center Little Horse", doctors: "Dr. Pedro Gomez, Dra. Carla Fernández", phone: "+54659855489", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: "Clinic, Radiology, Nutrition, lab")
 
+vet1 = User.new(email: "vet1@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Caballito", longitude: -58.45, latitude: -34.61667, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
+vet2 = User.new(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Recoleta", longitude: 58.2326, latitude: 34.3526, speciality: ["Bath"])
+vet3 = User.new(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Mendoza", longitude: -68.8472, latitude: -32.8903, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
+vet4 = User.new(email: "vet4@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Study and radiology center ScoobyDoo", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Santa Fe", longitude: 60.411680, latitude: 31.020240, speciality: ["Clinic", "Radiology"])
+vet5 = User.new(email: "vet5@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Small Dog Center", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: ["Clinic", "Radiology"])
+vet6 = User.new(email: "vet6@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Happy Dog Clinic", doctors: "Dr. Juan Perez", phone: "+54659856523", location: "Caballito", longitude: 60.411680, latitude: 31.020240, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
 
 vet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/borisclinic.png')), filename: 'borisclinic.png')
 vet2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sebastien.png')), filename: 'sebastien.png')
 vet3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/petlover.png')), filename: 'petlover.png')
 vet4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/scooby.png')), filename: 'scooby.png')
+vet5.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/smalldog.png')), filename: 'smalldog.png')
+vet6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/happydog.png')), filename: 'happydog.png')
+
 vet1.save!
 vet2.save!
 vet3.save!
 vet4.save!
+vet5.save!
+vet6.save!
 puts "Done"
 
 puts "Creating users-pet-owners"
