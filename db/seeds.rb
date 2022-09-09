@@ -116,7 +116,7 @@ perrobyn = URI.open("https://images.unsplash.com/photo-1605117085884-817eae85c5e
 
 
 
-pet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/home.png')), filename: 'perrohome.png')
+pet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/home.jpg')), filename: 'perrohome.jpg')
 pet2.photo.attach(io: gatoverde, filename: "Ramon.png", content_type: "image/png")
 pet3.photo.attach(io: perro1, filename: "Lisa.png", content_type: "image/png")
 pet4.photo.attach(io: canario, filename: "Homero.png", content_type: "image/png")
