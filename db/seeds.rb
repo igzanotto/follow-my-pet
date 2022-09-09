@@ -97,7 +97,7 @@ pet6 = Pet.new(user: owner3, name: "Lolo", species_type: species3, birthday: Dat
 pet7 = Pet.new(user: owner1, name: "Matilda", species_type: species2, birthday: DateTime.new(2022,2,22))
 pet8 = Pet.new(user: owner4, name: "Kiki", species_type: species4, birthday: DateTime.new(2019,7,16))
 pet9 = Pet.new(user: owner3, name: "Nelly", species_type: species1, birthday: DateTime.new(2018,8,13))
-pet10 = Pet.new(user: owner1, name: "Flippy", species_type: species2, birthday: DateTime.new(2020,4,25))
+pet10 = Pet.new(user: owner2, name: "Flippy", species_type: species2, birthday: DateTime.new(2020,4,25))
 pet11 = Pet.new(user: owner4, name: "Bernardo", species_type: species2, birthday: DateTime.new(2016,7,22))
 pet12 = Pet.new(user: owner3, name: "Benicio", species_type: species2, birthday: DateTime.new(2019,5,15))
 
