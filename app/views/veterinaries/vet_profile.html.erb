@@ -36,7 +36,7 @@
                   <i class="fa-solid fa-star" style= "color: orange"></i>
                 <% end %>
               </div>
-              <p class="text-muted mb-4"><%= @veterinary.location.split(",").first %></p>
+              <p class="text-muted mb-4"><%= @veterinary.location.split(",")[1] %></p>
               <div class="d-flex justify-content-center mb-2">
                 <%# <button type="button" class="btn btn-primary rounded-4 shadow">
                   <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;"
