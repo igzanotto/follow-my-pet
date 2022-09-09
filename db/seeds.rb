@@ -244,7 +244,7 @@ app12 = Appointment.create!(user: vet4, pet: pet2, start_time: DateTime.new(2022
 app13 = Appointment.create!(user: vet2, pet: pet1, start_time: DateTime.new(2022,9,10,15,0,6))
 app14 = Appointment.create!(user: vet3, pet: pet2, start_time: DateTime.new(2022,9,11,14,0,6))
 
-app15 = Appointment.create!(user: vet1, pet: pet5, start_time: DateTime.new(2022,9,8,10,0,6))
+app15 = Appointment.create!(user: vet1, pet: pet5, start_time: DateTime.new(2022,9,15,10,0,6))
 app16 = Appointment.create!(user: vet2, pet: pet6, start_time: DateTime.new(2022,9,18,11,0,6))
 app17 = Appointment.create!(user: vet4, pet: pet7, start_time: DateTime.new(2022,9,19,12,0,6))
 app18 = Appointment.create!(user: vet2, pet: pet8, start_time: DateTime.new(2022,9,10,13,0,6))
