@@ -36,7 +36,7 @@
                   <i class="fa-solid fa-star" style= "color: orange"></i>
                 <% end %>
               </div>
-              <p class="text-muted mb-4"><%= @veterinary.location %></p>
+              <p class="text-muted mb-4"><%= @veterinary.location.split(",").first %></p>
               <div class="d-flex justify-content-center mb-2">
                 <%# <button type="button" class="btn btn-primary rounded-4 shadow">
                   <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;"
@@ -127,11 +127,20 @@
                   <p class="text-muted mb-0">From 9am to 7pm</p>
                 </div>
               </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Location</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @veterinary.location %></p>
+                </div>
+              </div>
             </div>
         </div>
 
         <div class="col-lg-8" style= "width: 100%;">
-          <div class="card" data-aos="flip-left">
+          <div class="card">
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-9">

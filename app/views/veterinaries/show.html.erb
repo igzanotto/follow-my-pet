@@ -31,16 +31,15 @@
               <% end %>
 
               <h5 class="my-3" style="font-weight: bolder;"><%= @veterinary.name %></h5>
+
               <div class="text-muted mb-1">
                 <% @average.times do %>
                   <i class="fa-solid fa-star" style= "color: orange"></i>
                 <% end %>
               </div>
-              <p class="text-muted mb-4"><%= @veterinary.location %></p>
+              <p class="text-muted mb-4"><%= @veterinary.location.split(",").first %></p>
+
               <div class="d-flex justify-content-center mb-2">
-                <%# <button type="button" class="btn btn-primary rounded-4 shadow">
-                  <%= link_to "Message", chatroom_path(Chatroom.first), style: "color: white;"
-                </button> %>
                   <% if current_user.type_of_user == "Pet Owner" %>
                     <span class="highlight-container" style= "padding: 5px 15px 10px 5px;"><span class="highlight" style= "padding: 10px;"><%= link_to "Message", chatroom_path(Chatroom.first), class: "btn-update" %></span></span>
                   <% end %>
@@ -88,6 +87,7 @@
         <div class="col-lg-8">
           <div class="card mb-4" data-aos="flip-left">
             <div class="card-body">
+
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Vet Name</p>
@@ -124,15 +124,21 @@
                 </div>
               </div>
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Specialities</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><%= @veterinary.speciality[1..-1].join(", ")%></p>
+                  <% if @veterinary.speciality != [] %>
+                    <p class="text-muted mb-0"><%= @veterinary.speciality[1..-1].join(", ")%></p>
+                  <% else %>
+                    <p class="text-muted mb-0">Undefined</p>
+                  <% end %>
                 </div>
               </div>
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Working Hours</p>
@@ -141,18 +147,28 @@
                   <p class="text-muted mb-0">From 9am to 7pm</p>
                 </div>
               </div>
-            </div>
+              <hr>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Location</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @veterinary.location %></p>
+                </div>
+              </div>
+          </div>
         </div>
 
+
         <div class="col-lg-8" style= "width: 100%;">
-          <div class="card" data-aos="flip-left">
+          <div class="card">
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-9">
                   <p class="mb-0" style="font-weight: bolder;">Appointments</p>
                 </div>
                 <div class="col-sm-12 mt-3 text-muted">
-
                     <%= month_calendar(events: @appointments) do |date, appointments| %>
                       <%= date %>
                        <% appointments.each do |appointment| %>
@@ -167,7 +183,9 @@
             </div>
           </div>
         </div>
+
       </div>
+
     </div>
   </section>
 </div>
