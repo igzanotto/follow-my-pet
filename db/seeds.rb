@@ -34,6 +34,7 @@ puts "Deleting users"
 User.destroy_all
 
 puts "Creating users-veterinaries"
+
 vet1 = User.new(email: "vet1@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary Boris", doctors: "Dr.Boris, Dr.Sebastien", phone: "+54659856523", location: "Caballito", longitude: -58.45, latitude: -34.61667, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
 vet2 = User.new(email: "vet2@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Dog Groomer and Bath Sebastien", doctors: "Dra. Carolina, Dra. Sofia", phone: "+65649856523", location: "Recoleta", longitude: 58.2326, latitude: 34.3526, speciality: ["Bath"])
 vet3 = User.new(email: "vet3@gmail.com", password: "123456", type_of_user: "Veterinary", name: "Clinic Veterinary PetLover", doctors: "Dra. Clara, Dr. Lucas", phone: "+54659858623", location: "Mendoza", longitude: -68.8472, latitude: -32.8903, speciality: ["Clinic", "Radiology", "Nutrition", "Lab"])
@@ -45,13 +46,15 @@ vet1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/boriscl
 vet2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sebastien.png')), filename: 'sebastien.png')
 vet3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/petlover.png')), filename: 'petlover.png')
 vet4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/scooby.png')), filename: 'scooby.png')
-vet5.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/smalldog.png')), filename: 'scooby.png')
-vet6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/happydog.png')), filename: 'scooby.png')
+vet5.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/smalldog.png')), filename: 'smalldog.png')
+vet6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/happydog.png')), filename: 'happydog.png')
 
 vet1.save!
 vet2.save!
 vet3.save!
 vet4.save!
+vet5.save!
+vet6.save!
 puts "Done"
 
 puts "Creating users-pet-owners"
@@ -123,13 +126,13 @@ puts "Done"
 
 puts "Creating clinical histories"
 
-ch1pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Came for vaccination and control. Weight 5kg", date: Date.today, name: "Vaccine and Control", type_of_history: "Vaccination")
-ch2pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Has ear pain. Asked for a radilogy.", date: Date.today, name: "Ear pain", type_of_history: "Consult")
-ch3pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Lab results. Everything is ok. Normal results", date: Date.today, name: "General check", type_of_history: "Study")
-ch4pet1 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Has a skin eruption. Sent for a lab result", date: Date.today, name: "Eruption", type_of_history: "Consult")
-ch5pet1 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Vaccines of the year", date: Date.today, name: "Vaccines", type_of_history: "Vaccination")
+ch1pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Came for vaccination and control. Weight 5kg", date: DateTime.new(2022,9,1,11,0,6), name: "Vaccine and Control", type_of_history: "Vaccination")
+ch2pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Has ear pain. Asked for a radilogy.", date: DateTime.new(2022,8,1,11,0,6), name: "Ear pain", type_of_history: "Consult")
+ch3pet1 = ClinicalHistory.create!(user: vet1, pet: pet1, description: "Lab results. Everything is ok. Normal results", date: DateTime.new(2022,4,1,11,0,6), name: "General check", type_of_history: "Study")
+ch4pet1 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Has a skin eruption. Sent for a lab result", date: DateTime.new(2021,12,1,11,0,6), name: "Eruption", type_of_history: "Consult")
+ch5pet1 = ClinicalHistory.create!(user: vet2, pet: pet1, description: "Vaccines of the year", date: DateTime.new(2021,6,1,11,0,6), name: "Vaccines", type_of_history: "Vaccination")
 
-ch1pet2 = ClinicalHistory.create!(user: vet3, pet: pet2, description: "Came for vaccination and control. Weight 10kg.", date: Date.today, name: "Vaccine and Control", type_of_history: "Vaccination")
+ch1pet2 = ClinicalHistory.create!(user: vet3, pet: pet2, description: "Came for vaccination and control. Weight 10kg.", date: DateTime.new(2020,6,20,11,0,6), name: "Vaccine and Control", type_of_history: "Vaccination")
 ch2pet2 = ClinicalHistory.create!(user: vet3, pet: pet2, description: "Has ear pain. Asked for a radilogy.", date: Date.today, name: "Dolor oidos", type_of_history: "Consult")
 ch3pet2 = ClinicalHistory.create!(user: vet1, pet: pet2, description: "Lab results. Everything is ok. Normal results", date: Date.today, name: "General check", type_of_history: "Study")
 ch4pet2 = ClinicalHistory.create!(user: vet2, pet: pet2, description: "Has a skin eruption. Sent for a lab result", date: Date.today, name: "Eruption", type_of_history: "Consult")
@@ -178,12 +181,11 @@ ch4pet9 = ClinicalHistory.create!(user: vet2, pet: pet9, description: "Has a ski
 ch5pet9 = ClinicalHistory.create!(user: vet2, pet: pet9, description: "Vaccines of the year", date: Date.today, name: "Vaccines", type_of_history: "Vaccination")
 
 puts "Done"
-
 puts "Creating appointments"
 app1 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,25,11,0,6))
 app2 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,26,10,0,6))
 app3 = Appointment.create!(user: vet2, pet: pet1, start_time: DateTime.new(2022,9,27,12,0,6))
-app4 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,28,13,0,6))
+app4 = Appointment.create!(user: vet1, pet: pet2, start_time: DateTime.new(2022,9,9,13,0,6))
 app5 = Appointment.create!(user: vet3, pet: pet1, start_time: DateTime.new(2022,9,22,14,0,6))
 app6 = Appointment.create!(user: vet2, pet: pet3, start_time: DateTime.new(2022,9,21,15,0,6))
 app7 = Appointment.create!(user: vet1, pet: pet1, start_time: DateTime.new(2022,9,20,16,0,6))
@@ -195,7 +197,7 @@ app12 = Appointment.create!(user: vet4, pet: pet2, start_time: DateTime.new(2022
 app13 = Appointment.create!(user: vet2, pet: pet1, start_time: DateTime.new(2022,9,10,13,0,6))
 app14 = Appointment.create!(user: vet3, pet: pet2, start_time: DateTime.new(2022,9,11,14,0,6))
 
-app15 = Appointment.create!(user: vet1, pet: pet5, start_time: DateTime.new(2022,9,12,10,0,6))
+app15 = Appointment.create!(user: vet1, pet: pet5, start_time: DateTime.new(2022,9,8,10,0,6))
 app16 = Appointment.create!(user: vet2, pet: pet6, start_time: DateTime.new(2022,9,18,11,0,6))
 app17 = Appointment.create!(user: vet4, pet: pet7, start_time: DateTime.new(2022,9,19,12,0,6))
 app18 = Appointment.create!(user: vet2, pet: pet8, start_time: DateTime.new(2022,9,10,13,0,6))

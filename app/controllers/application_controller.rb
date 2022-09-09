@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :location, :doctors, :phone, :photo, :latitude, :longitude, :remember_me, speciality: [] ])
+  
   end
 
   # def after_sing_up_path_for(resource)
@@ -25,6 +26,14 @@ class ApplicationController < ActionController::Base
       pets_path
     else
       my_appointments_path
+    end
+  end
+
+  def user_root_path
+    if current_user.type_of_user == "Pet Owner"
+      pets_path
+    else
+      vet_profile_path
     end
   end
 
